@@ -29,6 +29,33 @@ using Pca9685 pca9685 = new(device);
 Console.WriteLine(
     $"PCA9685 is ready on I2C bus {device.ConnectionSettings.BusId} with address {device.ConnectionSettings.DeviceAddress}");
 Console.WriteLine($"PWM Frequency: {pca9685.PwmFrequency}Hz");
+
+
+
+
+//using ServoMotor servo = CreateServo(pca9685, 0);
+//servo.Start();
+
+//CalibrateServo(servo);
+pca9685.PwmFrequency = 50;
+
+for (double d = 0.030029296875; d < 0.12939453125; d += 0.0001)
+{
+    Console.WriteLine("First Loop " + d);
+    pca9685.SetDutyCycle(0, d);
+    Thread.Sleep(2);
+}
+Console.WriteLine("Go for two");
+for (double dd = 0.12939453125; dd > 0.030029296875; dd += -0.0001)
+{
+    Console.WriteLine("Second Loop " + dd);
+    pca9685.SetDutyCycle(0, dd);
+    Thread.Sleep(2);
+}
+
+
+
+
 Console.WriteLine();
 PrintHelp();
 
