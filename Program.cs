@@ -26,31 +26,51 @@ I2cConnectionSettings settings = new(busId, deviceAddress);
 using I2cDevice device = I2cDevice.Create(settings);
 
 using Pca9685 pca9685 = new(device);
-Console.WriteLine(
-    $"PCA9685 is ready on I2C bus {device.ConnectionSettings.BusId} with address {device.ConnectionSettings.DeviceAddress}");
+Console.Clear();
+Console.WriteLine($"PCA9685 is ready on I2C bus {device.ConnectionSettings.BusId} with address {device.ConnectionSettings.DeviceAddress}");
 Console.WriteLine($"PWM Frequency: {pca9685.PwmFrequency}Hz");
 
+//Console.WriteLine("Set the PWM freq at 50hz for the SG90 ");
+//pca9685.PwmFrequency = 50;
 
+Console.WriteLine("Set the int position");
+pca9685.SetDutyCycle(0, 0.030029296875);
+Thread.Sleep(1000);
 
-
-//using ServoMotor servo = CreateServo(pca9685, 0);
-//servo.Start();
-
-//CalibrateServo(servo);
-pca9685.PwmFrequency = 50;
-
-for (double d = 0.030029296875; d < 0.12939453125; d += 0.0001)
+Console.WriteLine("SG90 Servo This is fastest it will single step."); 
+for (double d = 0.030029296875; d < 0.12939453125; d += 0.001)
 {
     Console.WriteLine("First Loop " + d);
     pca9685.SetDutyCycle(0, d);
-    Thread.Sleep(2);
+    Thread.Sleep(3);
+    Console.SetCursorPosition(0, 5);
 }
-Console.WriteLine("Go for two");
-for (double dd = 0.12939453125; dd > 0.030029296875; dd += -0.0001)
+for (double dd = 0.12939453125; dd > 0.030029296875; dd += -0.001)
 {
     Console.WriteLine("Second Loop " + dd);
     pca9685.SetDutyCycle(0, dd);
-    Thread.Sleep(2);
+    Thread.Sleep(3);
+    Console.SetCursorPosition(0, 6);
+}
+Thread.Sleep(1000);
+Console.WriteLine("To move as fast as it will go just move to a spot without stepping. It's really not much faster that the above.");
+pca9685.SetDutyCycle(0, 0.12939453125);
+Thread.Sleep(1000);
+
+Console.WriteLine("This is really slow.");
+for (double dd = 0.12939453125; dd > 0.030029296875; dd += -0.0001)
+{
+    Console.WriteLine("Third Loop " + dd);
+    pca9685.SetDutyCycle(0, dd);
+    Thread.Sleep(5);
+    Console.SetCursorPosition(0, 9);
+}
+for (double d = 0.030029296875; d < 0.12939453125; d += 0.0001)
+{
+    Console.WriteLine("Fourth Loop " + d);
+    pca9685.SetDutyCycle(0, d);
+    Thread.Sleep(5);
+    Console.SetCursorPosition(0, 10);
 }
 
 
