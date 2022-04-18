@@ -1,7 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Device.I2c;
 using System.Device.Pwm;
@@ -25,7 +22,7 @@ var deviceAddress = Pca9685.I2cAddressBase + selectedI2cAddress;
 I2cConnectionSettings settings = new(busId, deviceAddress);
 using I2cDevice device = I2cDevice.Create(settings);
 
-using Pca9685 pca9685 = new(device);
+Pca9685 pca9685 = new(device);
 Console.Clear();
 Console.WriteLine($"PCA9685 is ready on I2C bus {device.ConnectionSettings.BusId} with address {device.ConnectionSettings.DeviceAddress}");
 Console.WriteLine($"PWM Frequency: {pca9685.PwmFrequency}Hz");
