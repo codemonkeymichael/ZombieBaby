@@ -14,13 +14,14 @@ namespace ZombieBaby.Animation
         private static double up = 0.12939453125 - 0.03; // - 0.001
 
 
-        private static double headCenter = 0.7;
+        private static double headCenter = 0.5;
 
 
         public static void Head(Pca9685 motorController)
         {
             Console.WriteLine("Head");
             motorController.SetDutyCycle(1, headCenter);
+            
      
         }
 

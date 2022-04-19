@@ -34,11 +34,21 @@ public static class Program
         Console.WriteLine($"PCA9685 is ready on I2C bus {i2c.ConnectionSettings.BusId} with address {i2c.ConnectionSettings.DeviceAddress}");
         Console.WriteLine($"PWM Frequency: {motorController.PwmFrequency}Hz");
 
-        GpioController piGPIOController = new GpioController();
-        piGPIOController.OpenPin(19, PinMode.Output, PinValue.Low);
-        piGPIOController.OpenPin(13, PinMode.Output, PinValue.Low);
+        //GpioController piGPIOController = new GpioController();
+        //piGPIOController.OpenPin(19, PinMode.Output, PinValue.Low);
+        //piGPIOController.OpenPin(13, PinMode.Output, PinValue.Low);
 
-       Animation.Body.Head(motorController);
+        //PwmChannel eyes = motorController.CreatePwmChannel(0); // channel 0
+        PwmChannel head = motorController.CreatePwmChannel(1); // channel 1
+        head.Start();
+        head.DutyCycle = 0.5;
+        Thread.Sleep(2000);
+        head.Stop();
+  
+
+
+
+       //Animation.Body.Head(motorController);
 
         //Animation.Eyes.Blink(motorController, 2);
         //Light.Eyes.On(piGPIOController);
