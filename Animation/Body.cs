@@ -1,6 +1,7 @@
 ﻿using Iot.Device.Pwm;
 using System;
 using System.Collections.Generic;
+using System.Device.Pwm;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,14 +16,57 @@ namespace ZombieBaby.Animation
 
 
         private static double headCenter = 0.5;
+        private static double headLeft = 0.36;
+        private static double headRight = 0.6;
 
 
-        public static void Head(Pca9685 motorController)
+        public static void Head(Pca9685 motorController, bool left)
         {
             Console.WriteLine("Head");
-            motorController.SetDutyCycle(1, headCenter);
-            
-     
+            //motorController.SetDutyCycle(1, headCenter);
+
+            PwmChannel head = motorController.CreatePwmChannel(1); // channel 1
+            head.Start();
+
+            double stopPos = headLeft;
+            double curPos = headCenter;
+            double step = -0.001;
+            int time = 5;
+
+            head.DutyCycle = headCenter;
+            Thread.Sleep(2000);
+
+            //if (left)
+            //{
+            //    stopPos = headLeft;
+            //    curPos = headCenter - 0.001;
+            //}
+            //else
+            //{
+            //    stopPos = headRight;
+            //    curPos = headCenter + 0.001;
+            //}
+
+            while (stopPos <= curPos)
+            {
+                curPos = curPos + step;
+                head.DutyCycle = curPos;
+                Thread.Sleep(time);
+            }
+
+            //head.DutyCycle = headLeft;
+            //Thread.Sleep(2000);         
+            //head.DutyCycle = headLeft;
+            //Thread.Sleep(1000);
+            //head.DutyCycle = headRight;
+            //Thread.Sleep(1000);
+            //head.DutyCycle = headCenter;
+            //Thread.Sleep(1000);
+            head.Stop();
+            head.Dispose();
+
+
+
         }
 
         public static void SitUp(Pca9685 motorController)

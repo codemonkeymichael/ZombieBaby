@@ -39,18 +39,13 @@ public static class Program
         //piGPIOController.OpenPin(13, PinMode.Output, PinValue.Low);
 
         //PwmChannel eyes = motorController.CreatePwmChannel(0); // channel 0
-        PwmChannel head = motorController.CreatePwmChannel(1); // channel 1
-        head.Start();
-        head.DutyCycle = 0.5;
-        Thread.Sleep(2000);
-        head.Stop();
-  
 
 
+        Animation.Eyes.Blink(motorController, 2);
 
-       //Animation.Body.Head(motorController);
+        Animation.Body.Head(motorController, true);
 
-        //Animation.Eyes.Blink(motorController, 2);
+        
         //Light.Eyes.On(piGPIOController);
         //Thread.Sleep(2000);
         //Light.Eyes.Off(piGPIOController);
