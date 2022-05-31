@@ -38,8 +38,8 @@ public static class Program
 
         piGPIOController.OpenPin(14, PinMode.Output, PinValue.Low);
 
-        Eyes.On(piGPIOController);
-        Thread.Sleep(1000);
+        //Eyes.On(piGPIOController);
+  
 
 
         ////Flicking Light
@@ -78,47 +78,54 @@ public static class Program
         //}
 
 
-        //Eyes Blink
-        var busId = 1;
+        ////Eyes Blink
+        //var busId = 1;
 
-        var deviceAddress = Pca9685.I2cAddressBase;// + selectedI2cAddress;
+        //var deviceAddress = Pca9685.I2cAddressBase;// + selectedI2cAddress;
 
-        I2cConnectionSettings settings = new(busId, deviceAddress);
-        I2cDevice i2c = I2cDevice.Create(settings);
+        //I2cConnectionSettings settings = new(busId, deviceAddress);
+        //I2cDevice i2c = I2cDevice.Create(settings);
 
-        Pca9685 motorController = new(i2c);
+        //Pca9685 motorController = new(i2c);
 
-        Console.WriteLine($"PCA9685 is ready on I2C bus {i2c.ConnectionSettings.BusId} with address {i2c.ConnectionSettings.DeviceAddress}");
-        Console.WriteLine($"PWM Frequency: {motorController.PwmFrequency}Hz");
+        //Console.WriteLine($"PCA9685 is ready on I2C bus {i2c.ConnectionSettings.BusId} with address {i2c.ConnectionSettings.DeviceAddress}");
+        //Console.WriteLine($"PWM Frequency: {motorController.PwmFrequency}Hz");
 
-        using (var pca9685 = new Pca9685(i2c, pwmFrequency: 50))
-        {
-            Console.WriteLine("Blink Eyes Open");
-            pca9685.SetDutyCycle(0, 0.04); //Open
-
-            Thread.Sleep(500);
-            Console.WriteLine("Blink Eyes Closed");
-            pca9685.SetDutyCycle(0, 0.07); //Closed
-
-            //for (double i = 0.06; i > 0.04; i = i - 0.001)
-            //{
-            //    Console.WriteLine("Blink O/C " + i);
-            //    pca9685.SetDutyCycle(0, i);
-            //    Thread.Sleep(50);
-            //}
-            //Thread.Sleep(2000);
-            //for (double i = 0.045; i < 0.08; i = i + 0.001)
-            //{
-            //    Console.WriteLine("Look Right to Center " + i);
-            //    pca9685.SetDutyCycle(0, i);
-            //    Thread.Sleep(50);
-            //}
-            //Thread.Sleep(2000);
+        //using (var pca9685 = new Pca9685(i2c, pwmFrequency: 50))
+        //{
 
 
-            pca9685.SetDutyCycle(0, 0.0);
-            pca9685.SetDutyCycle(1, 0.0);
-        }
+        //    Console.WriteLine("Blink Eyes Open");
+        //    pca9685.SetDutyCycle(0, 0.032); //Open
+
+        //    Thread.Sleep(3500);
+
+        //    Console.WriteLine("Blink Eyes Closed");
+        //    pca9685.SetDutyCycle(0, 0.06); //Closed
+
+        //    Thread.Sleep(1500);
+
+        //    pca9685.SetDutyCycle(0, 0.0);
+
+        //    //for (double i = 0.06; i > 0.04; i = i - 0.001)
+        //    //{
+        //    //    Console.WriteLine("Blink O/C " + i);
+        //    //    pca9685.SetDutyCycle(0, i);
+        //    //    Thread.Sleep(50);
+        //    //}
+        //    //Thread.Sleep(2000);
+        //    //for (double i = 0.045; i < 0.08; i = i + 0.001)
+        //    //{
+        //    //    Console.WriteLine("Look Right to Center " + i);
+        //    //    pca9685.SetDutyCycle(0, i);
+        //    //    Thread.Sleep(50);
+        //    //}
+        //    //Thread.Sleep(2000);
+
+
+        //    //pca9685.SetDutyCycle(0, 0.0);
+        //    //pca9685.SetDutyCycle(1, 0.0);
+        //}
 
 
         ////Head Turn Demo
@@ -158,7 +165,7 @@ public static class Program
 
         //    Thread.Sleep(1550);
 
-        //    pca9685.SetDutyCycle(1, 0.0);    
+        //    pca9685.SetDutyCycle(1, 0.0);
         //}
 
 
@@ -240,8 +247,246 @@ public static class Program
         //    pca9685.SetDutyCycle(2, 0.0);
         //}
 
-        Thread.Sleep(1000);
-        Eyes.Off(piGPIOController);
+
+        //Altogether Demo
+        var busId = 1;
+
+        var deviceAddress = Pca9685.I2cAddressBase;// + selectedI2cAddress;
+
+        I2cConnectionSettings settings = new(busId, deviceAddress);
+        I2cDevice i2c = I2cDevice.Create(settings);
+
+        Pca9685 motorController = new(i2c);
+
+        Console.WriteLine($"PCA9685 is ready on I2C bus {i2c.ConnectionSettings.BusId} with address {i2c.ConnectionSettings.DeviceAddress}");
+        Console.WriteLine($"PWM Frequency: {motorController.PwmFrequency}Hz");
+
+        using (var pca9685 = new Pca9685(i2c, pwmFrequency: 50))
+        {
+         
+            Console.WriteLine("Set up starting postions");
+            Console.WriteLine("Eyes Off");
+            Eyes.Off(piGPIOController);
+
+            Console.WriteLine("Eyes Closed");
+            pca9685.SetDutyCycle(0, 0.06); //Closed
+
+            Console.WriteLine("Head Right 0.12");
+            pca9685.SetDutyCycle(1, 0.12);
+
+            decimal start = 0.05222m; //up
+            decimal end = 0.08991m; //down          
+
+            Console.WriteLine("Put the Body Down");
+            pca9685.SetDutyCycle(2, 0);
+            Thread.Sleep(1000);
+            Console.WriteLine("10");
+            Thread.Sleep(1000);
+            Console.WriteLine("9");
+            Thread.Sleep(1000);
+            Console.WriteLine("8");
+            Thread.Sleep(1000);
+            Console.WriteLine("7");
+            Thread.Sleep(1000);
+            Console.WriteLine("6");
+            Thread.Sleep(1000);
+            Console.WriteLine("5");
+            Thread.Sleep(1000);
+            Console.WriteLine("4");
+            Thread.Sleep(1000);
+            Console.WriteLine("3");
+            Thread.Sleep(1000);
+            Console.WriteLine("2");
+            Thread.Sleep(1000);
+            Console.WriteLine("1");
+            Thread.Sleep(2000);
+            Console.WriteLine("Body First Postion");
+            pca9685.SetDutyCycle(2, (double)end);
+
+            Console.ReadLine();
+            Thread.Sleep(5000);
+
+            Console.WriteLine("Head Center 0.097");
+            pca9685.SetDutyCycle(1, 0.097);
+
+            Thread.Sleep(500);
+
+           Console.WriteLine("Eyes Open");
+           pca9685.SetDutyCycle(0, 0.032); //Open
+
+            Thread.Sleep(500);
+
+            Console.WriteLine("Eyes On");
+            Eyes.On(piGPIOController);
+
+            Thread.Sleep(1500);
+
+            Console.WriteLine("Sit up");
+            pca9685.SetDutyCycle(2, (double)start);
+
+            Thread.Sleep(2000);
+
+            Console.WriteLine("Head Right 0.12");
+            pca9685.SetDutyCycle(1, 0.12);
+
+            Thread.Sleep(250);
+
+            Console.WriteLine("Eyes Closed");
+            pca9685.SetDutyCycle(0, 0.06); //Closed
+            Thread.Sleep(25);
+            Eyes.Off(piGPIOController);
+
+            Thread.Sleep(250);
+
+            Console.WriteLine("Eyes Open");
+            pca9685.SetDutyCycle(0, 0.032); //Open
+            Thread.Sleep(25);
+            Eyes.On(piGPIOController);
+
+            Thread.Sleep(2000);
+
+            Console.WriteLine("Head Left 0.07");
+            pca9685.SetDutyCycle(1, 0.07);
+
+            Thread.Sleep(2000);
+
+            Console.WriteLine("Eyes Closed");
+            pca9685.SetDutyCycle(0, 0.06); //Closed
+            Thread.Sleep(25);
+            Eyes.Off(piGPIOController);
+
+            Thread.Sleep(250);
+
+            Console.WriteLine("Eyes Open");
+            pca9685.SetDutyCycle(0, 0.032); //Open
+            Thread.Sleep(25);
+            Eyes.On(piGPIOController);
+
+            Thread.Sleep(2000);
+
+            Console.WriteLine("Eyes Closed");
+            pca9685.SetDutyCycle(0, 0.06); //Closed
+            Thread.Sleep(25);
+            Eyes.Off(piGPIOController);
+
+            Thread.Sleep(250);
+
+            Console.WriteLine("Eyes Open");
+            pca9685.SetDutyCycle(0, 0.032); //Open
+            Thread.Sleep(25);
+            Eyes.On(piGPIOController);
+
+            Thread.Sleep(1550);
+
+            Console.WriteLine("Head Center 0.097");
+            pca9685.SetDutyCycle(1, 0.097);
+
+
+
+            ////Time easing
+
+            decimal stepSize = 0.00025m;
+            Console.WriteLine("Step Size " + stepSize);
+            int numberOfSteps = (int)Math.Round((end - start) / stepSize, MidpointRounding.AwayFromZero);
+            Console.WriteLine("Number Of Steps " + numberOfSteps);
+            int easingSteps = (int)numberOfSteps / 3;
+            Console.WriteLine("Easing Steps " + easingSteps);
+            int fast = 4;
+            int slow = 40;
+            int fastSlowDiff = slow - fast;
+            Console.WriteLine("Fast Slow Diff " + fastSlowDiff);
+            int stepsForEachTime = easingSteps / fastSlowDiff;
+            Console.WriteLine("Steps For Each Time " + stepsForEachTime);
+
+            int easingStepsCounter = stepsForEachTime;
+            int currentEasingTime = slow;
+            int totalStepsCounter = numberOfSteps;
+            for (decimal i = start; i < end; i = i + stepSize)
+            {
+                //Ease In
+                if (easingStepsCounter < 1 & totalStepsCounter > (numberOfSteps - easingSteps))
+                {
+                    Console.WriteLine("Ease In");
+                    easingStepsCounter = stepsForEachTime;
+                    currentEasingTime--;
+                    if (currentEasingTime < fast) currentEasingTime = fast;
+                }
+                //Ease Out
+                if (totalStepsCounter < easingSteps & easingStepsCounter < 1)
+                {
+                    Console.WriteLine("Ease Out");
+                    easingStepsCounter = stepsForEachTime;
+                    currentEasingTime++;
+                    if (currentEasingTime > slow) currentEasingTime = slow;
+
+                }
+                i = Decimal.Round(i, 5);
+                Console.WriteLine(totalStepsCounter + " Loop Move Down Slow to " + (double)i + " speed " + currentEasingTime);
+                pca9685.SetDutyCycle(2, (double)i);
+                Thread.Sleep(currentEasingTime);
+                easingStepsCounter--;
+                totalStepsCounter--;
+            }
+
+            Thread.Sleep(2500);
+
+            Console.WriteLine("Eyes Closed");
+            pca9685.SetDutyCycle(0, 0.06); //Closed
+            Thread.Sleep(25);
+            Eyes.Off(piGPIOController);
+
+            Thread.Sleep(250);
+
+            Console.WriteLine("Eyes Open");
+            pca9685.SetDutyCycle(0, 0.032); //Open
+            Thread.Sleep(25);
+            Eyes.On(piGPIOController);
+
+            Thread.Sleep(1050);
+
+            Console.WriteLine("Eyes Closed");
+            pca9685.SetDutyCycle(0, 0.06); //Closed
+            Thread.Sleep(25);
+            Eyes.Off(piGPIOController);
+
+            Thread.Sleep(650);
+
+            Console.WriteLine("Eyes Open");
+            pca9685.SetDutyCycle(0, 0.032); //Open
+            Thread.Sleep(25);
+            Eyes.On(piGPIOController);
+
+            Thread.Sleep(1050);
+
+            Console.WriteLine("Eyes Closed");
+            pca9685.SetDutyCycle(0, 0.06); //Closed
+            Thread.Sleep(25);
+            Eyes.Off(piGPIOController);
+
+            Thread.Sleep(950);
+
+            Console.WriteLine("Eyes Open");
+            pca9685.SetDutyCycle(0, 0.032); //Open
+            Thread.Sleep(25);
+            Eyes.On(piGPIOController);
+
+            Thread.Sleep(250);
+
+            Console.WriteLine("Eyes Closed");
+            pca9685.SetDutyCycle(0, 0.06); //Closed
+            Thread.Sleep(25);
+            Eyes.Off(piGPIOController);
+
+
+
+            Thread.Sleep(500);
+            pca9685.SetDutyCycle(0, 0);
+            pca9685.SetDutyCycle(1, 0);
+            pca9685.SetDutyCycle(2, 0);
+        }
+
+ 
+
     }
 
 
