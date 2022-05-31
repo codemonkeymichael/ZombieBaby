@@ -72,10 +72,13 @@ namespace ZombieBaby.Animation
         public static void SitUp(Pca9685 motorController)
         {
             Console.WriteLine("Sit Up");
-            motorController.SetDutyCycle(2, down);
+            motorController.SetDutyCycle(2, 0.95);
+            Thread.Sleep(5000);
+            Console.WriteLine("Sit Down");
+            motorController.SetDutyCycle(2, 0.45);
             Thread.Sleep(1000);
-            motorController.SetDutyCycle(2, up);
-            Thread.Sleep(1000);
+            Console.WriteLine("Sit Exit");
+
 
             //for (int i = 0; i < times; i++)
             //{
