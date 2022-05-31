@@ -1,3 +1,3 @@
 # ZombieBaby
 
-This is the project for the Heartstoppers Zombie Baby robot doll.
+This is the project for the Heartstoppers Zombie Baby robot doll..
