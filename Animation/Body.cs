@@ -8,129 +8,115 @@ using System.Threading.Tasks;
 
 namespace ZombieBaby.Animation
 {
-    internal class Body
+    public class Body
     {
-        private static double down = 0.030029296875 + 0.001; //+ 0.001
+        private static decimal up { get; } = 0.05222m;
+        private static decimal down = 0.08991m; 
+        //decimal stepSize = 0.001m; 
 
-        private static double up = 0.12939453125 - 0.03; // - 0.001
-
-
-        private static double headCenter = 0.5;
-        private static double headLeft = 0.36;
-        private static double headRight = 0.6;
-
-
-        public static void Head(Pca9685 motorController, bool left)
+        public static void Up(Pca9685 motorController)
         {
-            Console.WriteLine("Head");
-            //motorController.SetDutyCycle(1, headCenter);
-
-            PwmChannel head = motorController.CreatePwmChannel(1); // channel 1
-            head.Start();
-
-            double stopPos = headLeft;
-            double curPos = headCenter;
-            double step = -0.001;
-            int time = 5;
-
-            head.DutyCycle = headCenter;
-            Thread.Sleep(2000);
-
-            //if (left)
-            //{
-            //    stopPos = headLeft;
-            //    curPos = headCenter - 0.001;
-            //}
-            //else
-            //{
-            //    stopPos = headRight;
-            //    curPos = headCenter + 0.001;
-            //}
-
-            while (stopPos <= curPos)
-            {
-                curPos = curPos + step;
-                head.DutyCycle = curPos;
-                Thread.Sleep(time);
-            }
-
-            //head.DutyCycle = headLeft;
-            //Thread.Sleep(2000);         
-            //head.DutyCycle = headLeft;
-            //Thread.Sleep(1000);
-            //head.DutyCycle = headRight;
-            //Thread.Sleep(1000);
-            //head.DutyCycle = headCenter;
-            //Thread.Sleep(1000);
-            head.Stop();
-            head.Dispose();
-
-
-
+            Console.WriteLine("Sit up");
+            motorController.SetDutyCycle(2, decimal.ToDouble(up));
         }
 
-        public static void SitUp(Pca9685 motorController)
+        public static void Down(Pca9685 motorController)
         {
-            Console.WriteLine("Sit Up");
-            motorController.SetDutyCycle(2, 0.95);
-            Thread.Sleep(5000);
-            Console.WriteLine("Sit Down");
-            motorController.SetDutyCycle(2, 0.45);
-            Thread.Sleep(1000);
-            Console.WriteLine("Sit Exit");
-
-
-            //for (int i = 0; i < times; i++)
-            //{
-            //    Console.WriteLine("Sit Up");
-            //    motorController.SetDutyCycle(1, closed);
-            //    Thread.Sleep(500);    
-            //}
-
-
-
-            //Console.WriteLine("Set the int position min");
-            //pca9685.SetDutyCycle(0, min);
-            //Thread.Sleep(1000);
-            //Console.WriteLine("SG90 Servo This is the fastest it will single step forward.");
-            //for (double d = min; d < max; d += 0.001)
-            //{
-            //    Console.WriteLine("First Loop " + d);
-            //    pca9685.SetDutyCycle(0, d);
-            //    Thread.Sleep(3);
-            //    Console.SetCursorPosition(0, 5);
-            //}
-            //Thread.Sleep(1000);
-            //Console.WriteLine("SG90 Servo This is the fastest it will single step reverse.");
-            //for (double dd = max; dd > min; dd += -0.001)
-            //{
-            //    Console.WriteLine("Second Loop " + dd);
-            //    pca9685.SetDutyCycle(0, dd);
-            //    Thread.Sleep(3);
-            //    Console.SetCursorPosition(0, 6);
-            //}
-            //Thread.Sleep(1000);
-            //Console.WriteLine("To move as fast as it will go just move to a spot without stepping. It's really not much faster than the above.");
-            //pca9685.SetDutyCycle(0, max);
-            //Thread.Sleep(1000);
-
-            //Console.WriteLine("This is really slow in reverse.");
-            //for (double dd = max; dd > min; dd += -0.0001)
-            //{
-            //    Console.WriteLine("Third Loop " + dd);
-            //    pca9685.SetDutyCycle(0, dd);
-            //    Thread.Sleep(5);
-            //    Console.SetCursorPosition(0, 9);
-            //}
-            //Console.WriteLine("This is really slow in forward.");
-            //Thread.Sleep(1000);
-            //for (double d = min; d < max + 0.001; d += 0.0001)
-            //{
-            //    Console.WriteLine("Fourth Loop " + d);
-            //    pca9685.SetDutyCycle(0, d);
-            //    Thread.Sleep(5);
-            //    Console.SetCursorPosition(0, 10);
-            //}
+            Console.WriteLine("Lay down");
+            motorController.SetDutyCycle(2, decimal.ToDouble(down));
         }
     }
 }
+
+////Sit Up Demo
+//var busId = 1;
+
+//var deviceAddress = Pca9685.I2cAddressBase;// + selectedI2cAddress;
+
+//I2cConnectionSettings settings = new(busId, deviceAddress);
+//I2cDevice i2c = I2cDevice.Create(settings);
+
+//Pca9685 motorController = new(i2c);
+
+//Console.WriteLine($"PCA9685 is ready on I2C bus {i2c.ConnectionSettings.BusId} with address {i2c.ConnectionSettings.DeviceAddress}");
+//Console.WriteLine($"PWM Frequency: {motorController.PwmFrequency}Hz");
+
+//using (var pca9685 = new Pca9685(i2c, pwmFrequency: 50))
+//{
+//    decimal start = 0.05222m; //up
+//    decimal end = 0.08991m; //down
+//    decimal stepSize = 0.001m;
+
+
+//Console.WriteLine("up");
+//pca9685.SetDutyCycle(2, decimal.ToDouble(start));
+//Thread.Sleep(5000);
+//Console.WriteLine("down");
+//pca9685.SetDutyCycle(2, decimal.ToDouble(end));
+//Thread.Sleep(1000);
+//Console.WriteLine("mid ish");
+//pca9685.SetDutyCycle(2, 0.07);
+//Thread.Sleep(1000);
+//Console.WriteLine("up up");
+//pca9685.SetDutyCycle(2, 0.04);
+//Thread.Sleep(1000);
+
+
+
+//for (decimal i = start; i < end; i = i + stepSize)
+//{
+//    Console.WriteLine(i);
+//    pca9685.SetDutyCycle(2, (double)i);
+//    Thread.Sleep(100);
+//}
+// }
+
+
+
+//    //Time easing
+
+//    decimal stepSize = 0.00025m;
+//    Console.WriteLine("Step Size " + stepSize);
+//    int numberOfSteps = (int)Math.Round((end - start) / stepSize, MidpointRounding.AwayFromZero);
+//    Console.WriteLine("Number Of Steps " + numberOfSteps);
+//    int easingSteps = (int)numberOfSteps / 3;
+//    Console.WriteLine("Easing Steps " + easingSteps);
+//    int fast = 4;
+//    int slow = 40;
+//    int fastSlowDiff = slow - fast;
+//    Console.WriteLine("Fast Slow Diff " + fastSlowDiff);
+//    int stepsForEachTime = easingSteps / fastSlowDiff;
+//    Console.WriteLine("Steps For Each Time " + stepsForEachTime);
+
+//    int easingStepsCounter = stepsForEachTime;
+//    int currentEasingTime = slow;
+//    int totalStepsCounter = numberOfSteps;
+//    for (decimal i = start; i < end; i = i + stepSize)
+//    {
+//        //Ease In
+//        if (easingStepsCounter < 1 & totalStepsCounter > (numberOfSteps - easingSteps))
+//        {
+//            Console.WriteLine("Ease In");
+//            easingStepsCounter = stepsForEachTime;
+//            currentEasingTime--;
+//            if (currentEasingTime < fast) currentEasingTime = fast;
+//        }
+//        //Ease Out
+//        if (totalStepsCounter < easingSteps & easingStepsCounter < 1)
+//        {
+//            Console.WriteLine("Ease Out");
+//            easingStepsCounter = stepsForEachTime;
+//            currentEasingTime++;
+//            if (currentEasingTime > slow) currentEasingTime = slow;
+
+//        }
+//        i = Decimal.Round(i, 5);
+//        Console.WriteLine(totalStepsCounter + " Loop Move Down Slow to " + (double)i + " speed " + currentEasingTime);
+//        pca9685.SetDutyCycle(2, (double)i);
+//        Thread.Sleep(currentEasingTime);
+//        easingStepsCounter--;
+//        totalStepsCounter--;
+//    }
+
+//    pca9685.SetDutyCycle(2, 0.0);
+//}
