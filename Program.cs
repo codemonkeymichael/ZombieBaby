@@ -20,16 +20,17 @@ public static class Program
     public static GpioController piGPIOController = new GpioController();
 
     /// <summary>
-    /// PWM 
+    /// PI-GPIO-12
     /// </summary>
     public static PwmChannel sleepingLights = PwmChannel.Create(0, 0, 400, 0.001);
 
 
 
     /// <summary>
-    /// PI-GPIO-19. (13) Foot Lights(PWM Dimmable Channel 1)
+    /// PI-GPIO-13 (13) Foot Lights(PWM Dimmable Channel 1)
     /// </summary>
     public static PwmChannel awakeLights = PwmChannel.Create(0, 1, 400, 0.001);
+
 
 
     public static void Main(string[] args)
@@ -37,12 +38,17 @@ public static class Program
         Console.Clear();
         Console.WriteLine("Zombie Baby is Running 0");
 
+        
+
         var deviceAddress = Pca9685.I2cAddressBase;// + selectedI2cAddress;
         var busId = 1;
         I2cConnectionSettings settings = new(busId, deviceAddress);
         I2cDevice i2c = I2cDevice.Create(settings);
         Pca9685 motorController = new Pca9685(i2c, pwmFrequency: 50);
 
+
+
+        //openWith["doc"] = "winword.exe";
 
 
         //Body.Up(motorController);
@@ -56,8 +62,8 @@ public static class Program
         //using (var pca9685 = new Pca9685(i2c, pwmFrequency: 50))
 
 
-        piGPIOController.OpenPin(4, PinMode.Input);
-        piGPIOController.OpenPin(27, PinMode.Output);
+        piGPIOController.OpenPin(Gpios.InputTrigger , PinMode.Input);
+        piGPIOController.OpenPin(Gpios.Blinders, PinMode.Output);
 
 
         var inputLastState = PinValue.Low;
