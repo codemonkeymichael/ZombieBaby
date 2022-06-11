@@ -68,6 +68,8 @@ public static class Program
                         Blinders.On();
                         Status.On();
                         Light.Eyes.On();
+                        Head.On();
+                        Foot.On();
                         Fan.On();
                         Smoke.On();
                         up = false;
@@ -78,6 +80,8 @@ public static class Program
                         Blinders.Off();
                         Status.Off();
                         Light.Eyes.Off();
+                        Head.Off();
+                        Foot.Off();
                         Fan.Off();
                         Smoke.Off();
                         up = true;

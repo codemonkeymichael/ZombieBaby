@@ -14,14 +14,12 @@ public class Eyes
     {
         Console.WriteLine("Eyes On");
         Gpios.piGPIOController.Write(Gpios.Eyes, PinValue.High);
-        //Gpios.piGPIOController.Write(19, PinValue.High);
     }
 
     public static void Off()
     {
         Console.WriteLine("Eyes Off");
-        Gpios.piGPIOController.Write(Gpios.Eyes, PinValue.Low);
-        //Gpios.piGPIOController.Write(19, PinValue.Low);
+        Gpios.piGPIOController.Write(Gpios.Eyes, PinValue.Low);     
     }
 
 
