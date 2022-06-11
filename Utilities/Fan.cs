@@ -4,21 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZombieBaby.Light
+namespace ZombieBaby.Utilities
 {
-    public static class Blinders
+    public class Fan
     {
+
 
         public static void On(GpioController piGPIOController)
         {
-            Console.WriteLine("Blinders On");
-            piGPIOController.Write(Gpios.Blinders, PinValue.High);
+            piGPIOController.Write(Gpios.Fan, PinValue.High);
         }
 
         public static void Off(GpioController piGPIOController)
         {
-            Console.WriteLine("Blinders Off");
-            piGPIOController.Write(Gpios.Blinders, PinValue.Low);
+            piGPIOController.Write(Gpios.Fan, PinValue.Low);
         }
     }
 }

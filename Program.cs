@@ -8,28 +8,15 @@ using System.Linq;
 using Iot.Device.ServoMotor;
 using Iot.Device.Pwm;
 using ZombieBaby.Animation;
+using ZombieBaby.Utilities;
 //using ZombieBaby.Animation;
 
 
 namespace ZombieBaby;
 public static class Program
 {
-    /// <summary>
-    /// Pi GPIO Controller
-    /// </summary>
-    public static GpioController piGPIOController = new GpioController();
-
-    /// <summary>
-    /// PI-GPIO-12
-    /// </summary>
-    public static PwmChannel sleepingLights = PwmChannel.Create(0, 0, 400, 0.001);
 
 
-
-    /// <summary>
-    /// PI-GPIO-13 (13) Foot Lights(PWM Dimmable Channel 1)
-    /// </summary>
-    public static PwmChannel awakeLights = PwmChannel.Create(0, 1, 400, 0.001);
 
 
 
@@ -46,7 +33,8 @@ public static class Program
         I2cDevice i2c = I2cDevice.Create(settings);
         Pca9685 motorController = new Pca9685(i2c, pwmFrequency: 50);
 
-
+        GpioController controller = new GpioController();
+        Gpios io = new Gpios(controller);
 
         //openWith["doc"] = "winword.exe";
 
@@ -62,15 +50,13 @@ public static class Program
         //using (var pca9685 = new Pca9685(i2c, pwmFrequency: 50))
 
 
-        piGPIOController.OpenPin(Gpios.InputTrigger , PinMode.Input);
-        piGPIOController.OpenPin(Gpios.Blinders, PinMode.Output);
 
 
         var inputLastState = PinValue.Low;
         bool up = false;
         while (true)
         {
-            var click = piGPIOController.Read(4);
+            var click = controller.Read(Gpios.InputTrigger);
             if(click != inputLastState)
             {
                 inputLastState = click;
@@ -79,13 +65,15 @@ public static class Program
                     if (up)
                     {
                         Body.Down(motorController);
-                        Light.Blinders.On(piGPIOController);
+                        Light.Blinders.On(controller);
+                        Fan.On(controller);
                         up = false;
                     }
                     else
                     {                       
                         Body.Up(motorController);
-                        Light.Blinders.Off(piGPIOController);
+                        Light.Blinders.Off(controller);
+                        Fan.Off(controller);
                         up = true;
                     }
                 }
