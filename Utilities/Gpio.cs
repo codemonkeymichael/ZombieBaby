@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZombieBaby
+namespace ZombieBaby.Utilities
 {
     public class Gpios
     {
         /// <summary>
         /// Pi GPIO Controller
         /// </summary>
-       public static GpioController piGPIOController { get; set; }
+        public static GpioController piGPIOController { get; set; }
 
         public Gpios(GpioController controller)
         {
@@ -26,8 +26,9 @@ namespace ZombieBaby
             piGPIOController.OpenPin(Fan, PinMode.Output);
             piGPIOController.OpenPin(Smoke, PinMode.Output);
             piGPIOController.OpenPin(Status, PinMode.Output);
+            piGPIOController.OpenPin(Eyes, PinMode.Output);
 
-        }  
+        }
 
         /// <summary>
         /// Foot peddal Trigger (Red Wire)
@@ -53,6 +54,11 @@ namespace ZombieBaby
         /// Smoke Relay (Black Wire)
         /// </summary>
         public static int Status { get; } = 5;
+
+        /// <summary>
+        /// Red Ligths in the Eyes, real creapy
+        /// </summary>
+        public static int Eyes { get; } = 14;
 
         /// <summary>
         /// PI-GPIO-12 Head Lights(PWM Dimmable Channel 1) (Blue Wire)

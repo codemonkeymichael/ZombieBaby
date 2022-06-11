@@ -7,19 +7,18 @@ using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Light
 {
-    public static class Blinders
+    public static class Status
     {
-
         public static void On()
         {
-            Console.WriteLine("Blinders On");
-            Gpios.piGPIOController.Write(Gpios.Blinders, PinValue.High);
+            Console.WriteLine("Status On");
+            Gpios.piGPIOController.Write(Gpios.Status, PinValue.High);
         }
 
         public static void Off()
         {
-            Console.WriteLine("Blinders Off");
-            Gpios.piGPIOController.Write(Gpios.Blinders, PinValue.Low);
+            Console.WriteLine("Status Off");
+            Gpios.piGPIOController.Write(Gpios.Status, PinValue.Low);
         }
     }
 }

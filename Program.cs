@@ -8,8 +8,10 @@ using System.Linq;
 using Iot.Device.ServoMotor;
 using Iot.Device.Pwm;
 using ZombieBaby.Animation;
+using ZombieBaby.Effects;
 using ZombieBaby.Utilities;
-//using ZombieBaby.Animation;
+using ZombieBaby.Light;
+
 
 
 namespace ZombieBaby;
@@ -36,9 +38,7 @@ public static class Program
         GpioController controller = new GpioController();
         Gpios io = new Gpios(controller);
 
-        //openWith["doc"] = "winword.exe";
-
-
+ 
         //Body.Up(motorController);
         //Thread.Sleep(2000);
         //Body.Down(motorController);
@@ -65,15 +65,21 @@ public static class Program
                     if (up)
                     {
                         Body.Down(motorController);
-                        Light.Blinders.On(controller);
-                        Fan.On(controller);
+                        Blinders.On();
+                        Status.On();
+                        Light.Eyes.On();
+                        Fan.On();
+                        Smoke.On();
                         up = false;
                     }
                     else
                     {                       
                         Body.Up(motorController);
-                        Light.Blinders.Off(controller);
-                        Fan.Off(controller);
+                        Blinders.Off();
+                        Status.Off();
+                        Light.Eyes.Off();
+                        Fan.Off();
+                        Smoke.Off();
                         up = true;
                     }
                 }

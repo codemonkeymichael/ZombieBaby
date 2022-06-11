@@ -4,26 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Light;
 
-internal class Eyes
+public class Eyes
 {
-    public static void On(GpioController piGPIOController)
+    public static void On()
     {
-        piGPIOController.Write(13, PinValue.High);
-        piGPIOController.Write(19, PinValue.High);
+        Console.WriteLine("Eyes On");
+        Gpios.piGPIOController.Write(Gpios.Eyes, PinValue.High);
+        //Gpios.piGPIOController.Write(19, PinValue.High);
     }
 
-    public static void Off(GpioController piGPIOController)
+    public static void Off()
     {
-        piGPIOController.Write(13, PinValue.Low);
-        piGPIOController.Write(19, PinValue.Low);
+        Console.WriteLine("Eyes Off");
+        Gpios.piGPIOController.Write(Gpios.Eyes, PinValue.Low);
+        //Gpios.piGPIOController.Write(19, PinValue.Low);
     }
 
-    public static void Half(Pca9685 motorController)
-    {
-        motorController.SetDutyCycle(3, 0.005);
-    }
+
 }
 
