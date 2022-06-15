@@ -38,7 +38,7 @@ public static class Program
         GpioController controller = new GpioController();
         Gpios io = new Gpios(controller);
 
- 
+
         //Body.Up(motorController);
         //Thread.Sleep(2000);
         //Body.Down(motorController);
@@ -49,6 +49,14 @@ public static class Program
 
         //using (var pca9685 = new Pca9685(i2c, pwmFrequency: 50))
 
+
+        Thread flickerFoot = new Thread(() => Foot.Flicker());
+        flickerFoot.Start();
+
+        Thread flickerHead = new Thread(() => Head.Flicker());
+        flickerHead.Start();
+
+     
 
 
 
@@ -65,11 +73,11 @@ public static class Program
                     if (up)
                     {
                         Body.Down(motorController);
-                        Blinders.On();
+                        //Blinders.On();
                         Status.On();
                         Light.Eyes.On();
-                        Head.On();
-                        Foot.On();
+                        Head.FadeOut = false;
+                        Foot.FadeOut = false;
                         Fan.On();
                         Smoke.On();
                         up = false;
@@ -77,11 +85,11 @@ public static class Program
                     else
                     {                       
                         Body.Up(motorController);
-                        Blinders.Off();
+                        //Blinders.Off();
                         Status.Off();
                         Light.Eyes.Off();
-                        Head.Off();
-                        Foot.Off();
+                        Head.FadeOut = true;
+                        Foot.FadeOut = true;
                         Fan.Off();
                         Smoke.Off();
                         up = true;
@@ -104,40 +112,6 @@ public static class Program
 
 
 
-        ////Flicking Light
-        //sleepingLights.Start();
-        //Random rnd = new Random();
-        //double cur = 0.5;
-        //bool dim = true;
-
-        //while (true)
-        //{
-        //    double flicker = (double)rnd.NextInt64(4, 9) / (double)10;
-        //    double dimSpeed = (double)rnd.NextInt64(1, 4) / (double)1000;
-        //    int holdDuration = (int)rnd.NextInt64(25, 150);
-        //    Console.WriteLine(flicker + " " + dimSpeed + " " + holdDuration);
-
-        //    if (flicker > cur)
-        //    {
-        //        for (double d = cur; d < flicker; d = d + dimSpeed)
-        //        {
-        //            sleepingLights.DutyCycle = d;
-        //            Thread.Sleep(1);
-        //            cur = d;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        for (double d = cur; d > flicker; d = d - dimSpeed)
-        //        {
-        //            sleepingLights.DutyCycle = d;
-        //            Thread.Sleep(1);
-        //            cur = d;
-        //        }
-
-        //    }
-        //    Thread.Sleep(holdDuration);
-        //}
 
 
         ////Eyes Blink

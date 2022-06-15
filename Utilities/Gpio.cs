@@ -27,6 +27,7 @@ namespace ZombieBaby.Utilities
             piGPIOController.OpenPin(Smoke, PinMode.Output);
             piGPIOController.OpenPin(Status, PinMode.Output);
             piGPIOController.OpenPin(Eyes, PinMode.Output);
+     
 
         }
 
