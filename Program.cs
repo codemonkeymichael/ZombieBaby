@@ -28,26 +28,20 @@ public static class Program
         Thread flicker = new Thread(() => Foot.Flicker());
         flicker.Start();
 
+    
+
+        Console.WriteLine("Motor Sit Up and Down");
+        Body.Up();
+        Thread.Sleep(2000);
+        Body.Down();
+
         Carrage.Rock(4);
 
-        //Console.WriteLine("Motor Sit Up and Down");
-        //Body.Up(motorController);
-        //Thread.Sleep(2000);
-        //Body.Down(motorController);
 
 
 
-        //Console.WriteLine($"PCA9685 is ready on I2C bus {i2c.ConnectionSettings.BusId} with address {i2c.ConnectionSettings.DeviceAddress}");
-        //Console.WriteLine($"PWM Frequency: {motorController.PwmFrequency}Hz");
-
-        //using (var pca9685 = new Pca9685(i2c, pwmFrequency: 50))
 
 
-        //Thread flickerFoot = new Thread(() => Foot.Flicker());
-        //flickerFoot.Start();
-
-        //Thread flickerHead = new Thread(() => Head.Flicker());
-        //flickerHead.Start();
 
         //var inputLastState = PinValue.Low;
         //bool up = false;

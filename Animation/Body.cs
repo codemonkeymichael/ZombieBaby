@@ -1,4 +1,5 @@
 ﻿using Iot.Device.Pwm;
+using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Animation;
 public class Body
@@ -7,16 +8,16 @@ public class Body
     private static decimal down = 0.08991m; 
     //decimal stepSize = 0.001m; 
 
-    public static void Up(Pca9685 motorController)
+    public static void Up()
     {
         Console.WriteLine("Sit up");
-        motorController.SetDutyCycle(2, decimal.ToDouble(up));
+        Motor.motorController.SetDutyCycle(2, decimal.ToDouble(up));
     }
 
-    public static void Down(Pca9685 motorController)
+    public static void Down()
     {
         Console.WriteLine("Lay down");
-        motorController.SetDutyCycle(2, decimal.ToDouble(down));
+        Motor.motorController.SetDutyCycle(2, decimal.ToDouble(down));
     }
 }
 
