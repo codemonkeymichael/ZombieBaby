@@ -12,36 +12,29 @@ using ZombieBaby.Effects;
 using ZombieBaby.Utilities;
 using ZombieBaby.Light;
 
-
-
 namespace ZombieBaby;
 public static class Program
 {
-
-
-
-
-
+    
     public static void Main(string[] args)
     {
         Console.Clear();
-        Console.WriteLine("Zombie Baby is Running 0");
+        Console.WriteLine("Zombie Baby is Running 1");
+       
+        Gpios io = new Gpios(); //Just need to hit the constructor here
+        Motor mo = new Motor(); //Just need to hit the constructor here
 
-        
+        //This thread keeps the whole program running.
+        Thread flicker = new Thread(() => Foot.Flicker());
+        flicker.Start();
 
-        var deviceAddress = Pca9685.I2cAddressBase;// + selectedI2cAddress;
-        var busId = 1;
-        I2cConnectionSettings settings = new(busId, deviceAddress);
-        I2cDevice i2c = I2cDevice.Create(settings);
-        Pca9685 motorController = new Pca9685(i2c, pwmFrequency: 50);
+        Carrage.Rock(4);
 
-        GpioController controller = new GpioController();
-        Gpios io = new Gpios(controller);
-
-
+        //Console.WriteLine("Motor Sit Up and Down");
         //Body.Up(motorController);
         //Thread.Sleep(2000);
         //Body.Down(motorController);
+
 
 
         //Console.WriteLine($"PCA9685 is ready on I2C bus {i2c.ConnectionSettings.BusId} with address {i2c.ConnectionSettings.DeviceAddress}");
@@ -50,59 +43,57 @@ public static class Program
         //using (var pca9685 = new Pca9685(i2c, pwmFrequency: 50))
 
 
-        Thread flickerFoot = new Thread(() => Foot.Flicker());
-        flickerFoot.Start();
+        //Thread flickerFoot = new Thread(() => Foot.Flicker());
+        //flickerFoot.Start();
 
-        Thread flickerHead = new Thread(() => Head.Flicker());
-        flickerHead.Start();
+        //Thread flickerHead = new Thread(() => Head.Flicker());
+        //flickerHead.Start();
 
-     
+        //var inputLastState = PinValue.Low;
+        //bool up = false;
+        //while (true)
+        //{
+        //    var click = controller.Read(Gpios.InputTrigger);
+        //    if(click != inputLastState)
+        //    {
+        //        inputLastState = click;
+        //        if (click == PinValue.High)
+        //        {
+        //            if (up)
+        //            {
+        //                Body.Down(motorController);
+        //                Blinders.On();
+        //                Status.On();
+        //                Light.Eyes.On();
+        //                Head.FadeOut = false;
+        //                //Head.On();
+        //                Foot.FadeOut = false;
+        //                Fan.On();
+        //                Smoke.On();
+        //                up = false;
+        //            }
+        //            else
+        //            {                       
+        //                Body.Up(motorController);
+        //                Blinders.Off();
+        //                Status.Off();
+        //                Light.Eyes.Off();
+        //                Head.FadeOut = true;
+        //                ///Head.Off();
+        //                Foot.FadeOut = true;
+        //                Fan.Off();
+        //                Smoke.Off();
+        //                up = true;
+        //            }
+        //        }
 
+        //        Thread.Sleep(1000);
+        //    }
 
-
-        var inputLastState = PinValue.Low;
-        bool up = false;
-        while (true)
-        {
-            var click = controller.Read(Gpios.InputTrigger);
-            if(click != inputLastState)
-            {
-                inputLastState = click;
-                if (click == PinValue.High)
-                {
-                    if (up)
-                    {
-                        Body.Down(motorController);
-                        //Blinders.On();
-                        Status.On();
-                        Light.Eyes.On();
-                        Head.FadeOut = false;
-                        Foot.FadeOut = false;
-                        Fan.On();
-                        Smoke.On();
-                        up = false;
-                    }
-                    else
-                    {                       
-                        Body.Up(motorController);
-                        //Blinders.Off();
-                        Status.Off();
-                        Light.Eyes.Off();
-                        Head.FadeOut = true;
-                        Foot.FadeOut = true;
-                        Fan.Off();
-                        Smoke.Off();
-                        up = true;
-                    }
-                }
-               
-                Thread.Sleep(1000);
-            }
-            
-            //if (click == PinValue.Low) Console.WriteLine("Low");
-            //Console.WriteLine(click);
-            Thread.Sleep(100);
-        }
+        //if (click == PinValue.Low) Console.WriteLine("Low");
+        //Console.WriteLine(click);
+        //Thread.Sleep(100);
+        //}
 
 
 

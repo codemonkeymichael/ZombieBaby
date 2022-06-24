@@ -1,30 +1,22 @@
 ﻿using Iot.Device.Pwm;
-using System;
-using System.Collections.Generic;
-using System.Device.Pwm;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ZombieBaby.Animation
+namespace ZombieBaby.Animation;
+public class Body
 {
-    public class Body
+    private static decimal up { get; } = 0.05222m;
+    private static decimal down = 0.08991m; 
+    //decimal stepSize = 0.001m; 
+
+    public static void Up(Pca9685 motorController)
     {
-        private static decimal up { get; } = 0.05222m;
-        private static decimal down = 0.08991m; 
-        //decimal stepSize = 0.001m; 
+        Console.WriteLine("Sit up");
+        motorController.SetDutyCycle(2, decimal.ToDouble(up));
+    }
 
-        public static void Up(Pca9685 motorController)
-        {
-            Console.WriteLine("Sit up");
-            motorController.SetDutyCycle(2, decimal.ToDouble(up));
-        }
-
-        public static void Down(Pca9685 motorController)
-        {
-            Console.WriteLine("Lay down");
-            motorController.SetDutyCycle(2, decimal.ToDouble(down));
-        }
+    public static void Down(Pca9685 motorController)
+    {
+        Console.WriteLine("Lay down");
+        motorController.SetDutyCycle(2, decimal.ToDouble(down));
     }
 }
 

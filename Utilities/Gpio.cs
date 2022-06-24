@@ -14,11 +14,10 @@ namespace ZombieBaby.Utilities
         /// </summary>
         public static GpioController piGPIOController { get; set; }
 
-        public Gpios(GpioController controller)
+        public Gpios()
         {
-            piGPIOController = controller;
+            piGPIOController = new GpioController();
 
-            headLight.Start();
             footLight.Start();
 
             piGPIOController.OpenPin(InputTrigger, PinMode.Input);
@@ -27,8 +26,6 @@ namespace ZombieBaby.Utilities
             piGPIOController.OpenPin(Smoke, PinMode.Output);
             piGPIOController.OpenPin(Status, PinMode.Output);
             piGPIOController.OpenPin(Eyes, PinMode.Output);
-     
-
         }
 
         /// <summary>
@@ -37,7 +34,7 @@ namespace ZombieBaby.Utilities
         public static int InputTrigger { get; } = 4;
 
         /// <summary>
-        /// Bright red lights at the back of the carrage (Blue Wire)
+        /// Bright red lights at the back of the carriage (Blue Wire)
         /// </summary>
         public static int Blinders { get; } = 27;
 
@@ -57,23 +54,19 @@ namespace ZombieBaby.Utilities
         public static int Status { get; } = 5;
 
         /// <summary>
-        /// Red Ligths in the Eyes, real creapy
+        /// Red Lights in the Eyes, real creepy
         /// </summary>
         public static int Eyes { get; } = 14;
 
-        /// <summary>
-        /// PI-GPIO-12 Head Lights(PWM Dimmable Channel 1) (Blue Wire)
-        /// </summary>
-        public static PwmChannel headLight = PwmChannel.Create(0, 0, 400, 0.001);
-
-
+        ///// <summary>
+        ///// PI-GPIO-18 Head Lights(PWM Dimmable Channel 0) (Blue Wire)
+        ///// </summary>
+        //public static PwmChannel headLight = PwmChannel.Create(0, 0, 400, 0.001);
 
         /// <summary>
-        /// PI-GPIO-13 Foot Lights(PWM Dimmable Channel 1) (Yellow Wire)
+        /// PI-GPIO-19 Foot Lights(PWM Dimmable Channel 1) (Yellow Wire)
         /// </summary>
         public static PwmChannel footLight = PwmChannel.Create(0, 1, 400, 0.001);
-
-
 
     }
 }
