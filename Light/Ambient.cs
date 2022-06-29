@@ -7,20 +7,18 @@ using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Light
 {
-    public static class Foot
+    public static class Ambient
     {
         public static bool FadeOut { get; set; } = false;
 
         public static void On()
         { 
-            Gpios.footLight.DutyCycle = 0.9;
-            Console.WriteLine("Foot On " + Gpios.footLight.DutyCycle);
+            Gpios.footLight.DutyCycle = 0.9;    
         }
 
         public static void Off()
         {           
-            Gpios.footLight.DutyCycle = 0.1;
-            Console.WriteLine("Foot Off " + Gpios.footLight.DutyCycle);
+            Gpios.footLight.DutyCycle = 0.1;     
         }
 
         public static void Flicker()
@@ -30,7 +28,7 @@ namespace ZombieBaby.Light
 
         public static void Flicker(int dimMin, int dimMax, int speedMin, int speedMax, int holdMin, int holdMax )
         {
-            Console.WriteLine("Foot Flicker Started");
+            Console.WriteLine("Ambient Flicker Started");
             Random rnd = new Random();
             double cur = 0.5;
             bool dim = true;

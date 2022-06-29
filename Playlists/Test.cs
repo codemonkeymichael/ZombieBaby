@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ZombieBaby.Animation;
+﻿
 
 namespace ZombieBaby.Playlists
 {
     public static class Test
     {
-
-        public static void SitUpThenDown()
+        public static void All()
         {
-           // Body.Up();
+            
+            Thread status1 = new Thread(() => Light.Status.SleepingStatus1());
+            status1.Start();        
+            Light.Blinders.OnOff();
         }
-
     }
 }

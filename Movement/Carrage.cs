@@ -1,6 +1,6 @@
 ﻿using ZombieBaby.Utilities;
 
-namespace ZombieBaby.Animation;
+namespace ZombieBaby.Movement;
 public class Carrage
 {
     private static decimal up { get; } = 0.04222m;

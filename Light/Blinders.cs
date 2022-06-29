@@ -21,5 +21,18 @@ namespace ZombieBaby.Light
             Console.WriteLine("Blinders Off");
             Gpios.piGPIOController.Write(Gpios.Blinders, PinValue.Low);
         }
+
+        public static void OnOff()
+        {
+            On();
+            Thread.Sleep(1000);
+            //Flicker off          
+            Off();
+            Thread.Sleep(45);
+            On();
+            Thread.Sleep(20);
+            Off();
+     
+        }
     }
 }

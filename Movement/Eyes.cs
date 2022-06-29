@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZombieBaby.Animation
+namespace ZombieBaby.Movement
 {
     internal class Eyes
     {
