@@ -1,24 +1,58 @@
-﻿using Iot.Device.Pwm;
-using ZombieBaby.Utilities;
+﻿using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Movement;
-public class Body
+public static class Body
 {
     private static decimal up { get; } = 0.05222m;
-    private static decimal down = 0.08991m; 
-    //decimal stepSize = 0.001m; 
+    private static decimal down { get; } = 0.08991m; 
+
 
     public static void Up()
     {
-        Console.WriteLine("Sit up");
+        Console.WriteLine("Sit up fast");
         Motor.motorController.SetDutyCycle(2, decimal.ToDouble(up));
     }
 
     public static void Down()
     {
-        Console.WriteLine("Lay down");
+        Console.WriteLine("Lay down fast");
         Motor.motorController.SetDutyCycle(2, decimal.ToDouble(down));
     }
+
+    public static void UpSlow()
+    {
+        Console.WriteLine("Sit up slow");
+        decimal stepSize = 0.001m;
+        for (decimal i = down; i > up; i = i - stepSize)
+        {
+            //Console.WriteLine(i);
+            Motor.motorController.SetDutyCycle(2, (double)i);
+            Thread.Sleep(50);
+        }
+    }
+
+    public static void DownSlow()
+    {
+        Console.WriteLine("Lay down slow");
+        decimal stepSize = 0.001m;
+        for (decimal i = up; i < down; i = i + stepSize)
+        {
+            //Console.WriteLine(i);
+            Motor.motorController.SetDutyCycle(2, (double)i);
+            Thread.Sleep(50);
+        }
+    }
+
+    public static void UpDownSlow()
+    {
+        Console.WriteLine("Movement UpDownSlow()");
+        UpSlow();
+        Thread.Sleep(5000);
+        DownSlow();
+    }
+
+
+
 }
 
 ////Sit Up Demo

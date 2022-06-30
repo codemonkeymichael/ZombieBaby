@@ -20,5 +20,13 @@ namespace ZombieBaby.Effects
             Console.WriteLine("Smoke Off");
             Gpios.piGPIOController.Write(Gpios.Smoke, PinValue.Low);
         }
+
+        public static void OnOff()
+        {
+            On();
+            Thread.Sleep(8000);
+            Off();
+
+        }
     }
 }

@@ -1,36 +1,72 @@
-﻿using Iot.Device.Pwm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ZombieBaby.Utilities;
 
-namespace ZombieBaby.Movement
+namespace ZombieBaby.Movement;
+
+public static class Eyes
 {
-    internal class Eyes
+
+    private static decimal open { get; } = 0.05222m;
+    private static decimal closed { get; } = 0.08991m;
+    public static void Open()
     {
-        //private static double closed = 0.030029296875 + 0.001; //+ 0.001
-        //private static double open = 0.12939453125 - 0.001; // - 0.001 
-        //private static double open = 0.12939453125 - 0.03; // - 0.001
-        //private static double closed = 0.14;
-        private static double closed = 0.121;
-        //private static double open = 0.59;
-
-
-        public static void On(GpioController piGPIOController)
-        {
-            piGPIOController.Write(14, PinValue.High);
-        }
-
-        public static void Off(GpioController piGPIOController)
-        {
-            piGPIOController.Write(14, PinValue.Low);
-        }
-
-
-        public static void Blink(Pca9685 motorController, int times)
-        {
-
-        }
+        Console.WriteLine("Eyes Open fast");
+        Motor.motorController.SetDutyCycle(0, decimal.ToDouble(open));
     }
+
+    public static void Closed()
+    {
+        Console.WriteLine("Eyes Closed fast");
+        Motor.motorController.SetDutyCycle(0, decimal.ToDouble(closed));
+    }
+
 }
+
+////Eyes Blink
+//var busId = 1;
+
+//var deviceAddress = Pca9685.I2cAddressBase;// + selectedI2cAddress;
+
+//I2cConnectionSettings settings = new(busId, deviceAddress);
+//I2cDevice i2c = I2cDevice.Create(settings);
+
+//Pca9685 motorController = new(i2c);
+
+//Console.WriteLine($"PCA9685 is ready on I2C bus {i2c.ConnectionSettings.BusId} with address {i2c.ConnectionSettings.DeviceAddress}");
+//Console.WriteLine($"PWM Frequency: {motorController.PwmFrequency}Hz");
+
+//using (var pca9685 = new Pca9685(i2c, pwmFrequency: 50))
+//{
+
+
+//    Console.WriteLine("Blink Eyes Open");
+//    pca9685.SetDutyCycle(0, 0.032); //Open
+
+//    Thread.Sleep(3500);
+
+//    Console.WriteLine("Blink Eyes Closed");
+//    pca9685.SetDutyCycle(0, 0.06); //Closed
+
+//    Thread.Sleep(1500);
+
+//    pca9685.SetDutyCycle(0, 0.0);
+
+//    //for (double i = 0.06; i > 0.04; i = i - 0.001)
+//    //{
+//    //    Console.WriteLine("Blink O/C " + i);
+//    //    pca9685.SetDutyCycle(0, i);
+//    //    Thread.Sleep(50);
+//    //}
+//    //Thread.Sleep(2000);
+//    //for (double i = 0.045; i < 0.08; i = i + 0.001)
+//    //{
+//    //    Console.WriteLine("Look Right to Center " + i);
+//    //    pca9685.SetDutyCycle(0, i);
+//    //    Thread.Sleep(50);
+//    //}
+//    //Thread.Sleep(2000);
+
+
+//    //pca9685.SetDutyCycle(0, 0.0);
+//    //pca9685.SetDutyCycle(1, 0.0);
+//}
+

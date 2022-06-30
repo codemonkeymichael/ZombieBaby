@@ -22,28 +22,71 @@ namespace ZombieBaby.Light
             Gpios.piGPIOController.Write(Gpios.Status, PinValue.Low);
         }
 
-        public static void SleepingStatus1()
+        public static void Status1()
         {
             CurrentStatus = 1;
-            Console.WriteLine($"Sleeping Status = {CurrentStatus}");           
-            int satusDuration = 400; //*50
-            bool IsOn = false;
+            Console.WriteLine($"Status = {CurrentStatus}");           
+            int satusDuration = 15; //*1000 = 15sec
+     
             while (CurrentStatus == 1 & satusDuration > 0)
             {
-                if (IsOn)
-                {
-                    Off();
-                    IsOn = !IsOn;
-                }
-                else
-                {
-                    On();
-                    IsOn = !IsOn;
-                }
-                satusDuration--;
-                Thread.Sleep(50);
+                //Blink Once 
+                On();
+                Thread.Sleep(100);
+                Off();
+                Thread.Sleep(900);
+                satusDuration--;            
             }
             if (CurrentStatus == 1) CurrentStatus = 0;
+        }
+
+        public static void Status2()
+        {
+            CurrentStatus = 2;
+            Console.WriteLine($"Status = {CurrentStatus}");
+            int satusDuration = 15; //*1000 = 15sec
+            bool IsOn = false;
+            while (CurrentStatus == 2 & satusDuration > 0)
+            {
+                //Blink Twice
+                On();
+                Thread.Sleep(100);
+                Off();
+                Thread.Sleep(100);
+                On();
+                Thread.Sleep(100);
+                Off();
+                Thread.Sleep(700);
+                satusDuration--;
+            }
+            if (CurrentStatus == 2) Status1();
+        }
+
+        public static void Status3()
+        {
+            CurrentStatus = 3;
+            Console.WriteLine($"Status = {CurrentStatus}");
+            int satusDuration = 20; //*1000 = 20sec
+
+            while (CurrentStatus == 3 & satusDuration > 0)
+            {
+                //Blink Three Times
+                On();
+                Thread.Sleep(100); //1
+                Off();
+                Thread.Sleep(100);
+                On();
+                Thread.Sleep(100); //2
+                Off();
+                Thread.Sleep(100);
+                On();
+                Thread.Sleep(100); //3
+                Off();
+                Thread.Sleep(500);
+                satusDuration--;
+
+            }
+            if (CurrentStatus == 3) Status2();
         }
     }
 }

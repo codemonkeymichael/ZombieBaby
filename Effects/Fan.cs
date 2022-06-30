@@ -19,5 +19,13 @@ namespace ZombieBaby.Effects
             Console.WriteLine("Fan Off");
             Gpios.piGPIOController.Write(Gpios.Fan, PinValue.Low);
         }
+
+        public static void OnOff()
+        {
+            On();
+            Thread.Sleep(10000);
+            Off();
+
+        }
     }
 }
