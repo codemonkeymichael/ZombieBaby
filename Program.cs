@@ -18,6 +18,9 @@ public static class Program
         Thread flicker = new Thread(() => Ambient.Flicker());
         flicker.Start();
 
+        Audio.Audio.Cue();
+        Audio.Audio.Play();
+
 
 
         var inputLastState = PinValue.Low;
