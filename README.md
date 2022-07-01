@@ -15,7 +15,7 @@ Having a Nightmare Garbled:
 "It's so dark in here, please let me out"   
 Crying Sobbing   
 
-**Awake**
+**Awake**   
 Growling angry   
 Humming happy  
 Walking up sounds:   
