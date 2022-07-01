@@ -5,18 +5,18 @@ namespace ZombieBaby.Movement;
 public static class Eyes
 {
 
-    private static decimal open { get; } = 0.05222m;
-    private static decimal closed { get; } = 0.08991m;
+    private static double open { get; } = 0.05; //0.05222
+    private static double closed { get; } = 0.0899; //0.08991
     public static void Open()
     {
         Console.WriteLine("Eyes Open fast");
-        Motor.motorController.SetDutyCycle(0, decimal.ToDouble(open));
+        Motor.motorController.SetDutyCycle(0, open);
     }
 
     public static void Closed()
     {
         Console.WriteLine("Eyes Closed fast");
-        Motor.motorController.SetDutyCycle(0, decimal.ToDouble(closed));
+        Motor.motorController.SetDutyCycle(0, closed);
     }
 
     public static void Release()

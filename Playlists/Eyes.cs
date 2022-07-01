@@ -34,7 +34,8 @@ public static class Eyes
     public static void Closed()
     {
         Movement.Eyes.Closed();
+        Thread.Sleep(150);
         Light.Eyes.Off();
-        Thread.Sleep(250);   
+        Thread.Sleep(100);   
     }
 }

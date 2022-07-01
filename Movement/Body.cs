@@ -3,20 +3,44 @@
 namespace ZombieBaby.Movement;
 public static class Body
 {
-    private static decimal up { get; } = 0.05222m;
-    private static decimal down { get; } = 0.08991m; 
+    private static decimal up { get; } = 0.043m;
+    private static decimal down { get; } = 0.079m; 
 
 
-    public static void Up()
+    public static void UpFast()
     {
         Console.WriteLine("Sit up fast");
         Motor.motorController.SetDutyCycle(2, decimal.ToDouble(up));
     }
 
-    public static void Down()
+    public static void DownFast()
     {
         Console.WriteLine("Lay down fast");
         Motor.motorController.SetDutyCycle(2, decimal.ToDouble(down));
+    }
+
+    public static void UpMed()
+    {
+        Console.WriteLine("Sit up medium");
+        decimal stepSize = 0.001m;
+        for (decimal i = down; i > up; i = i - stepSize)
+        {
+            //Console.WriteLine(i);
+            Motor.motorController.SetDutyCycle(2, (double)i);
+            Thread.Sleep(7);
+        }
+    }
+
+    public static void DownMed()
+    {
+        Console.WriteLine("Lay down slow");
+        decimal stepSize = 0.001m;
+        for (decimal i = up; i < down; i = i + stepSize)
+        {
+            //Console.WriteLine(i);
+            Motor.motorController.SetDutyCycle(2, (double)i);
+            Thread.Sleep(7);
+        }
     }
 
     public static void UpSlow()
@@ -27,7 +51,7 @@ public static class Body
         {
             //Console.WriteLine(i);
             Motor.motorController.SetDutyCycle(2, (double)i);
-            Thread.Sleep(50);
+            Thread.Sleep(40);
         }
     }
 
@@ -39,7 +63,7 @@ public static class Body
         {
             //Console.WriteLine(i);
             Motor.motorController.SetDutyCycle(2, (double)i);
-            Thread.Sleep(50);
+            Thread.Sleep(15);
         }
     }
 

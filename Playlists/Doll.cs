@@ -7,23 +7,18 @@ public static class Doll
         Console.WriteLine("Playlists Test()");
         //Playlists.Eyes.Open();
         //Thread.Sleep(1000);
-        //Movement.Body.UpSlow();
-        Thread.Sleep(3000);
-        Movement.Head.Right();
-        //Thread.Sleep(500);
-        //Playlists.Eyes.Blink(2);
-        //Thread.Sleep(2500);
+        Movement.Body.UpFast();
+        //Thread.Sleep(3000);
         //Movement.Head.Right();
-        //Thread.Sleep(1000);
+        //Thread.Sleep(200);
         //Playlists.Eyes.Blink(2);
-        //Thread.Sleep(2000);
-        //Movement.Head.Center();
-        //Thread.Sleep(1000);
-        //Playlists.Eyes.Blink(3);
-        //Thread.Sleep(500);
-        //Movement.Body.DownSlow();
+        //Thread.Sleep(3000);
+        //Movement.Head.Left();
+        //Thread.Sleep(200);
+        //Playlists.Eyes.Blink(2);
         Thread.Sleep(3000);
-        Movement.Head.Left();
-        //Movement.Eyes.Closed();
+        //Movement.Head.Center();
+        //Playlists.Eyes.Blink(3);
+        Movement.Body.DownSlow();
     }
 }

@@ -18,9 +18,9 @@ public static class Program
         Thread flicker = new Thread(() => Ambient.Flicker());
         flicker.Start();
 
-        while (true) {
-            Playlists.Doll.Test();
-        }
+
+        Playlists.Doll.Test();
+
 
         //Audio.Audio.Cue();
         //Audio.Audio.Play();
