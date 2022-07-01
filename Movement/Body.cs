@@ -90,25 +90,29 @@ public static class Body
     }
 
     public static void DownEaseBoth()
-    {
-      
-        int numberOfSteps = (int)Math.Round((down - up) / stepSize, MidpointRounding.AwayFromZero);
-        Console.WriteLine("Number Of Steps " + numberOfSteps);
-        int easingSteps = numberOfSteps / 2;
+    {      
+        int steps = (int)Math.Round((down - up) / stepSize, MidpointRounding.AwayFromZero);
+        Console.WriteLine("Number Of Steps " + steps);
+        int easingSteps = steps / 2;
         Console.WriteLine("Easing Steps " + easingSteps);
-        int currentStepDuration = 4;
+        int currentStepDuration = 40;
 
-        for (decimal i = down; i > up; i = i - stepSize)
+        for (decimal i = up; i < down; i = i + stepSize)
         {
-            //Ease Out
-            if (numberOfSteps < easingSteps)
+            if (steps < easingSteps)
             {
-                currentStepDuration += 3;
+                Console.WriteLine("Ease Out");
+                currentStepDuration += 2;
             }
-            Console.WriteLine(numberOfSteps + " Motor Position " + (double)i + "  This Step Duration " + currentStepDuration);
+            else
+            {
+                Console.WriteLine("Ease In");
+                currentStepDuration -= 2;
+            }
+            Console.WriteLine(steps + " Motor Position " + (double)i + "  This Step Duration " + currentStepDuration);
             Motor.motorController.SetDutyCycle(2, (double)i);
             Thread.Sleep(currentStepDuration);
-            numberOfSteps--;
+            steps--;
         }
     }
 }

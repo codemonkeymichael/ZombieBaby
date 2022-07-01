@@ -19,6 +19,6 @@ public static class Doll
         Thread.Sleep(3000);
         //Movement.Head.Center();
         //Playlists.Eyes.Blink(3);
-        Movement.Body.DownSlow();
+        Movement.Body.DownEaseBoth();
     }
 }
