@@ -24,7 +24,7 @@ namespace ZombieBaby.Effects
         public static void OnOff()
         {
             On();
-            Thread.Sleep(8000);
+            Thread.Sleep(9000);
             Off();
 
         }

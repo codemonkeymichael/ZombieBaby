@@ -7,7 +7,11 @@ public static class Body
     private static decimal down { get; } = 0.079m;
     private static decimal stepSize { get; } = 0.001m;
 
-
+    public static void Release()
+    {
+        Console.WriteLine("Body Release");
+        Motor.motorController.SetDutyCycle(2, 0);
+    }
     public static void UpFast()
     {
         Console.WriteLine("Body Sit up fast");

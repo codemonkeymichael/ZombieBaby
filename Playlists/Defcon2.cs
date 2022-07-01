@@ -1,13 +1,16 @@
 ﻿namespace ZombieBaby.Playlists;
 
-public static class Doll
+public static class Defcon2
 { 
-    public static void Test()
+    public static void Awake1()
     {
-        Console.WriteLine("Playlists Test()");
+        Console.WriteLine("Playlists Awake1()");
+        Movement.Body.Release();
+        //Thread blowSmoke = new Thread(() => Playlists.Smoke.BlowBlinders());
+        //blowSmoke.Start();
         //Playlists.Eyes.Open();
         //Thread.Sleep(1000);
-        Movement.Body.UpFastEaseOut();
+        //Movement.Body.UpFastEaseOut();
         //Thread.Sleep(3000);
         //Movement.Head.Right();
         //Thread.Sleep(200);
@@ -16,9 +19,9 @@ public static class Doll
         //Movement.Head.Left();
         //Thread.Sleep(200);
         //Playlists.Eyes.Blink(2);
-        Thread.Sleep(3000);
+        //Thread.Sleep(3000);
         //Movement.Head.Center();
         //Playlists.Eyes.Blink(3);
-        Movement.Body.DownEaseBoth();
+        //Movement.Body.DownEaseBoth();
     }
 }

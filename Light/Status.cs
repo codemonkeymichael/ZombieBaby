@@ -10,6 +10,8 @@ namespace ZombieBaby.Light
     public static class Status
     {
         public static int CurrentStatus { get; set; } = 0;
+        public static bool StopStatus1 { get; set; } = false;
+        public static bool StopStatus2 { get; set; } = false;
         public static void On()
         {
             //Console.WriteLine("Status On");
@@ -25,28 +27,29 @@ namespace ZombieBaby.Light
         public static void Status1()
         {
             CurrentStatus = 1;
-            Console.WriteLine($"Status = {CurrentStatus}");           
-            int satusDuration = 15; //*1000 = 15sec
-     
-            while (CurrentStatus == 1 & satusDuration > 0)
+            Console.WriteLine($"Status = {CurrentStatus}");
+            int satusDuration = 20; //*1000 = 15sec
+
+            while (CurrentStatus == 1 & satusDuration > 0 & !StopStatus1)
             {
                 //Blink Once 
                 On();
                 Thread.Sleep(100);
                 Off();
                 Thread.Sleep(900);
-                satusDuration--;            
+                satusDuration--;
             }
             if (CurrentStatus == 1) CurrentStatus = 0;
+            Console.WriteLine($"Status = {CurrentStatus}");
         }
 
         public static void Status2()
         {
             CurrentStatus = 2;
             Console.WriteLine($"Status = {CurrentStatus}");
-            int satusDuration = 25; //*1000 = 15sec
+            int satusDuration = 20; //*1000 = 20sec
             bool IsOn = false;
-            while (CurrentStatus == 2 & satusDuration > 0)
+            while (CurrentStatus == 2 & satusDuration > 0 & !StopStatus2)
             {
                 //Blink Twice
                 On();
@@ -59,14 +62,18 @@ namespace ZombieBaby.Light
                 Thread.Sleep(700);
                 satusDuration--;
             }
-            if (CurrentStatus == 2) Status1();
+            if (CurrentStatus == 2)
+            {
+                StopStatus1 = false;
+                Status1();
+            }
         }
 
         public static void Status3()
         {
             CurrentStatus = 3;
             Console.WriteLine($"Status = {CurrentStatus}");
-            int satusDuration = 25; //*1000 = 20sec
+            int satusDuration = 20; //*1000 = 20sec
 
             while (CurrentStatus == 3 & satusDuration > 0)
             {
@@ -84,9 +91,12 @@ namespace ZombieBaby.Light
                 Off();
                 Thread.Sleep(500);
                 satusDuration--;
-
             }
-            if (CurrentStatus == 3) Status2();
+            if (CurrentStatus == 3)
+            {
+                StopStatus2 = false;
+                Status2();
+            }
         }
     }
 }
