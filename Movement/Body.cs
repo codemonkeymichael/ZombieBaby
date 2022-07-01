@@ -4,28 +4,27 @@ namespace ZombieBaby.Movement;
 public static class Body
 {
     private static decimal up { get; } = 0.043m;
-    private static decimal down { get; } = 0.079m; 
+    private static decimal down { get; } = 0.079m;
+    private static decimal stepSize { get; } = 0.001m;
 
 
     public static void UpFast()
     {
-        Console.WriteLine("Sit up fast");
+        Console.WriteLine("Body Sit up fast");
         Motor.motorController.SetDutyCycle(2, decimal.ToDouble(up));
     }
 
     public static void DownFast()
     {
-        Console.WriteLine("Lay down fast");
+        Console.WriteLine("Body Lay down fast");
         Motor.motorController.SetDutyCycle(2, decimal.ToDouble(down));
     }
 
     public static void UpMed()
     {
-        Console.WriteLine("Sit up medium");
-        decimal stepSize = 0.001m;
+        Console.WriteLine("Body Sit up medium");   
         for (decimal i = down; i > up; i = i - stepSize)
         {
-            //Console.WriteLine(i);
             Motor.motorController.SetDutyCycle(2, (double)i);
             Thread.Sleep(7);
         }
@@ -33,11 +32,9 @@ public static class Body
 
     public static void DownMed()
     {
-        Console.WriteLine("Lay down slow");
-        decimal stepSize = 0.001m;
+        Console.WriteLine("Body Lay down slow");
         for (decimal i = up; i < down; i = i + stepSize)
         {
-            //Console.WriteLine(i);
             Motor.motorController.SetDutyCycle(2, (double)i);
             Thread.Sleep(7);
         }
@@ -45,11 +42,9 @@ public static class Body
 
     public static void UpSlow()
     {
-        Console.WriteLine("Sit up slow");
-        decimal stepSize = 0.001m;
+        Console.WriteLine("Body Sit up slow");
         for (decimal i = down; i > up; i = i - stepSize)
         {
-            //Console.WriteLine(i);
             Motor.motorController.SetDutyCycle(2, (double)i);
             Thread.Sleep(40);
         }
@@ -57,71 +52,66 @@ public static class Body
 
     public static void DownSlow()
     {
-        Console.WriteLine("Lay down slow");
-        decimal stepSize = 0.001m;
+        Console.WriteLine("Body Lay down slow");
         for (decimal i = up; i < down; i = i + stepSize)
         {
-            //Console.WriteLine(i);
             Motor.motorController.SetDutyCycle(2, (double)i);
             Thread.Sleep(15);
         }
     }
-
     public static void UpDownSlow()
     {
-        Console.WriteLine("Movement UpDownSlow()");
+        Console.WriteLine("Body Up Down Slow");
         UpSlow();
         Thread.Sleep(5000);
         DownSlow();
+    } 
+
+    public static void UpFastEaseOut()
+    {
+        decimal stepSize = 0.001m;
+        int numberOfSteps = (int)Math.Round((down - up) / stepSize, MidpointRounding.AwayFromZero);
+        Console.WriteLine("Number Of Steps " + numberOfSteps);
+        int easingSteps = numberOfSteps / 2; 
+        Console.WriteLine("Easing Steps " + easingSteps);    
+        int currentStepDuration= 4;
+
+        for (decimal i = down; i > up; i = i - stepSize)
+        {
+            //Ease Out
+            if (numberOfSteps < easingSteps) {
+                currentStepDuration += 3;        
+            }            
+            Console.WriteLine(numberOfSteps + " Motor Position " + (double)i + "  This Step Duration " + currentStepDuration);
+            Motor.motorController.SetDutyCycle(2, (double)i);
+            Thread.Sleep(currentStepDuration);
+            numberOfSteps--;
+        }
     }
 
+    public static void DownEaseBoth()
+    {
+      
+        int numberOfSteps = (int)Math.Round((down - up) / stepSize, MidpointRounding.AwayFromZero);
+        Console.WriteLine("Number Of Steps " + numberOfSteps);
+        int easingSteps = numberOfSteps / 2;
+        Console.WriteLine("Easing Steps " + easingSteps);
+        int currentStepDuration = 4;
 
-
+        for (decimal i = down; i > up; i = i - stepSize)
+        {
+            //Ease Out
+            if (numberOfSteps < easingSteps)
+            {
+                currentStepDuration += 3;
+            }
+            Console.WriteLine(numberOfSteps + " Motor Position " + (double)i + "  This Step Duration " + currentStepDuration);
+            Motor.motorController.SetDutyCycle(2, (double)i);
+            Thread.Sleep(currentStepDuration);
+            numberOfSteps--;
+        }
+    }
 }
-
-////Sit Up Demo
-//var busId = 1;
-
-//var deviceAddress = Pca9685.I2cAddressBase;// + selectedI2cAddress;
-
-//I2cConnectionSettings settings = new(busId, deviceAddress);
-//I2cDevice i2c = I2cDevice.Create(settings);
-
-//Pca9685 motorController = new(i2c);
-
-//Console.WriteLine($"PCA9685 is ready on I2C bus {i2c.ConnectionSettings.BusId} with address {i2c.ConnectionSettings.DeviceAddress}");
-//Console.WriteLine($"PWM Frequency: {motorController.PwmFrequency}Hz");
-
-//using (var pca9685 = new Pca9685(i2c, pwmFrequency: 50))
-//{
-//    decimal start = 0.05222m; //up
-//    decimal end = 0.08991m; //down
-//    decimal stepSize = 0.001m;
-
-
-//Console.WriteLine("up");
-//pca9685.SetDutyCycle(2, decimal.ToDouble(start));
-//Thread.Sleep(5000);
-//Console.WriteLine("down");
-//pca9685.SetDutyCycle(2, decimal.ToDouble(end));
-//Thread.Sleep(1000);
-//Console.WriteLine("mid ish");
-//pca9685.SetDutyCycle(2, 0.07);
-//Thread.Sleep(1000);
-//Console.WriteLine("up up");
-//pca9685.SetDutyCycle(2, 0.04);
-//Thread.Sleep(1000);
-
-
-
-//for (decimal i = start; i < end; i = i + stepSize)
-//{
-//    Console.WriteLine(i);
-//    pca9685.SetDutyCycle(2, (double)i);
-//    Thread.Sleep(100);
-//}
-// }
-
 
 
 //    //Time easing

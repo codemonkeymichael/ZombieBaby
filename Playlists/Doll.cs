@@ -7,7 +7,7 @@ public static class Doll
         Console.WriteLine("Playlists Test()");
         //Playlists.Eyes.Open();
         //Thread.Sleep(1000);
-        Movement.Body.UpFast();
+        Movement.Body.UpFastEaseOut();
         //Thread.Sleep(3000);
         //Movement.Head.Right();
         //Thread.Sleep(200);
