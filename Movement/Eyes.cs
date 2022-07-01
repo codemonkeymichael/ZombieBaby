@@ -19,6 +19,12 @@ public static class Eyes
         Motor.motorController.SetDutyCycle(0, decimal.ToDouble(closed));
     }
 
+    public static void Release()
+    {
+        Console.WriteLine("Eyes Release");
+        Motor.motorController.SetDutyCycle(0, 0);
+    }
+
 }
 
 ////Eyes Blink

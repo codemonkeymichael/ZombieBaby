@@ -17,22 +17,24 @@ public static class Eyes
     {
         for (int i = 0; i < count; i++)
         {
-            Closed();
-            Thread.Sleep(250);
-            Open();
-            Thread.Sleep(250);    
+            Closed();    
+            Open();         
         }
+        Movement.Eyes.Release();
     }
 
     public static void Open()
     {
         Movement.Eyes.Open();
+        Thread.Sleep(150);
         Light.Eyes.On();
+        Thread.Sleep(100);        
     }
 
     public static void Closed()
     {
         Movement.Eyes.Closed();
         Light.Eyes.Off();
+        Thread.Sleep(250);   
     }
 }

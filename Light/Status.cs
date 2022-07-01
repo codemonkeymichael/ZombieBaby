@@ -44,7 +44,7 @@ namespace ZombieBaby.Light
         {
             CurrentStatus = 2;
             Console.WriteLine($"Status = {CurrentStatus}");
-            int satusDuration = 15; //*1000 = 15sec
+            int satusDuration = 25; //*1000 = 15sec
             bool IsOn = false;
             while (CurrentStatus == 2 & satusDuration > 0)
             {
@@ -66,7 +66,7 @@ namespace ZombieBaby.Light
         {
             CurrentStatus = 3;
             Console.WriteLine($"Status = {CurrentStatus}");
-            int satusDuration = 20; //*1000 = 20sec
+            int satusDuration = 25; //*1000 = 20sec
 
             while (CurrentStatus == 3 & satusDuration > 0)
             {

@@ -5,26 +5,35 @@ namespace ZombieBaby.Movement;
 public static class Head
 {
 
-    private static decimal center { get; } = 0.097m;
-    private static decimal right { get; } = 0.12m;
-    private static decimal left { get; } = 0.07m;
+    private static double center { get; } = 0.1;
+    private static double right { get; } = 0.21; //0.20
+    private static double left { get; } = 0.001; //0.01
     public static void Center()
     {
-        Console.WriteLine("Center head fast");
-        Motor.motorController.SetDutyCycle(1, decimal.ToDouble(center));
+        Console.WriteLine("Center head fast " + center);
+        Motor.motorController.SetDutyCycle(1, center);
     }
 
     public static void Right()
     {
-        Console.WriteLine("Right head fast");
-        Motor.motorController.SetDutyCycle(1, decimal.ToDouble(right));
+        Console.WriteLine("Head Right fast " + right);
+        Motor.motorController.SetDutyCycle(1, right); 
     }
 
     public static void Left()
     {
-        Console.WriteLine("Left head fast");
-        Motor.motorController.SetDutyCycle(1, decimal.ToDouble(left));
+        Console.WriteLine("Head Left fast " + left);
+        Motor.motorController.SetDutyCycle(1, left); 
     }
+
+    public static void Release()
+    {
+        Console.WriteLine("Head Release");
+        Motor.motorController.SetDutyCycle(1, 0);
+    }
+
+
+
 
 }
 
