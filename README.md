@@ -18,7 +18,7 @@ Crying Sobbing
 **Awake**   
 Growling angry   
 Humming happy  
-Walking up sounds:   
+Waking up sounds:   
 Clears throat  
 Yawning   
      
