@@ -8,9 +8,9 @@ public static class Defcon1
         Movement.Body.Release();
         Thread blowSmoke = new Thread(() => Playlists.Smoke.BlowBlinders());
         blowSmoke.Start();
-        Thread.Sleep(1500);
+        Thread.Sleep(3500);
         Playlists.Eyes.Open();
-        Thread.Sleep(2000);
+        Thread.Sleep(1000);
         Movement.Body.UpFastEaseOut();
         Thread.Sleep(3000);
         Movement.Head.Right();

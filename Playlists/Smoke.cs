@@ -18,6 +18,9 @@ public static class Smoke
         Thread fan = new Thread(() => Effects.Fan.OnOff());
         fan.Start();
         Thread.Sleep(2000);
-        Light.Blinders.OnOff();
+        Thread blinders = new Thread(() => Light.Blinders.OnOff());
+        blinders.Start();
+        Thread.Sleep(500);
+        Playlists.Room.Strobe();
     }
 }

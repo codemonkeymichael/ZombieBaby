@@ -8,14 +8,14 @@ namespace ZombieBaby.Playlists;
 
 public static class Room
 {
-    public static void Strobe(int count)
+    public static void Strobe(int count = 1, int duration = 250)
     {
         for (int i = 0; i < count; i++)
         {
             Light.Room.Chan1WhiteOn();
-            Thread.Sleep(100);
+            Thread.Sleep(duration);
             Light.Room.Chan1WhiteOff();
-            Thread.Sleep(100);
+            Thread.Sleep(duration);
         }
     }
 }

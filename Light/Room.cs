@@ -13,13 +13,21 @@ public class Room
     public static void Chan1WhiteOn()
     {
         Console.WriteLine("Chan 1 White On");
-        DMXserial.SetDMX(1,255, 255, 255);
+        //Set the channel model
+        DMXserial.ChannelList.Channels[0].ChannelValue = 255;
+        DMXserial.ChannelList.Channels[1].ChannelValue = 255;
+        DMXserial.ChannelList.Channels[2].ChannelValue = 255;
+        DMXserial.SendDMX();
     }
 
     public static void Chan1WhiteOff()
     {
         Console.WriteLine("Chan 1 White Off");
-        DMXserial.SetDMX(1, 0, 0, 0);
+        //Set the channel model
+        DMXserial.ChannelList.Channels[0].ChannelValue = 0;
+        DMXserial.ChannelList.Channels[1].ChannelValue = 0;
+        DMXserial.ChannelList.Channels[2].ChannelValue = 0;
+        DMXserial.SendDMX();
     }
 
 }
