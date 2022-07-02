@@ -2,7 +2,7 @@
 
 This is the project for the Heartstoppers Zombie Baby Animatronic.
 
-###Script   
+### Script   
    
 **Sleeping**    
 Snoring  
