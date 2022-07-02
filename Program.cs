@@ -11,8 +11,6 @@ class Program
         Console.Clear();
         Console.WriteLine("Zombie Baby is Running Ver 0.5");
 
-
-
         DMXserial.connect();
         Gpios io = new Gpios(); //Just need to hit the constructor here
         Motor mo = new Motor(); //Just need to hit the constructor here
@@ -20,8 +18,6 @@ class Program
         //This thread keeps the whole program running and flickering.
         Thread flicker = new Thread(() => Ambient.Flicker());
         flicker.Start();
-
-
 
         //Audio.Audio.Cue();
         //Audio.Audio.Play();

@@ -13,13 +13,11 @@ public static class DMXserial
     private static int duration = 0;
     private static System.Timers.Timer animation = new System.Timers.Timer();
 
-    public static bool isConnected  {  get { return port.IsOpen; } }
-
     public static bool connect()
     {
         //Instantiate the channel model
         ChannelList.Channels = new List<DMXChannel>();
-        for (int i = 1; i <= 9; i++)
+        for (int i = 0; i <= 100; i++)
         {
             DMXChannel c = new DMXChannel();
             c.ChannelId = i;
@@ -33,8 +31,12 @@ public static class DMXserial
 
         try
         {
-            port.Open();
-            Console.WriteLine("DMX connected");
+            Console.WriteLine("port.IsOpen" + port.IsOpen);
+            if (!port.IsOpen)
+            {
+                port.Open();
+                Console.WriteLine("DMX connected");
+            }
             SendDMX();
             return true;              
         }
@@ -213,7 +215,7 @@ public static class DMXserial
 
             bytes[i] = ((byte)ChannelList.Channels[i].ChannelValue);
                         
-            Console.WriteLine("Send Channel " + (i + 1).ToString() + " DMX Value = " + ChannelList.Channels[i].ChannelValue.ToString() + "  ");
+            //Console.WriteLine("Send Channel " + (i + 1).ToString() + " DMX Value = " + ChannelList.Channels[i].ChannelValue.ToString() + "  ");
         }
         send(bytes);
     }

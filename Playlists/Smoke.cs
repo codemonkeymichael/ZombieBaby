@@ -20,7 +20,10 @@ public static class Smoke
         Thread.Sleep(2000);
         Thread blinders = new Thread(() => Light.Blinders.OnOff());
         blinders.Start();
+        Thread.Sleep(800);
+        Playlists.Room.Strobe();
         Thread.Sleep(500);
+        Light.Blinders.OnOff();
         Playlists.Room.Strobe();
     }
 }
