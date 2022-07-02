@@ -28,7 +28,7 @@ public static class Status
     {
         CurrentStatus = 1;
         Console.WriteLine($"Status = {CurrentStatus}");
-        int satusDuration = 20; //*1000 = 15sec
+        int satusDuration = 2; //*1000 = 15sec
 
         while (CurrentStatus == 1 & satusDuration > 0 & !StopStatus1)
         {

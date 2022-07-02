@@ -3,20 +3,24 @@ using ZombieBaby.Movement;
 using ZombieBaby.Utilities;
 
 namespace ZombieBaby;
-public static class Program
+class Program
 {
 
-    public static void Main(string[] args)
+    static void Main(string[] args)
     {
         Console.Clear();
         Console.WriteLine("Zombie Baby is Running Ver 0.5");
 
+
+
+        DMXserial.connect();
         Gpios io = new Gpios(); //Just need to hit the constructor here
         Motor mo = new Motor(); //Just need to hit the constructor here
 
         //This thread keeps the whole program running and flickering.
         Thread flicker = new Thread(() => Ambient.Flicker());
         flicker.Start();
+
 
 
         //Audio.Audio.Cue();
@@ -62,16 +66,17 @@ public static class Program
                 }
                 Thread.Sleep(250);
             }
-        }
-
-
-        //static void CurrentDomain_ProcessExit(object sender, EventArgs e)
-        //{
-        //    //TODO: Make this work
-        //    //Close a pins and stop playing music
-        //    Console.WriteLine("I quit!");
-        //}
+        } 
     }
+
+
+
+    //static void CurrentDomain_ProcessExit(object sender, EventArgs e)
+    //{
+    //    //TODO: Make this work
+    //    //Close a pins and stop playing music
+    //    Console.WriteLine("I quit!");
+    //}
 }
 
 
