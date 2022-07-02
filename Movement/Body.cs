@@ -73,11 +73,12 @@ public static class Body
 
     public static void UpFastEaseOut()
     {
+        Console.WriteLine("Body Up Fast Ease Out");
         decimal stepSize = 0.001m;
         int numberOfSteps = (int)Math.Round((down - up) / stepSize, MidpointRounding.AwayFromZero);
-        Console.WriteLine("Number Of Steps " + numberOfSteps);
+        //Console.WriteLine("Number Of Steps " + numberOfSteps);
         int easingSteps = numberOfSteps / 2; 
-        Console.WriteLine("Easing Steps " + easingSteps);    
+        //Console.WriteLine("Easing Steps " + easingSteps);    
         int currentStepDuration= 4;
 
         for (decimal i = down; i > up; i = i - stepSize)
@@ -86,7 +87,7 @@ public static class Body
             if (numberOfSteps < easingSteps) {
                 currentStepDuration += 3;        
             }            
-            Console.WriteLine(numberOfSteps + " Motor Position " + (double)i + "  This Step Duration " + currentStepDuration);
+            //Console.WriteLine(numberOfSteps + " Motor Position " + (double)i + "  This Step Duration " + currentStepDuration);
             Motor.motorController.SetDutyCycle(2, (double)i);
             Thread.Sleep(currentStepDuration);
             numberOfSteps--;
@@ -94,29 +95,31 @@ public static class Body
     }
 
     public static void DownEaseBoth()
-    {      
+    {
+        Console.WriteLine("Body Down Ease Both");
         int steps = (int)Math.Round((down - up) / stepSize, MidpointRounding.AwayFromZero);
-        Console.WriteLine("Number Of Steps " + steps);
+        //Console.WriteLine("Number Of Steps " + steps);
         int easingSteps = steps / 2;
-        Console.WriteLine("Easing Steps " + easingSteps);
+        //Console.WriteLine("Easing Steps " + easingSteps);
         int currentStepDuration = 40;
 
         for (decimal i = up; i < down; i = i + stepSize)
         {
             if (steps < easingSteps)
             {
-                Console.WriteLine("Ease Out");
+                //Console.WriteLine("Ease Out");
                 currentStepDuration += 2;
             }
             else
             {
-                Console.WriteLine("Ease In");
+                //Console.WriteLine("Ease In");
                 currentStepDuration -= 2;
             }
-            Console.WriteLine(steps + " Motor Position " + (double)i + "  This Step Duration " + currentStepDuration);
+            //Console.WriteLine(steps + " Motor Position " + (double)i + "  This Step Duration " + currentStepDuration);
             Motor.motorController.SetDutyCycle(2, (double)i);
             Thread.Sleep(currentStepDuration);
             steps--;
         }
+        Release();
     }
 }

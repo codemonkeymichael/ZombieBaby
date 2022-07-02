@@ -6,10 +6,11 @@ public static class Defcon1
     {
         Console.WriteLine("Playlists Awake1()");
         Movement.Body.Release();
-        //Thread blowSmoke = new Thread(() => Playlists.Smoke.BlowBlinders());
-        //blowSmoke.Start();
+        Thread blowSmoke = new Thread(() => Playlists.Smoke.BlowBlinders());
+        blowSmoke.Start();
+        Thread.Sleep(1500);
         Playlists.Eyes.Open();
-        Thread.Sleep(1000);
+        Thread.Sleep(2000);
         Movement.Body.UpFastEaseOut();
         Thread.Sleep(3000);
         Movement.Head.Right();
@@ -23,5 +24,7 @@ public static class Defcon1
         Movement.Head.Center();
         Playlists.Eyes.Blink(3);
         Movement.Body.DownEaseBoth();
+        Thread.Sleep(2000);
+        Playlists.Eyes.Closed();
     }
 }
