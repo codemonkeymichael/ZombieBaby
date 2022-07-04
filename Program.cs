@@ -19,6 +19,9 @@ class Program
         Thread flicker = new Thread(() => Ambient.Flicker());
         flicker.Start();
 
+        Light.Ambient.GroudEffect(1);
+    
+
         //Audio.Audio.Cue();
         //Audio.Audio.Play();
 

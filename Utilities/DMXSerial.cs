@@ -10,6 +10,7 @@ public static class DMXserial
     private static SerialPort port = new SerialPort("/dev/ttyUSB0", 115200);
     private static byte[] message;
     public static DMXChannels ChannelList = new DMXChannels();
+    public static DMXChannels ChannelListTemp = new DMXChannels();
     private static int duration = 0;
     private static System.Timers.Timer animation = new System.Timers.Timer();
 
@@ -17,7 +18,7 @@ public static class DMXserial
     {
         //Instantiate the channel model
         ChannelList.Channels = new List<DMXChannel>();
-        for (int i = 0; i <= 100; i++)
+        for (int i = 0; i <= 512; i++)
         {
             DMXChannel c = new DMXChannel();
             c.ChannelId = i;
@@ -29,21 +30,33 @@ public static class DMXserial
             ChannelList.Channels.Add(c);
         }
 
+        ChannelListTemp.Channels = new List<DMXChannel>();
+        for (int i = 0; i <= 512; i++)
+        {
+            DMXChannel c = new DMXChannel();
+            c.ChannelId = i;
+            c.ChannelValue = 0;
+            c.TargetValue = 0;
+            c.DMXStepsPerFrame = 0;
+            c.FramesPerDMXStep = 0;
+            c.DMXStepUP = true;
+            ChannelListTemp.Channels.Add(c);
+        }
+
         try
         {
-            Console.WriteLine("port.IsOpen" + port.IsOpen);
             if (!port.IsOpen)
             {
                 port.Open();
                 Console.WriteLine("DMX connected");
             }
             SendDMX();
-            return true;              
+            return true;
         }
         catch (IOException ex)
         {
-            Console.WriteLine(ex);       
-        }    
+            Console.WriteLine(ex);
+        }
 
         return false;
     }
@@ -74,17 +87,17 @@ public static class DMXserial
 
         if (len > 0)
         {
-            message = new byte[len+6];
+            message = new byte[len + 6];
             message[0] = 0x7E;
             message[1] = 0x06;
-            message[2] = (byte)((len+1) & 0xFF);
+            message[2] = (byte)((len + 1) & 0xFF);
             message[3] = (byte)((len >> 8) & 0xFF);
             message[4] = 0x00;
             byteArray.CopyTo(message, 5);
-            message[len+5] = 0xE7;
+            message[len + 5] = 0xE7;
 
-            port.Write(message, 0, message.Length);   
-        }    
+            port.Write(message, 0, message.Length);
+        }
         return true;
     }
 
@@ -214,7 +227,7 @@ public static class DMXserial
             if (ChannelList.Channels[i].ChannelValue < 0) ChannelList.Channels[i].ChannelValue = 0;
 
             bytes[i] = ((byte)ChannelList.Channels[i].ChannelValue);
-                        
+
             //Console.WriteLine("Send Channel " + (i + 1).ToString() + " DMX Value = " + ChannelList.Channels[i].ChannelValue.ToString() + "  ");
         }
         send(bytes);
@@ -225,4 +238,23 @@ public static class DMXserial
         return SerialPort.GetPortNames();
     }
 
+    public static void RecordChannels()
+    {
+       // Console.WriteLine("RecordChannels");
+        for (int i = 0; i < ChannelList.Channels.Count; i++)
+        {
+            ChannelListTemp.Channels[i].ChannelValue = ChannelList.Channels[i].ChannelValue;
+        }     
+
+    }
+
+    public static void ReadChannels()
+    {
+        //Console.WriteLine("ReadChannels");
+        for (int i = 0; i < ChannelListTemp.Channels.Count; i++)
+        {
+            ChannelList.Channels[i].ChannelValue = ChannelListTemp.Channels[i].ChannelValue;
+        }
+        SendDMX();
+    }
 }
