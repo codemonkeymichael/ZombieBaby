@@ -10,9 +10,9 @@ public static class Defcon1
         Movement.Body.Release();
         Thread blowSmoke = new Thread(() => Playlists.Smoke.BlowBlinders());
         blowSmoke.Start();
-        Thread.Sleep(3500);
+        Thread.Sleep(1500);
         Playlists.Eyes.Open();
-        Thread.Sleep(1000);
+        Thread.Sleep(3000);
         Movement.Body.UpFastEaseOut();
         Thread.Sleep(1000);
         DMXserial.ChannelList.Channels[5].ChannelValue = 30;
@@ -38,6 +38,6 @@ public static class Defcon1
         Thread.Sleep(2000);
         Playlists.Eyes.Closed();
         Movement.Head.Release();
-        Light.Ambient.GroudEffect(1);
+        Light.Ambient.GroundEffect(1);
     }
 }

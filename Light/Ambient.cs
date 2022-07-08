@@ -66,7 +66,7 @@ public static class Ambient
         }
     }
 
-    public static void GroudEffect(int level = 1)
+    public static void GroundEffect(int level = 5)
     {
         Console.WriteLine("Ground EFX Green Level " + level);
         DMXserial.ChannelList.Channels[9].ChannelValue = 0;

@@ -19,7 +19,15 @@ class Program
         Thread flicker = new Thread(() => Ambient.Flicker());
         flicker.Start();
 
-        Light.Ambient.GroudEffect(1);
+        Light.Ambient.GroundEffect();
+
+        //while (true)
+        //{
+        //    Movement.Carrage.Down();
+        //    Thread.Sleep(2000);
+        //    Movement.Carrage.Up();
+        //    Thread.Sleep(2000);
+        //}
     
 
         //Audio.Audio.Cue();
