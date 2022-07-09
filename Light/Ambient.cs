@@ -71,7 +71,7 @@ public static class Ambient
         Console.WriteLine("Ground EFX Green Level " + level);
         DMXserial.ChannelList.Channels[9].ChannelValue = 0;
         DMXserial.ChannelList.Channels[10].ChannelValue = level;
-        DMXserial.ChannelList.Channels[11].ChannelValue = 0;
+        DMXserial.ChannelList.Channels[11].ChannelValue = 0;  
         DMXserial.SendDMX();
     }
 
