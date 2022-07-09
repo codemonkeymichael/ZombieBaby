@@ -31,8 +31,7 @@ public static class Ambient
         Console.WriteLine("Ambient Flicker Started");
         Random rnd = new Random();
         double cur = 0.5;
-        bool dim = true;
-
+ 
         while (true)
         {
             double flicker = (double)rnd.NextInt64(dimMin, dimMax) / (double)10; //4 9

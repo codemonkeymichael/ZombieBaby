@@ -7,7 +7,7 @@ public static class Smoke
         Thread smoke = new Thread(() => Effects.Smoke.OnOff());
         smoke.Start();
         Thread.Sleep(3000); //How long to smoke before turning on the fan
-        Effects.Fan.OnOff();
+        Effects.Fan.OnOff(15000);
     }
 
     public static void BlowBlinders()
@@ -15,7 +15,7 @@ public static class Smoke
         Thread smoke = new Thread(() => Effects.Smoke.OnOff());
         smoke.Start();
         Thread.Sleep(3000); //How long to smoke before turning on the fan
-        Thread fan = new Thread(() => Effects.Fan.OnOff());
+        Thread fan = new Thread(() => Effects.Fan.OnOff(15000));
         fan.Start();
         Thread.Sleep(2000);
         Thread blinders = new Thread(() => Light.Blinders.OnOff());

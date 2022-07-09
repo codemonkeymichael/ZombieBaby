@@ -1,5 +1,4 @@
 ﻿using ZombieBaby.Light;
-using ZombieBaby.Movement;
 using ZombieBaby.Utilities;
 
 namespace ZombieBaby;
@@ -8,6 +7,8 @@ class Program
 
     static void Main(string[] args)
     {
+        Console.CancelKeyPress += new ConsoleCancelEventHandler(CloseHandler);
+
         Console.Clear();
         Console.WriteLine("Zombie Baby is Running Ver 0.5");
 
@@ -33,8 +34,7 @@ class Program
         //Audio.Audio.Cue();
         //Audio.Audio.Play();
 
-        var inputLastState = PinValue.Low;
-        bool up = false;     
+        var inputLastState = PinValue.Low;    
         
         while (true)
         {
@@ -46,23 +46,20 @@ class Program
                 {
                     switch (Status.CurrentStatus)
                     {
-                        case 0:
-                            Light.Status.StopStatus1 = false;
-                            Thread status1 = new Thread(() => Light.Status.Status1());
-                            status1.Start();
-                            Thread action1 = new Thread(() => Playlists.Defcon3.Sleep1());
+                        case 0:                           
+                            Thread action1 = new Thread(() => Playlists.Defcon3.Defcon3A());
                             action1.Start();                      
                             break;
                         case 1:
-                            Light.Status.StopStatus1 = true;
-                            Thread status2 = new Thread(() => Light.Status.Status2());
+                            Status.StopStatus1 = true;
+                            Thread status2 = new Thread(() => Status.Status2(30));
                             status2.Start();
                             Thread action2 = new Thread(() => Playlists.Defcon2.Awake1());
                             action2.Start();
                             break;
                         case 2:
-                            Light.Status.StopStatus2 = true;
-                            Thread status3 = new Thread(() => Light.Status.Status3());
+                            Status.StopStatus2 = true;
+                            Thread status3 = new Thread(() => Status.Status3(15));
                             status3.Start();
                             Thread action3 = new Thread(() => Playlists.Defcon1.SitUp());
                             action3.Start();
@@ -74,6 +71,16 @@ class Program
                 Thread.Sleep(250);
             }
         } 
+    }
+
+    private static void CloseHandler(object? sender, ConsoleCancelEventArgs e)
+    {
+        Utilities.DMXserial.disconnect();
+        Movement.Body.Release();
+        Movement.Carriage.Release();
+        Movement.Eyes.Release();
+        Movement.Head.Release();
+        Console.WriteLine("Bye for now :)");
     }
 
 

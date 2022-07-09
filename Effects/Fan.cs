@@ -20,10 +20,10 @@ public static class Fan
         Gpios.piGPIOController.Write(Gpios.Fan, PinValue.Low);
     }
 
-    public static void OnOff()
+    public static void OnOff(int duration)
     {
         On();
-        Thread.Sleep(15000);
+        Thread.Sleep(duration);
         Off();
 
     }

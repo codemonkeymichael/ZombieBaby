@@ -1,26 +1,26 @@
 ﻿using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Movement;
-public class Carrage
+public class Carriage
 {
     private static decimal up { get; } = 0.04222m;
     private static decimal down { get; } = 0.09555m;
 
     public static void Up()
     {
-        Console.WriteLine("Rock up " + up);        
+        Console.WriteLine("Carriage up " + up);        
         Motor.motorController.SetDutyCycle(3, decimal.ToDouble(up));
     }
 
     public static void Down()
     {
-        Console.WriteLine("Rock down " + down);
+        Console.WriteLine("Carriage down " + down);
         Motor.motorController.SetDutyCycle(3, decimal.ToDouble(down));
     }
 
     public static void Release()
     {
-        Console.WriteLine("Rock off");
+        Console.WriteLine("Carriage Release");
         Motor.motorController.SetDutyCycle(3, 0);
     }
 
@@ -28,11 +28,11 @@ public class Carrage
     {
         for(var i = 0; i < count; i++)
         {
-            Carrage.Down();
+            Carriage.Down();
             Thread.Sleep(200);
-            Carrage.Up();
+            Carriage.Up();
             Thread.Sleep(200);
         }
-        Carrage.Release();
+        Carriage.Release();
     }
 }

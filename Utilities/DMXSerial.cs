@@ -7,7 +7,7 @@ namespace ZombieBaby.Utilities;
 
 public static class DMXserial
 {
-    private static SerialPort port = new SerialPort("/dev/ttyUSB0", 115200);
+    private static SerialPort port = new SerialPort("/dev/ttyUSB0", 9600);
     private static byte[] message;
     public static DMXChannels ChannelList = new DMXChannels();
     public static DMXChannels ChannelListTemp = new DMXChannels();
@@ -46,7 +46,7 @@ public static class DMXserial
         try
         {
             if (!port.IsOpen)
-            {
+            {            
                 port.Open();
                 Console.WriteLine("DMX connected");
             }
@@ -55,7 +55,7 @@ public static class DMXserial
         }
         catch (IOException ex)
         {
-            Console.WriteLine(ex);
+            Console.WriteLine("Port could not be opened! Error :( " + ex);
         }
 
         return false;
