@@ -3,7 +3,7 @@
 This is the project for the Heartstoppers Zombie Baby Animatronic.
 
 ### Script  
-Screams
+Screams    
 Laughing  
    
 **Sleeping**    
@@ -26,7 +26,7 @@ Yawning
      
 **Siting Up**   
 "Why did you wake me I need my beauty sleep" 
-"I'm hungry… For human flesh"
+"I'm hungryâ€¦ For human flesh"
 "What are you looking at, is there something in my teeth?"  
 "This place is so boring"   
 "Who gave you that face, I look more like my father"   
