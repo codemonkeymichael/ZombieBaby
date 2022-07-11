@@ -24,7 +24,7 @@ Waking up sounds:
 Clears throat  
 Yawning   
      
-**Siting Up:**   
+**Sitting Up:**   
 "Why did you wake me I need my beauty sleep"   
 "I'm hungry… For human flesh"    
 "What are you looking at, is there something in my teeth?"    
