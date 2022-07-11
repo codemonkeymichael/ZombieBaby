@@ -6,7 +6,7 @@ This is the project for the Heartstoppers Zombie Baby Animatronic.
 Screams    
 Laughing  
    
-**Sleeping**    
+**Sleeping:**    
 Snoring  
 Heaving Breathing    
 Having a Nightmare Garbled:   
@@ -17,14 +17,14 @@ Having a Nightmare Garbled:
 "It's so dark in here, please let me out"   
 Crying Sobbing   
 
-**Awake**   
+**Awake:**   
 Growling angry   
 Humming happy  
 Waking up sounds:   
 Clears throat  
 Yawning   
      
-**Siting Up**   
+**Siting Up:**   
 "Why did you wake me I need my beauty sleep" 
 "I'm hungry… For human flesh"
 "What are you looking at, is there something in my teeth?"  
