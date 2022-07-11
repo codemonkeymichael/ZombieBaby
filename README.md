@@ -25,12 +25,12 @@ Clears throat
 Yawning   
      
 **Siting Up:**   
-"Why did you wake me I need my beauty sleep" 
-"I'm hungry… For human flesh"
-"What are you looking at, is there something in my teeth?"  
-"This place is so boring"   
-"Who gave you that face, I look more like my father"   
-"I'm grumpy when I wake up, you don't want to see me grumpy"   
+"Why did you wake me I need my beauty sleep"   
+"I'm hungry… For human flesh"    
+"What are you looking at, is there something in my teeth?"    
+"This place is so boring"     
+"Who gave you that face, I look more like my father"      
+"I'm grumpy when I wake up, you don't want to see me grumpy"     
    
    
 
