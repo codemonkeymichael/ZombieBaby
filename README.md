@@ -1,6 +1,10 @@
 # ZombieBaby
 
 This is the project for the Heartstoppers Zombie Baby Animatronic.
+  
+**Videos:**     
+**Sitting Up** - https://youtube.com/shorts/NZ-BjcBRJAw   
+
 
 ### Script  
 Screams    
