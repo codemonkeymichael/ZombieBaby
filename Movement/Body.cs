@@ -134,7 +134,7 @@ public static class Body
 
         while (ContinueOnStatus == Status.CurrentStatus)
         {
-            double downish = (double)rnd.NextInt64(72, 76) / (double)1000; 
+            double downish = (double)rnd.NextInt64(73, 75) / (double)1000; 
            
             Console.WriteLine(downish);
             for (double i = down; i > downish; i = i - stepSize)
@@ -143,10 +143,12 @@ public static class Body
                 Motor.motorController.SetDutyCycle(2, (double)i);
                 Thread.Sleep(75);
             }
-            Thread fan = new Thread(() => Effects.Fan.OnOff(5500));
-            Thread.Sleep(1000);
+            Thread.Sleep(400);
+            Thread fan = new Thread(() => Effects.Fan.OnOff(2000));
+            fan.Start();
+            Thread.Sleep(900);
             Release();
-            Thread.Sleep(12050);
+            Thread.Sleep(4050);
         }
 
     }

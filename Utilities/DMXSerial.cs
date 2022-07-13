@@ -7,18 +7,18 @@ namespace ZombieBaby.Utilities;
 
 public static class DMXserial
 {
-    private static SerialPort port = new SerialPort("/dev/ttyUSB0", 9600);
+    private static SerialPort port = new SerialPort("/dev/ttyUSB0", 115200); //9600
     private static byte[] message;
     public static DMXChannels ChannelList = new DMXChannels();
     public static DMXChannels ChannelListTemp = new DMXChannels();
-    private static int duration = 0;
+    private static int duration = 1500; //seconds
     private static System.Timers.Timer animation = new System.Timers.Timer();
 
     public static bool connect()
     {
         //Instantiate the channel model
         ChannelList.Channels = new List<DMXChannel>();
-        for (int i = 0; i <= 512; i++)
+        for (int i = 0; i <= 15; i++)
         {
             DMXChannel c = new DMXChannel();
             c.ChannelId = i;
@@ -31,7 +31,7 @@ public static class DMXserial
         }
 
         ChannelListTemp.Channels = new List<DMXChannel>();
-        for (int i = 0; i <= 512; i++)
+        for (int i = 0; i <= 15; i++)
         {
             DMXChannel c = new DMXChannel();
             c.ChannelId = i;
@@ -110,7 +110,7 @@ public static class DMXserial
 
         //Console.SetCursorPosition(0, 30);
         //Console.ForegroundColor = ConsoleColor.Gray;
-        //Console.WriteLine(" duration = " + duration.ToString());  
+        //Console.WriteLine(" duration = " + duration.ToString());
 
         if (duration > 0)
         {
@@ -122,9 +122,9 @@ public static class DMXserial
             {
                 //int xPos = i * 22;
                 //Console.SetCursorPosition(xPos, 16);
-                //Console.WriteLine("         Value = " + ChannelList.Channels[i].ChannelValue + "                  ");
+                Console.WriteLine("         Value = " + ChannelList.Channels[i].ChannelValue + "                  ");
                 //Console.SetCursorPosition(xPos, 17);
-                //Console.WriteLine("      Duration = " + duration + "                   ");
+                Console.WriteLine("      Duration = " + duration + "                   ");
                 //Console.SetCursorPosition(xPos, 18);
                 //Console.WriteLine(" DMX Per Frame = " + ChannelList.Channels[i].DMXStepsPerFrame + "            ");
                 //Console.SetCursorPosition(xPos, 19);
@@ -135,7 +135,7 @@ public static class DMXserial
                 var DMXRemain = ChannelList.Channels[i].TargetValue - ChannelList.Channels[i].ChannelValue;
 
                 //Console.SetCursorPosition(xPos, 21);
-                //Console.WriteLine("    DMX Remain = " + DMXRemain + "              ");
+                Console.WriteLine("    DMX Remain = " + DMXRemain + "              ");
 
                 if (DMXRemain != 0)
                 {
@@ -181,8 +181,9 @@ public static class DMXserial
                             }
                         }
                     }
-                }
+                }           
             }
+
 
             SendDMX();
         }
@@ -228,7 +229,7 @@ public static class DMXserial
 
             bytes[i] = ((byte)ChannelList.Channels[i].ChannelValue);
 
-            //Console.WriteLine("Send Channel " + (i + 1).ToString() + " DMX Value = " + ChannelList.Channels[i].ChannelValue.ToString() + "  ");
+            Console.WriteLine("Send Channel " + (i + 1).ToString() + " DMX Value = " + ChannelList.Channels[i].ChannelValue.ToString() + "  ");
         }
         send(bytes);
     }
