@@ -5,7 +5,6 @@ using ZombieBaby.Utilities;
 namespace ZombieBaby;
 class Program
 {
-
     static void Main(string[] args)
     {
         //If the user stops the program
