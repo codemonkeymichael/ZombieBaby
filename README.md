@@ -29,9 +29,9 @@ Yawning
 "Why did you wake me I need my beauty sleep"    
 "I'm grumpy when I wake up, you don't want to see me grumpy"   
 "I'm hungry, Feed me, Feed me brains... NOW!!!"   
-"Can't read the sign!"   
+"Can't you read the sign!"   
 "Ahhhhh! Whats wrong with your face."   
-"Whoa! Take a step back, your scaring me."   
+"Whoa! Take a step back, your scaring me."    
      
 **Sitting Up:**   
 Screams
@@ -46,7 +46,7 @@ Laughing
 "Someone call 911, dude needs some help."     
 "I only like brains when its fresh. You can go."    
 "Don't worry, I don't have Covid, I invented it."   
-"Hey you should talk to the manager, I think you be one of the exhibits."   
+"Hey you should talk to the manager, I think you could be one of the exhibits."   
 "Hey come over here, real close now, come on, (sniff, sniff) never mind."   
 "Don't worry about it, it's just a little scratch."   
 "Hey, I think we look a lot a like, don't you?"   
