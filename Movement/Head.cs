@@ -7,7 +7,9 @@ public static class Head
 
     private static double center { get; } = 0.1;
     private static double right { get; } = 0.21; //0.20
+    private static double rightHalf { get; } = 0.15; //0.20
     private static double left { get; } = 0.001; //0.01
+    private static double leftHalf { get; } = 0.05; //0.05
     public static void Center()
     {
         Console.WriteLine("Center head fast " + center);
@@ -20,10 +22,22 @@ public static class Head
         Motor.motorController.SetDutyCycle(1, right); 
     }
 
+    public static void RightHalf()
+    {
+        Console.WriteLine("Head Right Half fast " + rightHalf);
+        Motor.motorController.SetDutyCycle(1, rightHalf);
+    }
+
     public static void Left()
     {
         Console.WriteLine("Head Left fast " + left);
         Motor.motorController.SetDutyCycle(1, left); 
+    }
+
+    public static void LeftHalf()
+    {
+        Console.WriteLine("Head Left Half fast " + leftHalf);
+        Motor.motorController.SetDutyCycle(1, leftHalf);
     }
 
     public static void Release()

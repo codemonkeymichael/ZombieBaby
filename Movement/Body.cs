@@ -131,7 +131,7 @@ public static class Body
         //TODO Add Breathing sounds 
 
         Random rnd = new Random();
-
+        int iteration = 0;
         while (ContinueOnStatus == Status.CurrentStatus)
         {
             double downish = (double)rnd.NextInt64(73, 75) / (double)1000; 
@@ -148,7 +148,20 @@ public static class Body
             fan.Start();
             Thread.Sleep(900);
             Release();
-            Thread.Sleep(4050);
+            if (iteration == 0)
+            {
+                Thread.Sleep(500);
+                Head.LeftHalf();
+                //Audio()
+                Thread.Sleep(2050);
+                Head.Center();
+                Thread.Sleep(500);
+                Head.LeftHalf();
+                Thread.Sleep(500);
+                Head.Center();
+            }
+            iteration++;
+            Thread.Sleep(3050);
         }
 
     }
