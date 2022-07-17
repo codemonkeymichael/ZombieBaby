@@ -11,14 +11,27 @@ public static class Room
 {
     public static void Strobe(int count = 1, int duration = 250)
     {
-        Console.WriteLine("Playlist Strobe");
-        //DMX.RecordChannels();
+        Console.WriteLine("Playlists Strobe");
+        DMX.RecordChannels();
         for (int i = 0; i < count; i++)
         {
-            Light.Room.AllOn();
+            Light.Room.All(255,0);
             Thread.Sleep(duration);
-            //DMX.ReadChannels();
+            DMX.ReadChannels();
             Thread.Sleep(duration);
+        }
+    }
+
+    public static void WaveAll(int count = 2, int duration = 5000)
+    {
+        Console.WriteLine("Playlists Strobe");
+        DMX.RecordChannels();
+        for (int i = 0; i < count; i++)
+        {
+            Light.Room.All(255, duration);
+            Thread.Sleep(duration/2);
+            DMX.ReadChannels(duration);
+            Thread.Sleep(duration/2);
         }
     }
 }

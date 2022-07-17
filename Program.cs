@@ -11,7 +11,7 @@ class Program
         Console.CancelKeyPress += new ConsoleCancelEventHandler(CloseHandler);
 
         Console.Clear();
-        Console.WriteLine("Zombie Baby is Running Ver 0.5");
+        Console.WriteLine("Zombie Baby is Running Ver 0.6");
 
         DMX.Connect();
 
@@ -22,7 +22,7 @@ class Program
         Thread flicker = new Thread(() => Ambient.Flicker());
         flicker.Start();
 
-        //Light.Ambient.GroundEffect();
+        Light.Ambient.GroundEffect(10,5000);
 
         //int value = 0;
 
@@ -30,15 +30,12 @@ class Program
         //{
         //if (value == 0) { value = 255; } else { value = 0; };
 
-        //List<DMXChan> chanList = new List<DMXChan>();
+
         //for (int i = 0; i < 15; i++)
         //{
-        //    DMXChan chan = new DMXChan();
-        //    chan.ChannelValue = 255;
-        //    chan.ChannelId = i;
-        //    chanList.Add(chan);
+        //    DMX.ChannelList[i].TargetValue = 255;       
         //}
-        //DMX.Update(chanList, 1000);
+        //DMX.Update(2000);
         //Thread.Sleep(2000);
         //}
 
@@ -55,43 +52,43 @@ class Program
         //Audio.Audio.Cue();
         //Audio.Audio.Play();
 
-        var inputLastState = PinValue.Low;
+        //var inputLastState = PinValue.Low;
 
-        while (true)
-        {
-            var click = Gpios.piGPIOController.Read(Gpios.InputTrigger);
-            if (click != inputLastState)
-            {
-                inputLastState = click;
-                if (click == PinValue.High)
-                {
-                    switch (Status.CurrentStatus)
-                    {
-                        case 0:
-                            Thread action1 = new Thread(() => Playlists.Defcon3.Defcon3A());
-                            action1.Start();
-                            break;
-                        case 1:
-                            Status.StopStatus1 = true;
-                            Thread status2 = new Thread(() => Status.Status2(30));
-                            status2.Start();
-                            Thread action2 = new Thread(() => Playlists.Defcon2.Defcon2A());
-                            action2.Start();
-                            break;
-                        case 2:
-                            Status.StopStatus2 = true;
-                            Thread status3 = new Thread(() => Status.Status3(15));
-                            status3.Start();
-                            Thread action3 = new Thread(() => Playlists.Defcon1.SitUp());
-                            action3.Start();
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                Thread.Sleep(250);
-            }
-        }
+        //while (true)
+        //{
+        //    var click = Gpios.piGPIOController.Read(Gpios.InputTrigger);
+        //    if (click != inputLastState)
+        //    {
+        //        inputLastState = click;
+        //        if (click == PinValue.High)
+        //        {
+        //            switch (Status.CurrentStatus)
+        //            {
+        //                case 0:
+        //                    Thread action1 = new Thread(() => Playlists.Defcon3.Defcon3A());
+        //                    action1.Start();
+        //                    break;
+        //                case 1:
+        //                    Status.StopStatus1 = true;
+        //                    Thread status2 = new Thread(() => Status.Status2(30));
+        //                    status2.Start();
+        //                    Thread action2 = new Thread(() => Playlists.Defcon2.Defcon2A());
+        //                    action2.Start();
+        //                    break;
+        //                case 2:
+        //                    Status.StopStatus2 = true;
+        //                    Thread status3 = new Thread(() => Status.Status3(15));
+        //                    status3.Start();
+        //                    Thread action3 = new Thread(() => Playlists.Defcon1.SitUp());
+        //                    action3.Start();
+        //                    break;
+        //                default:
+        //                    break;
+        //            }
+        //        }
+        //        Thread.Sleep(250);
+        //    }
+        //}
     }
 
     private static void CloseHandler(object? sender, ConsoleCancelEventArgs e)

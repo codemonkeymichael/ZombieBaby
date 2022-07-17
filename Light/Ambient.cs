@@ -65,13 +65,13 @@ public static class Ambient
         }
     }
 
-    public static void GroundEffect(int level = 5)
+    public static void GroundEffect(int level = 5, int duration = 0)
     {
         Console.WriteLine("Ground EFX Green Level " + level);
-        DMX.ChannelList.Channels[9].ChannelValue = 0;
-        DMX.ChannelList.Channels[10].ChannelValue = level;
-        DMX.ChannelList.Channels[11].ChannelValue = 0;
-        //DMX.Update();
+        DMX.ChannelList[9].TargetValue = 0;
+        DMX.ChannelList[10].TargetValue = level;
+        DMX.ChannelList[11].TargetValue = 0;
+        DMX.Update(duration);
     }
 
 }
