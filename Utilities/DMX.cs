@@ -26,15 +26,14 @@ public static class DMX
 
     public static void Update(int duration = 0 )
     {
-        Console.WriteLine("Update");
+        Console.WriteLine("Update DMX");
         _duration = duration;
         RecordChannels();
 
         animationFrameTimer.Interval = 25; //25
         animationFrameTimer.Start();
         animationFrameTimer.Elapsed += new ElapsedEventHandler(AnimateChannels);
- 
-    }
+     }
 
     public static bool Connect()
     {
@@ -120,50 +119,23 @@ public static class DMX
 
     private static void AnimateChannels(object sender, ElapsedEventArgs args)
     {
-        //Console.SetCursorPosition(0, 15);
-        //Console.ForegroundColor = ConsoleColor.Red;
-        //Console.WriteLine("AnimateChannels");
-        //Console.ForegroundColor = ConsoleColor.Gray;
-
-        //Console.SetCursorPosition(0, 30);
-        //Console.ForegroundColor = ConsoleColor.Gray;
-        //Console.WriteLine(" _duration = " + _duration.ToString());
-
         if (_duration > 0)
         {
             _duration = _duration - (int)animationFrameTimer.Interval;
             //How many steps left in the duration?
             int _remainingDurationSteps = _duration / (int)animationFrameTimer.Interval;      
-            Console.WriteLine("Remaining Duration Steps " + _remainingDurationSteps);
-
-            //Console.WriteLine("_duration = " + _duration);
-
+            //Console.WriteLine("Remaining Duration Steps " + _remainingDurationSteps);
             for (var i = 0; i < ChannelList.Count(); i++)
-            {
-                //int xPos = i * 22;
-                //Console.SetCursorPosition(xPos, 16);
-                //Console.WriteLine("Value = " + ChannelList.Channels[i].ChannelValue);
-                ////Console.SetCursorPosition(xPos, 17);
-                //Console.WriteLine("_duration = " + _duration);
-                ////Console.SetCursorPosition(xPos, 18);
-                //Console.WriteLine("DMX Per Frame = " + ChannelList.Channels[i].DMXStepsPerFrame);
-                ////Console.SetCursorPosition(xPos, 19);
-                //Console.WriteLine("Frame Per DMX = " + ChannelList.Channels[i].FramesPerDMXStep);
-                ////Console.SetCursorPosition(xPos, 20);
-                //Console.WriteLine("DMX UP = " + ChannelList.Channels[i].DMXStepUP);
-
+            {                
                 //How many steps left in the duration?
                 int _remainingDMXSteps = ChannelList[i].TargetValue - ChannelList[i].ChannelValue;
-                Console.WriteLine("Remaining DMX Steps " + _remainingDMXSteps);
+                //Console.WriteLine("Remaining DMX Steps " + _remainingDMXSteps);
 
                 //Figure Out What the DMX value should be.            
                 int _dmxStep = (int)Math.Round((double)_remainingDMXSteps / _remainingDurationSteps , MidpointRounding.AwayFromZero); //_remainingDMXSteps / _remainingDurationSteps  ;
-                Console.WriteLine("DMX Step " + _dmxStep);
+                //Console.WriteLine("DMX Step " + _dmxStep);
                 ChannelList[i].ChannelValue += _dmxStep;
-
             }
-
-
             SendDMX();
         }
         else
@@ -172,22 +144,6 @@ public static class DMX
             for (var i = 0; i < ChannelList.Count(); i++)
             {
                 ChannelList[i].ChannelValue = ChannelList[i].TargetValue;
-
-                //int xPos = i * 22;
-                //Console.SetCursorPosition(xPos, 16);
-                //Console.WriteLine("         Value = " + ChannelList.Channels[i].ChannelValue + "                  ");
-                //Console.SetCursorPosition(xPos, 17);
-                //Console.WriteLine("      _duration = " + _duration + "                   ");
-                //Console.SetCursorPosition(xPos, 18);
-                //Console.WriteLine(" DMX Per Frame = " + ChannelList.Channels[i].DMXStepsPerFrame + "            ");
-                //Console.SetCursorPosition(xPos, 19);
-                //Console.WriteLine(" Frame Per DMX = " + ChannelList.Channels[i].FramesPerDMXStep + "               ");
-                //Console.SetCursorPosition(xPos, 20);
-                //Console.WriteLine("        DMX UP = " + ChannelList.Channels[i].DMXStepUP + "             ");
-
-                //var DMXRemain = ChannelList.Channels[i].TargetValue - ChannelList.Channels[i].ChannelValue;
-                //Console.SetCursorPosition(xPos, 21);
-                //Console.WriteLine("    DMX Remain = " + DMXRemain + "              ");
             }
 
             SendDMX();
@@ -207,8 +163,7 @@ public static class DMX
             if (ChannelList[i].ChannelValue < 0) ChannelList[i].ChannelValue = 0;
 
             bytes[i] = ((byte)ChannelList[i].ChannelValue);
-
-            Console.WriteLine("Send Channel " + (i + 1).ToString() + " DMX Value = " + ChannelList[i].ChannelValue.ToString() + "  ");
+            //Console.WriteLine("Send Channel " + (i + 1).ToString() + " DMX Value = " + ChannelList[i].ChannelValue.ToString() + "  ");
         }
         Send(bytes);
     }
@@ -220,7 +175,7 @@ public static class DMX
 
     public static void RecordChannels()
     {
-        Console.WriteLine("Record DMX Channels");
+        //Console.WriteLine("Record DMX Channels");
         for (int i = 0; i < ChannelList.Count; i++)
         {
             ChannelListTemp[i].ChannelValue = ChannelList[i].ChannelValue;
@@ -229,7 +184,7 @@ public static class DMX
 
     public static void ReadChannels(int duration = 0)
     {
-        Console.WriteLine("Read DMX Channels");
+        //Console.WriteLine("Read DMX Channels");
         for (int i = 0; i < ChannelListTemp.Count; i++)
         {
             ChannelList[i].TargetValue = ChannelListTemp[i].ChannelValue;
