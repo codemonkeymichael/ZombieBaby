@@ -42,11 +42,13 @@ Laughing
 "Are you real? No way."   
 "I had a nightmare it was election day."    
 "Can I just have a little taste? RRRrrrrgg"   
-"Someone call 911, dude needs some help."    
-"What are you staring at? Is there something in my teeth?"   
+"Someone call 911, dude needs some help."     
 "I only like brains when its fresh. You can go."    
-"Don't worry, I don't have Covid, Ha ha ha"  
-"Hey you should talk to the manager, I think you be one of the exhibits."
-   
+"Don't worry, I don't have Covid, I invented it."   
+"Hey you should talk to the manager, I think you be one of the exhibits."   
+"Hey come over here, real close now, come on, (sniff, sniff) never mind."   
+"Don't worry about it, it's just a little scratch."   
+"Hey, I think we look a lot a like, don't you?"   
+"My older sister and I didn't get along, so I ate her liver with some fava beans and a nice Chianti. Tisk Tisk Tisk"
 
 
