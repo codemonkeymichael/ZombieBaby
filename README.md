@@ -18,7 +18,8 @@ Having a Nightmare Garbled:
 "Teddy! Teddy, where did you go?"   
 "Daddy don't leave me here"   
 "The baby is going home"   
-"It's so dark in here, please let me out"   
+"It's so dark in here, please let me out". 
+"Mommy I'm scared" 
   
 **Awake:**   
 Growling angry   
