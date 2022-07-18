@@ -34,7 +34,7 @@ Yawning
 "Whoa! Take a step back, your scaring me."    
      
 **Sitting Up:**   
-Screams
+Screams  
 Laughing   
 "I'm hungry… For human flesh"    
 "What are you looking at, is there something in my teeth?"     
