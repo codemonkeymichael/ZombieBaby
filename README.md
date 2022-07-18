@@ -17,9 +17,9 @@ Having a Nightmare Garbled:
 "Mother I promise I'll be good"     
 "Teddy! Teddy, where did you go?"   
 "Daddy don't leave me here"   
-"The baby is going home"   
-"It's so dark in here, please let me out". 
-"Mommy I'm scared" 
+"The baby is going home"    
+"It's so dark in here, please let me out"    
+"Mommy I'm scared"   
   
 **Awake:**   
 Growling angry   
