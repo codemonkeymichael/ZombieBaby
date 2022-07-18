@@ -50,6 +50,6 @@ Laughing
 "Hey come over here, real close now, come on, (sniff, sniff) never mind."   
 "Don't worry about it, it's just a little scratch."   
 "Hey, I think we look a lot a like, don't you?"   
-"My older sister and I didn't get along, so I ate her liver with some fava beans and a nice Chianti. Tisk Tisk Tisk"
-"Who are these freaks in my room!"
+"My older sister and I didn't get along, so I ate her liver with some fava beans and a nice Chianti. Tisk Tisk Tisk"  
+"Who are these freaks in my room!"   
 
