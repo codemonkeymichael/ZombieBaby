@@ -1,7 +1,12 @@
 # ZombieBaby
 
-This is the project for the Heartstoppers Zombie Baby Animatronic.
+This is the project for the Heartstoppers Zombie Baby Animatronic.  
   
+https://heartstoppershaunt.com/  
+
+The Zombie Baby is in front of the band (if you can call us that) just to the left of frame in this video.   
+https://www.youtube.com/watch?v=89XovIYhNDw&t=38s   
+   
 **Videos:**     
 **Sitting Up** - https://youtube.com/shorts/NZ-BjcBRJAw  
 **Carriage Rocking** - https://youtube.com/shorts/Z2Nm4D41LHU  
