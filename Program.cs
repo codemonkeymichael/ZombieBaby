@@ -24,46 +24,46 @@ class Program
 
         Light.Ambient.GroundEffect(10,5000);
 
-        //Audio.Audio.Cue();
-        //Audio.Audio.Play();
+        Audio.Audio.Cue();
+        Audio.Audio.Play();
 
-        var inputLastState = PinValue.Low;
+        //var inputLastState = PinValue.Low;
 
-        while (true)
-        {
-            var click = Gpios.piGPIOController.Read(Gpios.InputTrigger);
-            if (click != inputLastState)
-            {
-                inputLastState = click;
-                if (click == PinValue.High)
-                {
-                    switch (Status.CurrentStatus)
-                    {
-                        case 0:
-                            Thread action1 = new Thread(() => Playlists.Defcon3.Defcon3A());
-                            action1.Start();
-                            break;
-                        case 1:
-                            Status.StopStatus1 = true;
-                            Thread status2 = new Thread(() => Status.Status2(30));
-                            status2.Start();
-                            Thread action2 = new Thread(() => Playlists.Defcon2.Defcon2A());
-                            action2.Start();
-                            break;
-                        case 2:
-                            Status.StopStatus2 = true;
-                            Thread status3 = new Thread(() => Status.Status3(15));
-                            status3.Start();
-                            Thread action3 = new Thread(() => Playlists.Defcon1.SitUp());
-                            action3.Start();
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                Thread.Sleep(250);
-            }
-        }
+        //while (true)
+        //{
+        //    var click = Gpios.piGPIOController.Read(Gpios.InputTrigger);
+        //    if (click != inputLastState)
+        //    {
+        //        inputLastState = click;
+        //        if (click == PinValue.High)
+        //        {
+        //            switch (Status.CurrentStatus)
+        //            {
+        //                case 0:
+        //                    Thread action1 = new Thread(() => Playlists.Defcon3.Defcon3A());
+        //                    action1.Start();
+        //                    break;
+        //                case 1:
+        //                    Status.StopStatus1 = true;
+        //                    Thread status2 = new Thread(() => Status.Status2(30));
+        //                    status2.Start();
+        //                    Thread action2 = new Thread(() => Playlists.Defcon2.Defcon2A());
+        //                    action2.Start();
+        //                    break;
+        //                case 2:
+        //                    Status.StopStatus2 = true;
+        //                    Thread status3 = new Thread(() => Status.Status3(15));
+        //                    status3.Start();
+        //                    Thread action3 = new Thread(() => Playlists.Defcon1.SitUp());
+        //                    action3.Start();
+        //                    break;
+        //                default:
+        //                    break;
+        //            }
+        //        }
+        //        Thread.Sleep(250);
+        //    }
+        //}
     }
 
     private static void CloseHandler(object? sender, ConsoleCancelEventArgs e)

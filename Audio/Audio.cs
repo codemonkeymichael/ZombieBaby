@@ -22,7 +22,7 @@ public static class Audio
     /// <param name="s"></param>
     public static void Cue()
     {
-        var songPath = AppDomain.CurrentDomain.BaseDirectory + "Audio/Bass.wav";
+        var songPath = AppDomain.CurrentDomain.BaseDirectory + "Audio/Mother.wav";
 
         //VLC Player Init
         Core.Initialize();
