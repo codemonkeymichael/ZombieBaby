@@ -4,7 +4,7 @@ This is the project for the Heartstoppers Zombie Baby Animatronic.
   
 https://heartstoppershaunt.com/  
 
-The Zombie Baby is in front of the band (if you can call us that) just to the left of frame in this video.   
+The Zombie Baby is in front of the band (if you can call us that) just to the right of frame in this video.   
 https://www.youtube.com/watch?v=89XovIYhNDw&t=38s   
    
 **Videos:**     
@@ -55,6 +55,6 @@ Laughing
 "Hey come over here, real close now, come on, (sniff, sniff) never mind."   
 "Don't worry about it, it's just a little scratch."   
 "Hey, I think we look a lot a like, don't you?"   
-"My older sister and I didn't get along, so I ate her liver with some fava beans and a nice Chianti. Tisk Tisk Tisk"  
+"My brother and I didn't get along, so I ate her liver with some fava beans and a nice Chianti. Tisk Tisk Tisk"  
 "Who are these freaks in my room!"      
 
