@@ -4,12 +4,12 @@ using LibVLCSharp.Shared;
 namespace ZombieBaby.Audio;
 public static class Audio
 {
-    //private static System.Timers.Timer _timerLite;
-    //private static int _currentLiteCue = 0;
-    //private static System.Timers.Timer _timerCurtin;
-    //private static int _currentCurtinCue = 0;
-    //private static System.Timers.Timer _timerAnim;
-    //private static int _currentAnimCue = 0;
+    public enum AudioType
+    {
+        Sleeping,
+        Dreaming
+
+    }
 
 
     public static MediaPlayer player;
@@ -19,15 +19,14 @@ public static class Audio
     /// <summary>
     /// Do this well before you need to play. This gives the player some time to buffer the audio.
     /// </summary>
-    /// <param name="s"></param>
     public static void Cue()
     {
-        var songPath = AppDomain.CurrentDomain.BaseDirectory + "Audio/Mother.wav";
+        var path = AppDomain.CurrentDomain.BaseDirectory + "Audio/Dreaming/Mother.wav";
 
         //VLC Player Init
         Core.Initialize();
         var libVLC = new LibVLC();
-        var media = new Media(libVLC, songPath, FromType.FromPath);
+        var media = new Media(libVLC, path, FromType.FromPath);
         player = new MediaPlayer(media);
         //player.Playing += OnPlaybackStart;
         //player.EndReached += OnPlaybackFinished;
