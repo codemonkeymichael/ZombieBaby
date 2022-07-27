@@ -15,6 +15,11 @@ public static class Defcon3
         Thread brething = new Thread(() => Movement.Body.Breathing(1));
         brething.Start();
 
+        Thread.Sleep(1000);
+        Audio.Audio.Cue();
+        Audio.Audio.Play();
+
+
         //Loop all this
         //Thread breathing 
         //Thread head moving
