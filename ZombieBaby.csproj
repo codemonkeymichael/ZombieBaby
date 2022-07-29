@@ -27,6 +27,8 @@
     <PackageReference Include="System.Device.Gpio" Version="2.1.0" />
     <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
     <PackageReference Include="Vlc.DotNet.Core" Version="3.1.0" />
+    <PackageReference Include="Vlc.DotNet.Core.Interops" Version="3.1.0" />
+    <PackageReference Include="VLC.Native" Version="3.0.8" />
   </ItemGroup>
 
 </Project>

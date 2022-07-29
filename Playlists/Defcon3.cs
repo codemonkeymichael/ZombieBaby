@@ -16,8 +16,7 @@ public static class Defcon3
         brething.Start();
 
         Thread.Sleep(1000);
-        Audio.Audio.Cue();
-        Audio.Audio.Play();
+       
 
 
         //Loop all this

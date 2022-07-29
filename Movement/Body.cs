@@ -1,4 +1,5 @@
 ﻿using ZombieBaby.Utilities;
+using ZombieBaby.Audio;
 
 namespace ZombieBaby.Movement;
 public static class Body
@@ -130,6 +131,8 @@ public static class Body
 
         //TODO Add Breathing sounds 
 
+           Audio.Audio.Cue(Audio.Audio.AudioType.Sleeping);
+
         Random rnd = new Random();
         int iteration = 0;
         while (ContinueOnStatus == Status.CurrentStatus)
@@ -146,7 +149,12 @@ public static class Body
             Thread.Sleep(400);
             Thread fan = new Thread(() => Effects.Fan.OnOff(2000));
             fan.Start();
-            Thread.Sleep(900);
+            //Thread breathing = new Thread(() => Audio.Audio.Cue(Audio.Audio.AudioType.Sleeping));
+            //breathing.Start();
+
+            Audio.Audio.Play();
+
+            //Thread.Sleep(900);
             Release();
             if (iteration == 0)
             {

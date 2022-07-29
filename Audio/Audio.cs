@@ -8,40 +8,79 @@ public static class Audio
     {
         Sleeping,
         Dreaming
-
     }
 
+    private static int SleepingCurrent { get; set; } = 0;
+    private static int DreamingCurrent { get; set; } = 0;
 
-    public static MediaPlayer player;
-    public static bool songPlaying = false;
 
+
+    private static LibVLC vlc = new LibVLC();
+    private static Media _media;
+    private static MediaPlayer _mediaPlayer;
+
+
+    public static void InitAudio()
+    {
+        //VLC Player Init
+        Console.WriteLine("InitAudio");
+        Core.Initialize();
+    }
 
     /// <summary>
     /// Do this well before you need to play. This gives the player some time to buffer the audio.
     /// </summary>
-    public static void Cue()
-    {
-        var path = AppDomain.CurrentDomain.BaseDirectory + "Audio/Dreaming/Mother.wav";
+    public static void Cue(AudioType at)
+    { 
+        int current = 0;
+        switch (at.ToString())
+        {
+            case "Sleeping":
+                SleepingCurrent++;
+                if (SleepingCurrent > 9) SleepingCurrent = 0;
+                current = SleepingCurrent;
+                break;
+            case "Dreaming":
+                DreamingCurrent++;
+                if (DreamingCurrent > 2) DreamingCurrent = 0;
+                current = DreamingCurrent;
+                break;
+        }
+        string path = $"{AppDomain.CurrentDomain.BaseDirectory}Audio/{at}/{at}{current}.wav";
 
-        //VLC Player Init
-        Core.Initialize();
-        var libVLC = new LibVLC();
-        var media = new Media(libVLC, path, FromType.FromPath);
-        player = new MediaPlayer(media);
+        Console.WriteLine("Audio Cue " + path);
+
+     
+        _media = new Media(vlc, path, FromType.FromPath);
+
+        _mediaPlayer = new MediaPlayer(_media);
         //player.Playing += OnPlaybackStart;
-        //player.EndReached += OnPlaybackFinished;
+        _mediaPlayer.EndReached += new EventHandler<EventArgs>(OnPlaybackFinished);
         //player.TimeChanged += Player_TimeChanged; //Keep cues in sync with the audio
-        //Reset for a new song
-        //_currentLiteCue = 0;
-        //_currentCurtinCue = 0;
+
+
+        
 
     }
 
     public static void Play()
     {
-        player.Play();
+        //_media.SetMeta((MetadataType)FromType.FromPath, "1234.wav");
+        Console.WriteLine("Play Audio " + _mediaPlayer.Media.Mrl);
+        //_mediaPlayer.Position = -1;
+        //Console.WriteLine("Play Audio Pos " + _mediaPlayer.Position);
+        _mediaPlayer.Play();
         //To control the postion of the audio for song programming
         //player.LengthChanged += Player_LengthChanged;
+    }
+
+    private static void OnPlaybackFinished(object? sender, EventArgs e)
+    {
+        Console.WriteLine("OnPlaybackFinished");
+        _mediaPlayer.Stop();
+        //_media.Dispose();
+        //_mediaPlayer.Dispose();
+     
     }
 
     //private static void Player_LengthChanged(object? sender, MediaPlayerLengthChangedEventArgs e)
