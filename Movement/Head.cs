@@ -6,10 +6,10 @@ public static class Head
 {
 
     private static double center { get; } = 0.1;
-    private static double right { get; } = 0.21; //0.20
-    private static double rightHalf { get; } = 0.15; //0.20
-    private static double left { get; } = 0.001; //0.01
-    private static double leftHalf { get; } = 0.05; //0.05
+    private static double right { get; } = 0.113;
+    private static double rightHalf { get; } = 0.105;
+    private static double left { get; } = 0.08; //0.01
+    private static double leftHalf { get; } = 0.09; //0.05
     public static void Center()
     {
         Console.WriteLine("Center head fast " + center);

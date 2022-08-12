@@ -124,53 +124,17 @@ public static class Body
         Release();
     }
 
-    public static void Breathing(int ContinueOnStatus)
+    public static void SleepingBreath()
     {
-        Console.WriteLine("Breathing");
-        Release();
+        Console.WriteLine("Sleeping Breath");
+        double downish = 0.075;
 
-        //TODO Add Breathing sounds 
-
-           Audio.Audio.Cue(Audio.Audio.AudioType.Sleeping);
-
-        Random rnd = new Random();
-        int iteration = 0;
-        while (ContinueOnStatus == Status.CurrentStatus)
+        for (double i = down; i > downish; i = i - stepSize)
         {
-            double downish = (double)rnd.NextInt64(73, 75) / (double)1000; 
-           
-            Console.WriteLine(downish);
-            for (double i = down; i > downish; i = i - stepSize)
-            {
-                //Console.WriteLine(numberOfSteps + " Motor Position " + (double)i + "  This Step Duration " + currentStepDuration);
-                Motor.motorController.SetDutyCycle(2, (double)i);
-                Thread.Sleep(75);
-            }
-            Thread.Sleep(400);
-            Thread fan = new Thread(() => Effects.Fan.OnOff(2000));
-            fan.Start();
-            //Thread breathing = new Thread(() => Audio.Audio.Cue(Audio.Audio.AudioType.Sleeping));
-            //breathing.Start();
-
-            Audio.Audio.Play();
-
-            //Thread.Sleep(900);
-            Release();
-            if (iteration == 0)
-            {
-                Thread.Sleep(500);
-                Head.LeftHalf();
-                //Audio()
-                Thread.Sleep(2050);
-                Head.Center();
-                Thread.Sleep(500);
-                Head.LeftHalf();
-                Thread.Sleep(500);
-                Head.Center();
-            }
-            iteration++;
-            Thread.Sleep(3050);
+            Motor.motorController.SetDutyCycle(2, (double)i);
+            Thread.Sleep(60);
         }
-
     }
 }
+
+

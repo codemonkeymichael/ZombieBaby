@@ -6,59 +6,51 @@ using System.Threading.Tasks;
 
 namespace ZombieBaby.Utilities;
 
+/// <summary>
+/// Root control of everything
+/// </summary>
 public static class Status
 {
-    public static int CurrentStatus { get; set; } = 0;
-    public static bool StopStatus1 { get; set; } = false;
-    public static bool StopStatus2 { get; set; } = false;
+    public static int CurrentStatus = 4;
 
-
-    public static void Status1(int durationSeconds)
+    /// <summary>
+    /// 
+    /// </summary>
+    public static void ElevateDefcon()
     {
-        CurrentStatus = 1;
-        Console.WriteLine($"Status = {CurrentStatus}");
-
-        while (CurrentStatus == 1 & durationSeconds > 0 & !StopStatus1)
+        if (CurrentStatus > 1)
         {
-            //Blink Once 
-            On();
-            Thread.Sleep(100);
-            Off();
-            Thread.Sleep(900);
-            durationSeconds--;
-        }
-        if (CurrentStatus == 1) CurrentStatus = 0;
-        Console.WriteLine($"Status = {CurrentStatus}");
-    }
-
-    public static void Status2(int durationSeconds)
-    {
-        CurrentStatus = 2;
-        Console.WriteLine($"Status = {CurrentStatus}");
-        while (CurrentStatus == 2 & durationSeconds > 0 & !StopStatus2)
-        {
-            //Blink Twice
-            On();
-            Thread.Sleep(100);
-            Off();
-            Thread.Sleep(100);
-            On();
-            Thread.Sleep(100);
-            Off();
-            Thread.Sleep(700);
-            durationSeconds--;
-        }
-        if (CurrentStatus == 2)
-        {
-            StopStatus1 = false;
-            Status1(5);
+            CurrentStatus--;
+            Console.WriteLine($"ElevateDefcon() CurrentStatus = {CurrentStatus}");
+            switch (CurrentStatus)
+            {
+                case 3:
+                    Defcon3(60);
+                    break;
+                case 2:
+                    Defcon2(30);
+                    break;
+                case 1:
+                    Defcon1(120);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
-    public static void Status3(int durationSeconds)
+
+    /// <summary>
+    /// Sleeping
+    /// </summary>
+    /// <param name="durationSeconds"></param>
+    private static void Defcon3(int durationSeconds)
     {
         CurrentStatus = 3;
-        Console.WriteLine($"Status = {CurrentStatus}");
+        Thread dc3 = new Thread(() => Playlists.Defcon3.Sleep());
+        dc3.Start();
+        Console.WriteLine($"Status = Defcon {CurrentStatus}");
+
         while (CurrentStatus == 3 & durationSeconds > 0)
         {
             //Blink Three Times
@@ -73,23 +65,69 @@ public static class Status
             On();
             Thread.Sleep(100); //3
             Off();
-            Thread.Sleep(500);
+            Thread.Sleep(500);           
             durationSeconds--;
         }
-        if (CurrentStatus == 3)
-        {
-            StopStatus2 = false;
-            Status2(5);
-        }
+        if (CurrentStatus == 3) CurrentStatus = 4;
+        Console.WriteLine($"Status = Defcon {CurrentStatus}");
     }
 
-    public static void On()
+    /// <summary>
+    /// Awake
+    /// </summary>
+    /// <param name="durationSeconds"></param>
+    private static void Defcon2(int durationSeconds)
+    {
+        CurrentStatus = 2;
+        Thread dc2 = new Thread(() => Playlists.Defcon2.Awake());
+        dc2.Start();
+        Console.WriteLine($"Status = Defcon {CurrentStatus}");
+        while (CurrentStatus == 2 & durationSeconds > 0)
+        {
+            //Blink Twice
+            On();
+            Thread.Sleep(100);
+            Off();
+            Thread.Sleep(100);
+            On();
+            Thread.Sleep(100);
+            Off();
+            Thread.Sleep(700);
+            durationSeconds--;
+        }
+        if (CurrentStatus == 2) Defcon3(5); 
+
+    }
+
+    /// <summary>
+    /// Sitting Up
+    /// </summary>
+    /// <param name="durationSeconds"></param>
+    private static void Defcon1(int durationSeconds)
+    {
+        CurrentStatus = 1;
+        Thread dc1 = new Thread(() => Playlists.Defcon1.SitUp());
+        dc1.Start();
+        Console.WriteLine($"Status Defcon 1");
+        while (CurrentStatus == 1 & durationSeconds > 0)
+        {
+            //Blink Once 
+            On();
+            Thread.Sleep(100);
+            Off();
+            Thread.Sleep(900);
+            durationSeconds--;
+        }
+        if (CurrentStatus == 1) Defcon2(5); 
+    }
+
+    private static void On()
     {
         //Console.WriteLine("Status On");
         Gpios.piGPIOController.Write(Gpios.Status, PinValue.High);
     }
 
-    public static void Off()
+    private static void Off()
     {
         //Console.WriteLine("Status Off");
         Gpios.piGPIOController.Write(Gpios.Status, PinValue.Low);

@@ -6,7 +6,7 @@ public static class Defcon1
 { 
     public static void SitUp()
     {
-        Console.WriteLine("Playlists Awake1()");
+        Console.WriteLine("Playlists Defcon1 SitUp()");
         Movement.Body.Release();
         Thread blowSmoke = new Thread(() => Playlists.Smoke.BlowBlinders());
         blowSmoke.Start();
@@ -38,6 +38,6 @@ public static class Defcon1
         Thread.Sleep(2000);
         Playlists.Eyes.Closed();
         Movement.Head.Release();
-        Light.Ambient.GroundEffect(1);
+        //Light.Ambient.GroundEffect(1);
     }
 }

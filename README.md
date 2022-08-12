@@ -11,7 +11,9 @@ https://www.youtube.com/watch?v=89XovIYhNDw&t=38s
 **Sitting Up** - https://youtube.com/shorts/NZ-BjcBRJAw  
 **Carriage Rocking** - https://youtube.com/shorts/Z2Nm4D41LHU  
 
-
+Audio Player   
+https://github.com/dotnet/iot/blob/main/src/devices/Media/README.md          
+    
 ### Script   
    
 **Sleeping:**    
@@ -56,5 +58,4 @@ Laughing
 "Don't worry about it, it's just a little scratch."   
 "Hey, I think we look a lot a like, don't you?"   
 "My brother and I didn't get along, so I ate her liver with some fava beans and a nice Chianti. Tisk Tisk Tisk"  
-"Who are these freaks in my room!"      
-
+"Who are you freaks in my room!"  

@@ -61,12 +61,22 @@ public static class DMX
 
         try
         {
+
+            Console.WriteLine("DMX port open " + port.IsOpen);
+            Console.WriteLine("DMX port open " + port.BaudRate);
+            Console.WriteLine("DMX port open " + port.PortName);
+            Console.WriteLine("DMX port open ");
+      
             if (!port.IsOpen)
             {
+                port.ErrorReceived += Port_ErrorReceived;
                 port.Open();
+                GC.SuppressFinalize(port);
+
+
                 Console.WriteLine("DMX connected");
             }
-            SendDMX();
+            //SendDMX();
             return true;
         }
         catch (IOException ex)
@@ -75,6 +85,11 @@ public static class DMX
         }
 
         return false;
+    }
+
+    private static void Port_ErrorReceived(object sender, SerialErrorReceivedEventArgs e)
+    {
+        Console.WriteLine("DMX Port Error");
     }
 
     public static bool Disconnect()

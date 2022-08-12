@@ -3,44 +3,29 @@
 namespace ZombieBaby.Playlists;
 
 public static class Defcon2
-{ 
-    public static void Defcon2A()
+{
+    public static void Awake()
     {
+        Console.WriteLine("Playlists Defcon2 Awake");
 
+        Thread rock = new Thread(() => Movement.Carriage.Rock(3));
+        rock.Start();
+        Thread.Sleep(400);
 
-        Console.WriteLine("Playlists Awake1()");
-
-        Status.StopStatus2 = false;
-        Status.CurrentStatus = 2;
-        Thread status2 = new Thread(() => Status.Status2(30));
-        status2.Start();
-
-
-
+        //Blink Open Eyes
         Playlists.Eyes.Open();
-        Movement.Carriage.Up();
-        Thread.Sleep(5000);
-        Movement.Carriage.Down();
-        Thread.Sleep(5000);
-        Movement.Carriage.Release();
-        Thread.Sleep(5000);
-        Movement.Carriage.Up();
-        Thread.Sleep(5000);
-        Movement.Carriage.Down();
-        Thread.Sleep(5000);
-        Movement.Carriage.Release();
-        Thread.Sleep(5000);
-        Movement.Carriage.Up();
-        Thread.Sleep(5000);
-        Movement.Carriage.Down();
-        Thread.Sleep(5000);
-        Movement.Carriage.Release();
-        Thread.Sleep(5000);
-        Movement.Carriage.Up();
-        Thread.Sleep(5000);
-        Movement.Carriage.Down();
-        Thread.Sleep(5000);
-        Movement.Carriage.Release();
-        Thread.Sleep(5000);
+
+        Movement.Head.Center();
+
+        while (Status.CurrentStatus == 2)
+        {
+            //Blink
+            //Speak
+            Thread.Sleep(400);
+        }
+
+        //Blink Close Eyes
+        Playlists.Eyes.Closed();
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Timers;
+using Iot.Device.Media;
 using LibVLCSharp.Shared;
 
 namespace ZombieBaby.Audio;
@@ -6,82 +7,112 @@ public static class Audio
 {
     public enum AudioType
     {
-        Sleeping,
+        SleepingIn,
+        SleepingOut,
         Dreaming
     }
 
-    private static int SleepingCurrent { get; set; } = 0;
+    private static int SleepingInCurrent { get; set; } = 0;
+    private static int SleepingOutCurrent { get; set; } = 0;
     private static int DreamingCurrent { get; set; } = 0;
 
 
+    private static LibVLC _vlc = new LibVLC();
+    //private static Media _media;
+    //private static MediaPlayer _mediaPlayer;
 
-    private static LibVLC vlc = new LibVLC();
-    private static Media _media;
-    private static MediaPlayer _mediaPlayer;
 
 
     public static void InitAudio()
     {
         //VLC Player Init
         Console.WriteLine("InitAudio");
-        Core.Initialize();
+
     }
 
     /// <summary>
     /// Do this well before you need to play. This gives the player some time to buffer the audio.
     /// </summary>
-    public static void Cue(AudioType at)
+    public static void Play(AudioType at)
     { 
         int current = 0;
         switch (at.ToString())
         {
-            case "Sleeping":
-                SleepingCurrent++;
-                if (SleepingCurrent > 9) SleepingCurrent = 0;
-                current = SleepingCurrent;
+            case "SleepingIn":
+                SleepingInCurrent++;
+                if (SleepingInCurrent > 9) SleepingInCurrent = 0;
+                current = SleepingInCurrent;
+                break;
+            case "SleepingOut":
+                SleepingOutCurrent++;
+                if (SleepingOutCurrent > 9) SleepingOutCurrent = 0;
+                current = SleepingOutCurrent;
                 break;
             case "Dreaming":
                 DreamingCurrent++;
-                if (DreamingCurrent > 2) DreamingCurrent = 0;
+                if (DreamingCurrent > 6) DreamingCurrent = 0;
                 current = DreamingCurrent;
                 break;
         }
         string path = $"{AppDomain.CurrentDomain.BaseDirectory}Audio/{at}/{at}{current}.wav";
 
-        Console.WriteLine("Audio Cue " + path);
+        //SoundConnectionSettings settings = new SoundConnectionSettings();
+        //using (SoundDevice device = SoundDevice.Create(settings))
+        //{
+            Console.WriteLine("Audio Play " + path);
+        //    device.Play(path);      
+        //}
 
-     
-        _media = new Media(vlc, path, FromType.FromPath);
+        //VLC Player Init
+        try
+        {
+            Media _media = new Media(_vlc, path, FromType.FromPath);
+            MediaPlayer _mediaPlayer = new MediaPlayer(_media);
+            //_mediaPlayer.EndReached += new EventHandler<EventArgs>(OnPlaybackFinished); 
+            //_mediaPlayer.Stopped += new EventHandler<EventArgs>(OnPlaybackFinished);
+            _mediaPlayer.Play();
+            switch (at.ToString())
+            {
+                case "SleepingIn":
+                    Thread.Sleep(1000);
+                    break;
+                case "SleepingOut":
+                    Thread.Sleep(1000);
+                    break;
+                case "Dreaming":
+                    Thread.Sleep(4000);
+                    break;
+            }
+         
+            _media.Dispose();
+            _mediaPlayer.Dispose();
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine("Opps");
+        }
 
-        _mediaPlayer = new MediaPlayer(_media);
-        //player.Playing += OnPlaybackStart;
-        _mediaPlayer.EndReached += new EventHandler<EventArgs>(OnPlaybackFinished);
-        //player.TimeChanged += Player_TimeChanged; //Keep cues in sync with the audio
-
-
-        
-
-    }
-
-    public static void Play()
-    {
-        //_media.SetMeta((MetadataType)FromType.FromPath, "1234.wav");
-        Console.WriteLine("Play Audio " + _mediaPlayer.Media.Mrl);
-        //_mediaPlayer.Position = -1;
-        //Console.WriteLine("Play Audio Pos " + _mediaPlayer.Position);
-        _mediaPlayer.Play();
-        //To control the postion of the audio for song programming
-        //player.LengthChanged += Player_LengthChanged;
     }
 
     private static void OnPlaybackFinished(object? sender, EventArgs e)
     {
-        Console.WriteLine("OnPlaybackFinished");
-        _mediaPlayer.Stop();
-        //_media.Dispose();
-        //_mediaPlayer.Dispose();
+        Console.WriteLine("OnPlaybackFinished ");
      
+        //_mediaPlayer.Stop();
+        //_mediaPlayer.Media.ParseStop();
+        ////_media.ParseStop();
+        ////_media = null;
+        ////_media = null;
+        //_media.Dispose();
+        ////_mediaPlayer = null;
+        //_mediaPlayer.Dispose();
+        //GC.Collect();
+
+        //Console.WriteLine(_mediaPlayer.Media.Duration);
     }
+
+
+
 
     //private static void Player_LengthChanged(object? sender, MediaPlayerLengthChangedEventArgs e)
     //{
