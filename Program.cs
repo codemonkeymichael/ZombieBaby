@@ -1,4 +1,5 @@
 ﻿using LibVLCSharp.Shared;
+using System.Diagnostics;
 using System.Timers;
 using ZombieBaby.Light;
 using ZombieBaby.Utilities;
@@ -14,15 +15,33 @@ class Program
         Console.Clear();
         Console.WriteLine("Zombie Baby is Running Ver 0.7");
 
-        //DMX.Connect();
-        //Light.Ambient.GroundEffect(10, 5000);
+        var proc = new Process
+        {
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = "hostname",  //my linux command i want to execute
+                Arguments = "-I",  //the argument to return ip address
+                UseShellExecute = false,
+                RedirectStandardOutput = true,  //redirect output to my code here
+                CreateNoWindow = true //do not show a window
+            }
+        };
+
+        proc.Start();  //start the process
+        while (!proc.StandardOutput.EndOfStream)  //wait until entire stream from output read in
+        {
+            Console.WriteLine(proc.StandardOutput.ReadLine());  //this contains the ip output                    
+        }
+
+        DMX.Connect();
+        Light.Ambient.GroundEffect(10, 5000);
 
         //VLC Audio Player Init
-        Core.Initialize(); 
+        Core.Initialize();
 
         Gpios io = new Gpios(); //Just need to hit the constructor here TODO Make this static
         Motor mo = new Motor(); //Just need to hit the constructor here TODO Make this static
-   
+
         Thread flicker = new Thread(() => Ambient.Flicker());
         flicker.Start();
 

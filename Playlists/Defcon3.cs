@@ -20,7 +20,6 @@ public static class Defcon3
 
             if(iteration == 15 || iteration == 8 || iteration == 2 )
             {
-          
                 Movement.Head.Left();
                 Thread.Sleep(600);               
                 Movement.Head.RightHalf();
@@ -33,9 +32,6 @@ public static class Defcon3
                 Movement.Head.Right();
                 Thread.Sleep(800);
                 Movement.Head.LeftHalf();
-
-
-
             }
 
             Thread.Sleep(400);
