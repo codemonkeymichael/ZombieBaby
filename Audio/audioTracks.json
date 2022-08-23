@@ -187,23 +187,23 @@
     "screaming": [
       {
         "path": "Audio/Screaming/Screaming0.wav",
-        "duration": 824
+        "duration": 8225
       },
       {
         "path": "Audio/Screaming/Screaming1.wav",
-        "duration": 1398
+        "duration": 8593
       },
       {
         "path": "Audio/Screaming/Screaming2.wav",
-        "duration":1793
+        "duration":8889
       },
       {
         "path": "Audio/Screaming/Screaming3.wav",
-        "duration": 1639
+        "duration": 8905 
       },
       {
         "path": "Audio/Screaming/Screaming4.wav",
-        "duration": 1748
+        "duration": 8881
       }
     ]
   }
