@@ -4,57 +4,57 @@
       "sleepingIn": [
         {
           "path": "Audio/Sleeping/SleepingIn/SleepingIn0.wav",
-          "duration": 1000
+          "duration": 1277
         },
         {
           "path": "Audio/Sleeping/SleepingIn/SleepingIn1.wav",
-          "duration": 1000
+          "duration": 959
         },
         {
           "path": "Audio/Sleeping/SleepingIn/SleepingIn2.wav",
-          "duration": 1000
+          "duration": 919
         },
         {
           "path": "Audio/Sleeping/SleepingIn/SleepingIn3.wav",
-          "duration": 1000
+          "duration": 1012
         },
         {
           "path": "Audio/Sleeping/SleepingIn/SleepingIn4.wav",
-          "duration": 1000
+          "duration": 1211
         },
         {
           "path": "Audio/Sleeping/SleepingIn/SleepingIn5.wav",
-          "duration": 1000
+          "duration": 1061
         },
         {
           "path": "Audio/Sleeping/SleepingIn/SleepingIn6.wav",
-          "duration": 1000
+          "duration": 1032
         },
         {
           "path": "Audio/Sleeping/SleepingIn/SleepingIn7.wav",
-          "duration": 1000
+          "duration": 1162
         },
         {
           "path": "Audio/Sleeping/SleepingIn/SleepingIn8.wav",
-          "duration": 1000
+          "duration": 1154
         },
         {
           "path": "Audio/Sleeping/SleepingIn/SleepingIn9.wav",
-          "duration": 1000
+          "duration": 1176
         }
       ],
       "sleepingOut": [
         {
           "path": "Audio/Sleeping/SleepingOut/SleepingOut0.wav",
-          "duration": 1000
+          "duration": 1169
         },
         {
           "path": "Audio/Sleeping/SleepingOut/SleepingOut1.wav",
-          "duration": 1000
+          "duration": 930
         },
         {
           "path": "Audio/Sleeping/SleepingOut/SleepingOut2.wav",
-          "duration": 1000
+          "duration": 782
         },
         {
           "path": "Audio/Sleeping/SleepingOut/SleepingOut3.wav",
@@ -62,7 +62,7 @@
         },
         {
           "path": "Audio/Sleeping/SleepingOut/SleepingOut4.wav",
-          "duration": 1000
+          "duration": 984
         },
         {
           "path": "Audio/Sleeping/SleepingOut/SleepingOut5.wav",
@@ -70,19 +70,19 @@
         },
         {
           "path": "Audio/Sleeping/SleepingOut/SleepingOut6.wav",
-          "duration": 1000
+          "duration": 1029
         },
         {
           "path": "Audio/Sleeping/SleepingOut/SleepingOut7.wav",
-          "duration": 1000
+          "duration": 970
         },
         {
           "path": "Audio/Sleeping/SleepingOut/SleepingOut8.wav",
-          "duration": 1000
+          "duration": 916
         },
         {
           "path": "Audio/Sleeping/SleepingIn/SleepingOut9.wav",
-          "duration": 1000
+          "duration": 1062
         }
       ]
     },

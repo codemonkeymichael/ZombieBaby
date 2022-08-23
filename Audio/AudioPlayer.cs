@@ -35,7 +35,7 @@ public static class AudioPlayer
         string fileName = "Audio/audioTracks.json";
         using FileStream openStream = File.OpenRead(fileName);
         Tracks = await JsonSerializer.DeserializeAsync<AudioRoot>(openStream);
-        Console.WriteLine("InitAudio " + Tracks?.audioTracks.awake[0].path);
+        Console.WriteLine("InitAudio Test Read " + Tracks?.audioTracks.awake[0].path);
      
     }
 
