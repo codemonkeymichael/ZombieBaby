@@ -12,7 +12,7 @@ https://www.youtube.com/watch?v=89XovIYhNDw&t=38s
 **Carriage Rocking** - https://youtube.com/shorts/Z2Nm4D41LHU  
 
 Audio Player   
-https://github.com/dotnet/iot/blob/main/src/devices/Media/README.md          
+https://github.com/videolan/libvlcsharp         
     
 ### Script   
    
