@@ -1,0 +1,211 @@
+{
+  "audioTracks": {
+    "sleeping": {
+      "sleepingIn": [
+        {
+          "path": "Audio/Sleeping/SleepingIn/SleepingIn0.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingIn/SleepingIn1.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingIn/SleepingIn2.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingIn/SleepingIn3.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingIn/SleepingIn4.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingIn/SleepingIn5.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingIn/SleepingIn6.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingIn/SleepingIn7.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingIn/SleepingIn8.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingIn/SleepingIn9.wav",
+          "duration": 1000
+        }
+      ],
+      "sleepingOut": [
+        {
+          "path": "Audio/Sleeping/SleepingOut/SleepingOut0.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingOut/SleepingOut1.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingOut/SleepingOut2.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingOut/SleepingOut3.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingOut/SleepingOut4.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingOut/SleepingOut5.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingOut/SleepingOut6.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingOut/SleepingOut7.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingOut/SleepingOut8.wav",
+          "duration": 1000
+        },
+        {
+          "path": "Audio/Sleeping/SleepingIn/SleepingOut9.wav",
+          "duration": 1000
+        }
+      ]
+    },
+    "dreaming": [
+      {
+        "path": "Audio/Dreaming/Dreaming0.wav",
+        "duration": 3859
+      },
+      {
+        "path": "Audio/Dreaming/Dreaming1.wav",
+        "duration": 2639
+      },
+      {
+        "path": "Audio/Dreaming/Dreaming2.wav",
+        "duration": 4608
+      },
+      {
+        "path": "Audio/Dreaming/Dreaming3.wav",
+        "duration": 2561
+      },
+      {
+        "path": "Audio/Dreaming/Dreaming4.wav",
+        "duration": 7227
+      },
+      {
+        "path": "Audio/Dreaming/Dreaming5wav",
+        "duration": 13888
+      }
+    ],
+    "awake": [
+      {
+        "path": "Audio/Awake/Awake0.wav",
+        "duration": 5832
+      },
+      {
+        "path": "Audio/Awake/Awake1.wav",
+        "duration": 3838
+      },
+      {
+        "path": "Audio/Awake/Awake2.wav",
+        "duration": 3173
+      },
+      {
+        "path": "Audio/Awake/Awake3.wav",
+        "duration": 3114
+      },
+      {
+        "path": "Audio/Awake/Awake4.wav",
+        "duration": 3678
+      },
+      {
+        "path": "Audio/Awake/Awake5.wav",
+        "duration": 2088
+      }
+    ],
+    "sittingUp": [
+      {
+        "path": "Audio/SittingUp/SittingUp0.wav",
+        "duration": 3449
+      },
+      {
+        "path": "Audio/SittingUp/SittingUp1.wav",
+        "duration": 3793
+      },
+      {
+        "path": "Audio/SittingUp/SittingUp2.wav",
+        "duration": 3046
+      },
+      {
+        "path": "Audio/SittingUp/SittingUp3.wav",
+        "duration": 3854
+      },
+      {
+        "path": "Audio/SittingUp/SittingUp4.wav",
+        "duration": 2717
+      },
+      {
+        "path": "Audio/SittingUp/SittingUp5.wav",
+        "duration": 3282
+      },
+      {
+        "path": "Audio/SittingUp/SittingUp6.wav",
+        "duration": 2778
+      },
+      {
+        "path": "Audio/SittingUp/SittingUp7.wav",
+        "duration": 3709
+      },
+      {
+        "path": "Audio/SittingUp/SittingUp8.wav",
+        "duration": 3228
+      },
+      {
+        "path": "Audio/SittingUp/SittingUp9.wav",
+        "duration": 4176
+      },
+      {
+        "path": "Audio/SittingUp/SittingUp10.wav",
+        "duration": 6465
+      }
+    ],
+    "screaming": [
+      {
+        "path": "Audio/Screaming/Screaming0.wav",
+        "duration": 824
+      },
+      {
+        "path": "Audio/Screaming/Screaming1.wav",
+        "duration": 1398
+      },
+      {
+        "path": "Audio/Screaming/Screaming2.wav",
+        "duration":1793
+      },
+      {
+        "path": "Audio/Screaming/Screaming3.wav",
+        "duration": 1639
+      },
+      {
+        "path": "Audio/Screaming/Screaming4.wav",
+        "duration": 1748
+      }
+    ]
+  }
+}
+

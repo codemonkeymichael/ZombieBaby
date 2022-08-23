@@ -1,6 +1,7 @@
 ﻿using LibVLCSharp.Shared;
 using System.Diagnostics;
 using System.Timers;
+using ZombieBaby.Audio;
 using ZombieBaby.Light;
 using ZombieBaby.Utilities;
 
@@ -32,6 +33,8 @@ class Program
         {
             Console.WriteLine(proc.StandardOutput.ReadLine());  //this contains the ip output                    
         }
+
+        AudioPlayer.InitAudio();
 
         DMX.Connect();
         Light.Ambient.GroundEffect(10, 5000);

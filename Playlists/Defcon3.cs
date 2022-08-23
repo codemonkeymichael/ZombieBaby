@@ -1,4 +1,5 @@
-﻿using ZombieBaby.Utilities;
+﻿using ZombieBaby.Audio;
+using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Playlists;
 
@@ -14,7 +15,7 @@ public static class Defcon3
         int iteration = 0;
         while (Status.CurrentStatus == 3)
         {
-            Thread sleepIn = new Thread(() => Audio.Audio.Play(Audio.Audio.AudioType.SleepingIn));
+            Thread sleepIn = new Thread(() => AudioPlayer.Play(AudioPlayer.AudioType.SleepingIn));
             sleepIn.Start();
             Movement.Body.SleepingBreath();
 
@@ -24,7 +25,7 @@ public static class Defcon3
                 Thread.Sleep(600);               
                 Movement.Head.RightHalf();
                 Thread.Sleep(200);
-                Thread dream = new Thread(() => Audio.Audio.Play(Audio.Audio.AudioType.Dreaming));
+                Thread dream = new Thread(() => AudioPlayer.Play(AudioPlayer.AudioType.Dreaming));
                 dream.Start();
                 Thread.Sleep(200);
                 Movement.Head.Center();
@@ -39,7 +40,7 @@ public static class Defcon3
             fan.Start();
             Thread.Sleep(900);
             Movement.Body.Release();
-            Audio.Audio.Play(Audio.Audio.AudioType.SleepingOut);
+            AudioPlayer.Play(AudioPlayer.AudioType.SleepingOut);
 
             //if (iteration == 0)
             //{
