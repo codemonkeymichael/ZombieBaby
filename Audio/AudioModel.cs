@@ -14,6 +14,7 @@ public class AudioTracks
     public List<Dreaming> dreaming { get; set; }
     public List<Awake> awake { get; set; }
     public List<SittingUp> sittingUp { get; set; }
+    public List<Screaming> screaming { get; set; }
 }
 
 public class Awake
@@ -27,8 +28,6 @@ public class Dreaming
     public string path { get; set; }
     public int duration { get; set; }
 }
-
-
 
 public class SittingUp
 {
@@ -49,6 +48,12 @@ public class SleepingIn
 }
 
 public class SleepingOut
+{
+    public string path { get; set; }
+    public int duration { get; set; }
+}
+
+public class Screaming
 {
     public string path { get; set; }
     public int duration { get; set; }

@@ -13,7 +13,8 @@ public static class AudioPlayer
         SleepingOut,
         Dreaming,
         Awake,
-        SittingUp
+        SittingUp,
+        Screaming
     }
 
     private static int SleepingInCurrent { get; set; } = 0;
@@ -21,6 +22,7 @@ public static class AudioPlayer
     private static int DreamingCurrent { get; set; } = 0;
     private static int AwakeCurrent { get; set; } = 0;
     private static int SittingUpCurrent { get; set; } = 0;
+    private static int ScreamingCurrent { get; set; } = 0;
     private static AudioRoot? Tracks { get; set; }
 
 
@@ -36,7 +38,7 @@ public static class AudioPlayer
         using FileStream openStream = File.OpenRead(fileName);
         Tracks = await JsonSerializer.DeserializeAsync<AudioRoot>(openStream);
         Console.WriteLine("InitAudio Test Read " + Tracks?.audioTracks.awake[0].path);
-     
+
     }
 
     /// <summary>
@@ -71,6 +73,11 @@ public static class AudioPlayer
                 SittingUpCurrent++;
                 if (SittingUpCurrent >= Tracks.audioTracks.sittingUp.Count) SittingUpCurrent = 0;
                 path = Tracks.audioTracks.sittingUp[SittingUpCurrent].path;
+                break;
+            case "Screaming":
+                ScreamingCurrent++;
+                if (ScreamingCurrent >= Tracks.audioTracks.screaming.Count) ScreamingCurrent = 0;
+                path = Tracks.audioTracks.screaming[ScreamingCurrent].path;
                 break;
         }
         string fullpath = $"{AppDomain.CurrentDomain.BaseDirectory}{path}";
@@ -108,6 +115,9 @@ public static class AudioPlayer
                     break;
                 case "SittingUp":
                     Thread.Sleep(Tracks.audioTracks.sittingUp[SittingUpCurrent].duration);
+                    break;
+                case "Screaming":
+                    Thread.Sleep(Tracks.audioTracks.screaming[ScreamingCurrent].duration);
                     break;
             }
             _media.Dispose();

@@ -1,4 +1,5 @@
-﻿using ZombieBaby.Utilities;
+﻿using ZombieBaby.Audio;
+using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Playlists;
 
@@ -13,6 +14,8 @@ public static class Defcon1
         Thread.Sleep(1500);
         Playlists.Eyes.Open();
         Thread.Sleep(3000);
+        Thread dream = new Thread(() => AudioPlayer.Play(AudioPlayer.AudioType.Dreaming));
+        dream.Start();
         Movement.Body.UpFastEaseOut();
         Thread.Sleep(1000);
         //DMX.ChannelList.Channels[5].ChannelValue = 30;
