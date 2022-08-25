@@ -86,7 +86,7 @@ public static class Ambient
         DMX.ChannelList[6].TargetValue = 250;
         DMX.ChannelList[7].TargetValue = 0;
         DMX.ChannelList[8].TargetValue = 0;
-        DMX.ChannelList[9].TargetValue = 0;
+
 
     }
 
