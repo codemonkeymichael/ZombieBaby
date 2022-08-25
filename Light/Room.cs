@@ -19,6 +19,13 @@ public class Room
         DMX.Update(duration);
     }
 
-  
+    public static void OneChannel(int channel = 0, int value = 0)
+    {
+        Console.WriteLine($"OneChannel chan={channel} val={value}" );
+        DMX.ChannelList[channel].TargetValue = value;
+       
+    }
+
+
 
 }

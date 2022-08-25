@@ -24,7 +24,7 @@ public static class Room
 
     public static void WaveAll(int count = 2, int duration = 5000)
     {
-        Console.WriteLine("Playlists Strobe");
+        Console.WriteLine("Playlists WaveAll");
         DMX.RecordChannels();
         for (int i = 0; i < count; i++)
         {
@@ -33,5 +33,12 @@ public static class Room
             DMX.ReadChannels(duration);
             Thread.Sleep(duration/2);
         }
+    }
+
+    public static void Stage1(int count = 2, int duration = 5000)
+    {
+        Console.WriteLine("Playlists Stage1");
+     
+     
     }
 }
