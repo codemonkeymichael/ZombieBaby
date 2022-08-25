@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,23 +26,6 @@ public static class Head
         }
     }
 
-    public static void Nightmare1(int count)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            Movement.Head.LeftHalf();
-            Thread.Sleep(1000);
-            Movement.Head.Center();
-            Thread.Sleep(1000);
-            Movement.Head.RightHalf();
-            Thread.Sleep(1000);
-            Movement.Head.Center();
-            Thread.Sleep(1000);
-            Movement.Head.Release();
-            Thread.Sleep(1000);
-        }
-    }
-
     public static void Awake1(int count)
     {
         for (int i = 0; i < count; i++)
@@ -57,5 +41,34 @@ public static class Head
             Movement.Head.Release();
             Thread.Sleep(1000);
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="duration"></param>
+    public static void Nightmare1(int duration)
+    {
+        var sw = new Stopwatch();
+        sw.Start();
+        while (true)
+        {
+            Movement.Head.Left();              
+            Thread.Sleep(600);
+            if (sw.ElapsedMilliseconds > duration) break;
+            Movement.Head.RightHalf();             
+            Thread.Sleep(200);
+            if (sw.ElapsedMilliseconds > duration) break;
+            Movement.Head.Center();             
+            Thread.Sleep(400);
+            if (sw.ElapsedMilliseconds > duration) break;
+            Movement.Head.Right();             
+            Thread.Sleep(800);
+            if (sw.ElapsedMilliseconds > duration) break;
+            Movement.Head.LeftHalf();          
+            Thread.Sleep(400);
+        }
+        sw.Stop();      
+
     }
 }

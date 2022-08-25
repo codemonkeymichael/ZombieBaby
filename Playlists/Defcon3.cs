@@ -19,20 +19,17 @@ public static class Defcon3
             sleepIn.Start();
             Movement.Body.SleepingBreath();
 
-            if(iteration == 15 || iteration == 8 || iteration == 2 )
+            if (iteration == 15 || iteration == 8 || iteration == 2)
             {
-                Movement.Head.Left();
-                Thread.Sleep(600);               
-                Movement.Head.RightHalf();
-                Thread.Sleep(200);
-                Thread dream = new Thread(() => AudioPlayer.Play(AudioPlayer.AudioType.Dreaming));
-                dream.Start();
-                Thread.Sleep(200);
-                Movement.Head.Center();
-                Thread.Sleep(400);
-                Movement.Head.Right();
-                Thread.Sleep(800);
-                Movement.Head.LeftHalf();
+                Thread dreamAudio = new Thread(() => AudioPlayer.Play(AudioPlayer.AudioType.Dreaming, 800));
+                dreamAudio.Start(); 
+                Thread.Sleep(50);
+                Console.WriteLine(AudioPlayer.CurrentTrackDuration);
+                Thread dreamHead = new Thread(() => Playlists.Head.Nightmare1(AudioPlayer.CurrentTrackDuration));
+                dreamHead.Start();
+
+                Thread.Sleep(AudioPlayer.CurrentTrackDuration + 800);
+
             }
 
             Thread.Sleep(400);
