@@ -30,53 +30,67 @@ public static class AudioPlayer
     //private static Media _media;
     //private static MediaPlayer _mediaPlayer;
 
+    public static int CurrentTrackDuration { get; set; }
+
 
 
     public static async void InitAudio()
     {
-        string fileName = "Audio/audioTracks.json";
+
+        string fileName = $"{AppDomain.CurrentDomain.BaseDirectory}/Audio/audioTracks.json";
         using FileStream openStream = File.OpenRead(fileName);
         Tracks = await JsonSerializer.DeserializeAsync<AudioRoot>(openStream);
         Console.WriteLine("InitAudio Test Read " + Tracks?.audioTracks.awake[0].path);
 
     }
 
+
+    //TODO: Make two methods Play public that will return the audio duration and a private play that will actully play audio
+
     /// <summary>
     /// Do this well before you need to play. This gives the player some time to buffer the audio.
     /// </summary>
-    public static void Play(AudioType at)
+    public static void Play(AudioType at, int delay = 0)
     {
+        Thread.Sleep(delay);
+
         string path = "";
         switch (at.ToString())
         {
             case "SleepingIn":
                 SleepingInCurrent++;
                 if (SleepingInCurrent >= Tracks.audioTracks.sleeping.sleepingIn.Count) SleepingInCurrent = 0;
+                CurrentTrackDuration = Tracks.audioTracks.sleeping.sleepingIn[SleepingInCurrent].duration;
                 path = Tracks.audioTracks.sleeping.sleepingIn[SleepingInCurrent].path;
                 break;
             case "SleepingOut":
                 SleepingOutCurrent++;
                 if (SleepingOutCurrent >= Tracks.audioTracks.sleeping.sleepingOut.Count) SleepingOutCurrent = 0;
+                CurrentTrackDuration = Tracks.audioTracks.sleeping.sleepingOut[SleepingOutCurrent].duration;
                 path = Tracks.audioTracks.sleeping.sleepingOut[SleepingOutCurrent].path;
                 break;
             case "Dreaming":
                 DreamingCurrent++;
                 if (DreamingCurrent >= Tracks.audioTracks.dreaming.Count) DreamingCurrent = 0;
+                CurrentTrackDuration = Tracks.audioTracks.dreaming[DreamingCurrent].duration;
                 path = Tracks.audioTracks.dreaming[DreamingCurrent].path;
                 break;
             case "Awake":
                 AwakeCurrent++;
                 if (AwakeCurrent >= Tracks.audioTracks.awake.Count) AwakeCurrent = 0;
+                CurrentTrackDuration = Tracks.audioTracks.awake[AwakeCurrent].duration;
                 path = Tracks.audioTracks.awake[AwakeCurrent].path;
                 break;
             case "SittingUp":
                 SittingUpCurrent++;
                 if (SittingUpCurrent >= Tracks.audioTracks.sittingUp.Count) SittingUpCurrent = 0;
+                CurrentTrackDuration = Tracks.audioTracks.sittingUp[SittingUpCurrent].duration;
                 path = Tracks.audioTracks.sittingUp[SittingUpCurrent].path;
                 break;
             case "Screaming":
                 ScreamingCurrent++;
                 if (ScreamingCurrent >= Tracks.audioTracks.screaming.Count) ScreamingCurrent = 0;
+                CurrentTrackDuration = Tracks.audioTracks.screaming[ScreamingCurrent].duration;
                 path = Tracks.audioTracks.screaming[ScreamingCurrent].path;
                 break;
         }
@@ -94,32 +108,22 @@ public static class AudioPlayer
         {
             Media _media = new Media(_vlc, fullpath, FromType.FromPath);
             MediaPlayer _mediaPlayer = new MediaPlayer(_media);
+            if (at.ToString() == "Screaming")
+            {
+                _mediaPlayer.Volume = 100;
+            }
+            else
+            {
+                _mediaPlayer.Volume = 50;
+            }
+
             //Why doesn't this work?
             //_mediaPlayer.EndReached += new EventHandler<EventArgs>(OnPlaybackFinished); 
             //_mediaPlayer.Stopped += new EventHandler<EventArgs>(OnPlaybackFinished);      
             _mediaPlayer.Play();
 
-            switch (at.ToString())
-            {
-                case "SleepingIn":
-                    Thread.Sleep(Tracks.audioTracks.sleeping.sleepingIn[SleepingInCurrent].duration);
-                    break;
-                case "SleepingOut":
-                    Thread.Sleep(Tracks.audioTracks.sleeping.sleepingOut[SleepingOutCurrent].duration);
-                    break;
-                case "Dreaming":
-                    Thread.Sleep(Tracks.audioTracks.dreaming[DreamingCurrent].duration);
-                    break;
-                case "Awake":
-                    Thread.Sleep(Tracks.audioTracks.awake[AwakeCurrent].duration);
-                    break;
-                case "SittingUp":
-                    Thread.Sleep(Tracks.audioTracks.sittingUp[SittingUpCurrent].duration);
-                    break;
-                case "Screaming":
-                    Thread.Sleep(Tracks.audioTracks.screaming[ScreamingCurrent].duration);
-                    break;
-            }
+            Thread.Sleep(CurrentTrackDuration);
+
             _media.Dispose();
             _mediaPlayer.Dispose();
         }
