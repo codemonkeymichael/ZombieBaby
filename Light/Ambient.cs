@@ -12,13 +12,13 @@ public static class Ambient
     public static bool FadeOut { get; set; } = false;
 
     public static void On()
-    { 
-        Gpios.footLight.DutyCycle = 0.9;    
+    {
+        Gpios.footLight.DutyCycle = 0.9;
     }
 
     public static void Off()
-    {           
-        Gpios.footLight.DutyCycle = 0.1;     
+    {
+        Gpios.footLight.DutyCycle = 0.1;
     }
 
     public static void Flicker()
@@ -26,12 +26,12 @@ public static class Ambient
         Flicker(4, 9, 1, 4, 25, 150);
     }
 
-    public static void Flicker(int dimMin, int dimMax, int speedMin, int speedMax, int holdMin, int holdMax )
+    public static void Flicker(int dimMin, int dimMax, int speedMin, int speedMax, int holdMin, int holdMax)
     {
         Console.WriteLine("Ambient Flicker Started");
         Random rnd = new Random();
         double cur = 0.5;
- 
+
         while (true)
         {
             double flicker = (double)rnd.NextInt64(dimMin, dimMax) / (double)10; //4 9
@@ -72,6 +72,22 @@ public static class Ambient
         DMX.ChannelList[10].TargetValue = level;
         DMX.ChannelList[11].TargetValue = 0;
         DMX.Update(duration);
+    }
+
+    public static void Room()
+    {
+        Console.WriteLine("Room EFX");
+        DMX.ChannelList[0].TargetValue = 0;
+        DMX.ChannelList[1].TargetValue = 0;
+        DMX.ChannelList[2].TargetValue = 0;
+        DMX.ChannelList[3].TargetValue = 250;
+        DMX.ChannelList[4].TargetValue = 0;
+        DMX.ChannelList[5].TargetValue = 0;
+        DMX.ChannelList[6].TargetValue = 250;
+        DMX.ChannelList[7].TargetValue = 0;
+        DMX.ChannelList[8].TargetValue = 0;
+        DMX.ChannelList[9].TargetValue = 0;
+
     }
 
 }

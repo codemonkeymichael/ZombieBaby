@@ -38,6 +38,7 @@ class Program
 
         DMX.Connect();
         Light.Ambient.GroundEffect(10, 5000);
+        Light.Ambient.Room();
 
         //VLC Audio Player Init
         Core.Initialize();
