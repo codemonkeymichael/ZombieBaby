@@ -77,15 +77,15 @@ public static class Ambient
     public static void Room()
     {
         Console.WriteLine("Room EFX");
-        DMX.ChannelList[0].TargetValue = 0;
+        DMX.ChannelList[0].TargetValue = 5;
         DMX.ChannelList[1].TargetValue = 0;
         DMX.ChannelList[2].TargetValue = 0;
-        DMX.ChannelList[3].TargetValue = 250;
-        DMX.ChannelList[4].TargetValue = 0;
-        DMX.ChannelList[5].TargetValue = 0;
-        DMX.ChannelList[6].TargetValue = 250;
-        DMX.ChannelList[7].TargetValue = 0;
-        DMX.ChannelList[8].TargetValue = 0;
+        DMX.ChannelList[3].TargetValue = 0; //red
+        DMX.ChannelList[4].TargetValue = 3; //green
+        DMX.ChannelList[5].TargetValue = 15; //blue
+        DMX.ChannelList[6].TargetValue = 0;
+        DMX.ChannelList[7].TargetValue = 1;
+        DMX.ChannelList[8].TargetValue = 15;
 
 
     }
