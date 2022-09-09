@@ -1,22 +1,22 @@
 ﻿namespace ZombieBaby.Playlists;
 
-public static class Smoke
+public class Smoke
 {
-    public static void Blow()
+    public void Blow()
     {
         Thread smoke = new Thread(() => Effects.Smoke.OnOff());
         smoke.Start();
         Thread.Sleep(3000); //How long to smoke before turning on the fan
-        Effects.Fan.OnOff(15000);
+        //Effects.Fan.OnOff(15000);
     }
 
-    public static void BlowBlinders()
+    public void BlowBlinders()
     {
         Thread smoke = new Thread(() => Effects.Smoke.OnOff());
         smoke.Start();
         Thread.Sleep(3000); //How long to smoke before turning on the fan
-        Thread fan = new Thread(() => Effects.Fan.OnOff(15000));
-        fan.Start();
+        //Thread fan = new Thread(() => Effects.Fan.OnOff(15000));
+        //fan.Start();
         Thread.Sleep(2000);
         Thread blinders = new Thread(() => Light.Blinders.OnOff());
         blinders.Start();

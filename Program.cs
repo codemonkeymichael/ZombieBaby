@@ -1,5 +1,7 @@
-﻿using LibVLCSharp.Shared;
+﻿using AutoMapper;
+using LibVLCSharp.Shared;
 using System.Diagnostics;
+using System.Text.Json;
 using System.Timers;
 using ZombieBaby.Audio;
 using ZombieBaby.Light;
@@ -15,6 +17,11 @@ class Program
 
         Console.Clear();
         Console.WriteLine("Zombie Baby is Running Ver 0.7");
+
+
+        //var config = new MapperConfiguration(cfg => { cfg.AddProfile(new AutoMapperProfile()); });
+        //var mapper = config.CreateMapper();
+        //builder.Services.AddSingleton(mapper);
 
         var proc = new Process
         {
@@ -34,7 +41,9 @@ class Program
             Console.WriteLine(proc.StandardOutput.ReadLine());  //this contains the ip output                    
         }
 
-        AudioPlayer.InitAudio();
+   
+
+
 
         DMX.Connect();
         Light.Ambient.GroundEffect(10, 5000);
@@ -48,6 +57,9 @@ class Program
 
         Thread flicker = new Thread(() => Ambient.Flicker());
         flicker.Start();
+
+        AudioPlayer.InitAudio();
+        Thread.Sleep(2000);
 
         var inputLastState = PinValue.Low;
 
@@ -72,14 +84,15 @@ class Program
     {
         Console.WriteLine("");
         Utilities.DMX.Disconnect();
-        Movement.Body.Release();
+        Movement.Body b = new Movement.Body();
+        b.Release();
         Movement.Carriage.Release();
         Light.Eyes.Off();
         Movement.Eyes.Closed();
         Thread.Sleep(1000);
         Movement.Eyes.Release();
         Movement.Head.Release();
-        Effects.Fan.Off();
+        //Effects.Fan.Off();
         Console.WriteLine("Bye for now :)");
     }
 }

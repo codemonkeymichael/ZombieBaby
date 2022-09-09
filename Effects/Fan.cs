@@ -7,23 +7,23 @@ using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Effects;
 
-public static class Fan
+public class Fan
 {
-    public static void On()
+    public void On()
     {
         Console.WriteLine("Fan On");
         Gpios.piGPIOController.Write(Gpios.Fan, PinValue.High);
     }
-    public static void Off()
+    public void Off()
     {
         Console.WriteLine("Fan Off");
         Gpios.piGPIOController.Write(Gpios.Fan, PinValue.Low);
     }
 
-    public static void OnOff(int duration)
+    public void OnOffQuick()
     {
         On();
-        Thread.Sleep(duration);
+        Thread.Sleep(2500);
         Off();
 
     }

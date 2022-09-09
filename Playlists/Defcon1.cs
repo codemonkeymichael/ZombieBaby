@@ -8,15 +8,15 @@ public static class Defcon1
     public static void SitUp()
     {
         Console.WriteLine("Playlists Defcon1 SitUp()");
-        Movement.Body.Release();
-        Thread blowSmoke = new Thread(() => Playlists.Smoke.BlowBlinders());
-        blowSmoke.Start();
+        //Movement.Body.Release();
+        //Thread blowSmoke = new Thread(() => Playlists.Smoke.BlowBlinders());
+        //blowSmoke.Start();
         Thread.Sleep(1500);
         Playlists.Eyes.Open();
         Thread.Sleep(3000);
         Thread scream = new Thread(() => AudioPlayer.Play(AudioPlayer.AudioType.Screaming));
         scream.Start();
-        Movement.Body.UpFastEaseOut();
+        //Movement.Body.UpFastEaseOut();
         Thread.Sleep(1000);
         //DMX.ChannelList.Channels[5].ChannelValue = 30;
         ///DMX.ChannelList.Channels[6].ChannelValue = 15;
@@ -37,7 +37,7 @@ public static class Defcon1
         //DMX.ChannelList.Channels[6].ChannelValue = 0;
         //DMX.ChannelList.Channels[7].ChannelValue = 0;
         //DMX.SendDMX();
-        Movement.Body.DownEaseBoth();
+        //Movement.Body.DownEaseBoth();
         Thread.Sleep(2000);
         Playlists.Eyes.Closed();
         Movement.Head.Release();

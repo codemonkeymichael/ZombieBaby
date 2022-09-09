@@ -2,30 +2,30 @@
 using ZombieBaby.Audio;
 
 namespace ZombieBaby.Movement;
-public static class Body
+public class Body
 {
-    private static double up { get; } = 0.043;
-    private static double down { get; } = 0.078;
-    private static double stepSize { get; } = 0.001;
+    private double up { get; } = 0.043;
+    private double down { get; } = 0.078;
+    private double stepSize { get; } = 0.001;
 
-    public static void Release()
+    public void Release()
     {
         Console.WriteLine("Body Release");
         Motor.motorController.SetDutyCycle(2, 0);
     }
-    public static void UpFast()
+    public void UpFast()
     {
         Console.WriteLine("Body Sit up fast");
         Motor.motorController.SetDutyCycle(2, up);
     }
 
-    public static void DownFast()
+    public void DownFast()
     {
         Console.WriteLine("Body Lay down fast");
         Motor.motorController.SetDutyCycle(2, down);
     }
 
-    public static void UpMed()
+    public void UpMed()
     {
         Console.WriteLine("Body Sit up medium");
         for (double i = down; i > up; i = i - stepSize)
@@ -35,7 +35,7 @@ public static class Body
         }
     }
 
-    public static void DownMed()
+    public void DownMed()
     {
         Console.WriteLine("Body Lay down slow");
         for (double i = up; i < down; i = i + stepSize)
@@ -45,7 +45,7 @@ public static class Body
         }
     }
 
-    public static void UpSlow()
+    public void UpSlow()
     {
         Console.WriteLine("Body Sit up slow");
         for (double i = down; i > up; i = i - stepSize)
@@ -55,7 +55,7 @@ public static class Body
         }
     }
 
-    public static void DownSlow()
+    public void DownSlow()
     {
         Console.WriteLine("Body Lay down slow");
         for (double i = up; i < down; i = i + stepSize)
@@ -64,7 +64,7 @@ public static class Body
             Thread.Sleep(15);
         }
     }
-    public static void UpDownSlow()
+    public void UpDownSlow()
     {
         Console.WriteLine("Body Up Down Slow");
         UpSlow();
@@ -72,7 +72,7 @@ public static class Body
         DownSlow();
     }
 
-    public static void UpFastEaseOut()
+    public void UpFastEaseOut()
     {
         Console.WriteLine("Body Up Fast Ease Out");
         int numberOfSteps = (int)Math.Round((down - up) / stepSize, MidpointRounding.AwayFromZero);
@@ -95,7 +95,7 @@ public static class Body
         }
     }
 
-    public static void DownEaseBoth()
+    public void DownEaseBoth()
     {
         Console.WriteLine("Body Down Ease Both");
         int steps = (int)Math.Round((down - up) / stepSize, MidpointRounding.AwayFromZero);
@@ -124,10 +124,10 @@ public static class Body
         Release();
     }
 
-    public static void SleepingBreath()
+    public void SleepingBreath()
     {
         Console.WriteLine("Sleeping Breath");
-        double downish = 0.075;
+        double downish = 0.077;
 
         for (double i = down; i > downish; i = i - stepSize)
         {

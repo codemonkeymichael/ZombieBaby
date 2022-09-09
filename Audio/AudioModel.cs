@@ -2,11 +2,13 @@
 
 namespace ZombieBaby.Audio;
 
-public class AudioRoot
+
+// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+
+public class Root
 {
     public AudioTracks audioTracks { get; set; }
 }
-
 
 public class AudioTracks
 {
@@ -21,18 +23,45 @@ public class Awake
 {
     public string path { get; set; }
     public int duration { get; set; }
+    public int audioStartDelay { get; set; }
+    public int volume { get; set; }
+    public List<CueList> cueList { get; set; }
+}
+
+public class CueList
+{
+    public int time { get; set; }
+    public string type { get; set; }
+    public string method { get; set; }
 }
 
 public class Dreaming
 {
     public string path { get; set; }
     public int duration { get; set; }
+    public int audioStartDelay { get; set; }
+    public int volume { get; set; }
+    public List<CueList> cueList { get; set; }
+}
+
+
+
+public class Screaming
+{
+    public string path { get; set; }
+    public int duration { get; set; }
+    public int audioStartDelay { get; set; }
+    public int volume { get; set; }
+    public List<CueList> cueList { get; set; }
 }
 
 public class SittingUp
 {
     public string path { get; set; }
     public int duration { get; set; }
+    public int audioStartDelay { get; set; }
+    public int volume { get; set; }
+    public List<CueList> cueList { get; set; }
 }
 
 public class Sleeping
@@ -45,17 +74,31 @@ public class SleepingIn
 {
     public string path { get; set; }
     public int duration { get; set; }
+    public int audioStartDelay { get; set; }
+    public int volume { get; set; }
+    public List<CueList> cueList { get; set; }
 }
 
 public class SleepingOut
 {
     public string path { get; set; }
     public int duration { get; set; }
+    public int audioStartDelay { get; set; }
+    public int volume { get; set; }
+    public List<CueList> cueList { get; set; }
 }
 
-public class Screaming
+
+
+public class TrackObject
 {
     public string path { get; set; }
     public int duration { get; set; }
+    public int audioStartDelay { get; set; }
+    public int volume { get; set; }
+    public List<CueList> cueList { get; set; }
 }
+
+
+
 

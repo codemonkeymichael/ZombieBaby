@@ -5,7 +5,9 @@ public static class Body
     public static void SitUp()
     {
         Console.WriteLine("Playlists SitUp()");
-        Movement.Body.Release();
+        //Movement.Body.Release();
+
+
         //Thread blowSmoke = new Thread(() => Playlists.Smoke.BlowBlinders());
         //blowSmoke.Start();
         //Playlists.Eyes.Open();

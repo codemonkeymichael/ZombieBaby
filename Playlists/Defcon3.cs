@@ -9,34 +9,37 @@ public static class Defcon3
     {
         Console.WriteLine("Playlists Defcon3 Sleep");
 
-        Movement.Body.Release();
-        Movement.Head.LeftHalf(); //Away from the crowd
+        //Movement.Body.Release();
+        //Movement.Head.Right(); //Away from the crowd
 
         int iteration = 0;
         while (Status.CurrentStatus == 3)
         {
-            Thread sleepIn = new Thread(() => AudioPlayer.Play(AudioPlayer.AudioType.SleepingIn));
-            sleepIn.Start();
-            Movement.Body.SleepingBreath();
+            //Thread sleepIn = new Thread(() => AudioPlayer.Play(AudioPlayer.AudioType.SleepingIn));
+            //sleepIn.Start();
+            //Movement.Body.SleepingBreath();
+
+            AudioPlayer.Play(AudioPlayer.AudioType.SleepingIn);
+
 
             if (iteration == 15 || iteration == 8 || iteration == 2)
             {
-                Thread dreamAudio = new Thread(() => AudioPlayer.Play(AudioPlayer.AudioType.Dreaming, 800));
-                dreamAudio.Start(); 
-                Thread.Sleep(50);
-                Console.WriteLine(AudioPlayer.CurrentTrackDuration);
-                Thread dreamHead = new Thread(() => Playlists.Head.Nightmare1(AudioPlayer.CurrentTrackDuration));
-                dreamHead.Start();
+                Thread.Sleep(500);
+                //Thread dreamAudio = new Thread(() => AudioPlayer.Play(AudioPlayer.AudioType.Dreaming, 800));
+                //dreamAudio.Start();          
+                
+                //Thread dreamHead = new Thread(() => Playlists.Head.Nightmare1(AudioPlayer.CurrentTrackDuration));
+                //dreamHead.Start();
 
-                Thread.Sleep(AudioPlayer.CurrentTrackDuration + 800);
-
+                AudioPlayer.Play(AudioPlayer.AudioType.Dreaming);
+   
             }
 
-            Thread.Sleep(400);
-            Thread fan = new Thread(() => Effects.Fan.OnOff(2000));
-            fan.Start();
             Thread.Sleep(900);
-            Movement.Body.Release();
+            //Thread fan = new Thread(() => Effects.Fan.OnOff(2000));
+            //fan.Start();
+            //Thread.Sleep(900);
+            //Movement.Body.Release();
             AudioPlayer.Play(AudioPlayer.AudioType.SleepingOut);
 
             //if (iteration == 0)

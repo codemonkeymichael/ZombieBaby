@@ -53,11 +53,11 @@ public static class Head
         sw.Start();
         while (true)
         {
-            Movement.Head.Left();              
+            Movement.Head.Right();              
             Thread.Sleep(600);
             if (sw.ElapsedMilliseconds > duration) break;
-            Movement.Head.RightHalf();             
-            Thread.Sleep(200);
+            Movement.Head.LeftHalf();             
+            Thread.Sleep(250);
             if (sw.ElapsedMilliseconds > duration) break;
             Movement.Head.Center();             
             Thread.Sleep(400);
@@ -65,8 +65,9 @@ public static class Head
             Movement.Head.Right();             
             Thread.Sleep(800);
             if (sw.ElapsedMilliseconds > duration) break;
-            Movement.Head.LeftHalf();          
-            Thread.Sleep(400);
+            Movement.Head.Left();          
+            Thread.Sleep(1400);
+            Movement.Head.Right();
         }
         sw.Stop();      
 
