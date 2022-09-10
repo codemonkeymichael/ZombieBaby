@@ -11,15 +11,6 @@ public static class Ambient
 {
     public static bool FadeOut { get; set; } = false;
 
-    public static void On()
-    {
-        Gpios.footLight.DutyCycle = 0.9;
-    }
-
-    public static void Off()
-    {
-        Gpios.footLight.DutyCycle = 0.1;
-    }
 
     public static void Flicker()
     {
@@ -77,17 +68,15 @@ public static class Ambient
     public static void Room()
     {
         Console.WriteLine("Room EFX");
-        DMX.ChannelList[0].TargetValue = 5;
-        DMX.ChannelList[1].TargetValue = 0;
-        DMX.ChannelList[2].TargetValue = 0;
-        DMX.ChannelList[3].TargetValue = 0; //red
-        DMX.ChannelList[4].TargetValue = 3; //green
-        DMX.ChannelList[5].TargetValue = 15; //blue
-        DMX.ChannelList[6].TargetValue = 0;
-        DMX.ChannelList[7].TargetValue = 1;
-        DMX.ChannelList[8].TargetValue = 15;
-
-
+        DMX.ChannelList[0].TargetValue = 5; //red 1
+        DMX.ChannelList[1].TargetValue = 0; //green 1
+        DMX.ChannelList[2].TargetValue = 0; // blue 1
+        DMX.ChannelList[3].TargetValue = 0; //red 2
+        DMX.ChannelList[4].TargetValue = 3; //green 2
+        DMX.ChannelList[5].TargetValue = 15; //blue 2
+        DMX.ChannelList[6].TargetValue = 0;  //red 3
+        DMX.ChannelList[7].TargetValue = 1;  //green 3
+        DMX.ChannelList[8].TargetValue = 15; //blue 3
     }
 
 }

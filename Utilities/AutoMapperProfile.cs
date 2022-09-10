@@ -34,18 +34,4 @@ namespace ZombieBaby.Utilities
         }
 
     }
-
-    //public class AutoMapperProfile : Profile
-    //{
-    //    public AutoMapperProfile()
-    //    {
-    //        //CreateMap<Awake, TrackObject>().ReverseMap(); //reverse so the both direction
-    //        //CreateMap<Dreaming, TrackObject>().ReverseMap();
-    //        //CreateMap<SittingUp, TrackObject>().ReverseMap();
-    //        //CreateMap<SleepingIn, TrackObject>().ReverseMap();
-    //        //CreateMap<SleepingOut, TrackObject>().ReverseMap(); 
-    //        //CreateMap<Screaming, TrackObject>().ReverseMap();
-    //        //CreateMap<CueList, TrackObject>().ReverseMap();
-    //    }
-    //}
 }
