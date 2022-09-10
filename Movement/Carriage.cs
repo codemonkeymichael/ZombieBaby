@@ -24,14 +24,16 @@ public class Carriage
         Motor.motorController.SetDutyCycle(3, 0);
     }
 
-    public static void Rock(int count)
+    public void Rock()
     {
-        for(var i = 0; i < count; i++)
+        int count = 3;      
+
+        for (var i = 0; i < count; i++)
         {
             Carriage.Down();
-            Thread.Sleep(200);
+            Thread.Sleep(250);
             Carriage.Up();
-            Thread.Sleep(200);
+            Thread.Sleep(250);
         }
         Carriage.Release();
     }

@@ -1,16 +1,8 @@
 ﻿// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
 
-namespace ZombieBaby.Audio;
-
-
+namespace ZombieBaby.Animation;
 // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-
-public class Root
-{
-    public AudioTracks audioTracks { get; set; }
-}
-
-public class AudioTracks
+public class AnimationTracks
 {
     public Sleeping sleeping { get; set; }
     public List<Dreaming> dreaming { get; set; }
@@ -21,7 +13,7 @@ public class AudioTracks
 
 public class Awake
 {
-    public string path { get; set; }
+    public string audioPath { get; set; }
     public int duration { get; set; }
     public int audioStartDelay { get; set; }
     public int volume { get; set; }
@@ -37,18 +29,21 @@ public class CueList
 
 public class Dreaming
 {
-    public string path { get; set; }
+    public string audioPath { get; set; }
     public int duration { get; set; }
     public int audioStartDelay { get; set; }
     public int volume { get; set; }
     public List<CueList> cueList { get; set; }
 }
 
-
+public class Root
+{
+    public AnimationTracks animationTracks { get; set; }
+}
 
 public class Screaming
 {
-    public string path { get; set; }
+    public string audioPath { get; set; }
     public int duration { get; set; }
     public int audioStartDelay { get; set; }
     public int volume { get; set; }
@@ -57,7 +52,7 @@ public class Screaming
 
 public class SittingUp
 {
-    public string path { get; set; }
+    public string audioPath { get; set; }
     public int duration { get; set; }
     public int audioStartDelay { get; set; }
     public int volume { get; set; }
@@ -72,7 +67,7 @@ public class Sleeping
 
 public class SleepingIn
 {
-    public string path { get; set; }
+    public string audioPath { get; set; }
     public int duration { get; set; }
     public int audioStartDelay { get; set; }
     public int volume { get; set; }
@@ -81,7 +76,7 @@ public class SleepingIn
 
 public class SleepingOut
 {
-    public string path { get; set; }
+    public string audioPath { get; set; }
     public int duration { get; set; }
     public int audioStartDelay { get; set; }
     public int volume { get; set; }
@@ -90,9 +85,10 @@ public class SleepingOut
 
 
 
+
 public class TrackObject
 {
-    public string path { get; set; }
+    public string audioPath { get; set; }
     public int duration { get; set; }
     public int audioStartDelay { get; set; }
     public int volume { get; set; }

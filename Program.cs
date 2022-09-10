@@ -3,7 +3,7 @@ using LibVLCSharp.Shared;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Timers;
-using ZombieBaby.Audio;
+using ZombieBaby.Animation;
 using ZombieBaby.Light;
 using ZombieBaby.Utilities;
 
@@ -18,11 +18,7 @@ class Program
         Console.Clear();
         Console.WriteLine("Zombie Baby is Running Ver 0.7");
 
-
-        //var config = new MapperConfiguration(cfg => { cfg.AddProfile(new AutoMapperProfile()); });
-        //var mapper = config.CreateMapper();
-        //builder.Services.AddSingleton(mapper);
-
+        //Get the IP address of this pi
         var proc = new Process
         {
             StartInfo = new ProcessStartInfo
@@ -34,17 +30,13 @@ class Program
                 CreateNoWindow = true //do not show a window
             }
         };
-
         proc.Start();  //start the process
         while (!proc.StandardOutput.EndOfStream)  //wait until entire stream from output read in
         {
             Console.WriteLine(proc.StandardOutput.ReadLine());  //this contains the ip output                    
         }
 
-   
-
-
-
+        //DMX Light Init
         DMX.Connect();
         Light.Ambient.GroundEffect(10, 5000);
         Light.Ambient.Room();
@@ -52,13 +44,13 @@ class Program
         //VLC Audio Player Init
         Core.Initialize();
 
-        Gpios io = new Gpios(); //Just need to hit the constructor here TODO Make this static
-        Motor mo = new Motor(); //Just need to hit the constructor here TODO Make this static
+        Gpios io = new Gpios(); 
+        Motor mo = new Motor();
 
         Thread flicker = new Thread(() => Ambient.Flicker());
         flicker.Start();
 
-        AudioPlayer.InitAudio();
+        AnimationPlayer.InitAnimation();
         Thread.Sleep(2000);
 
         var inputLastState = PinValue.Low;
@@ -82,10 +74,13 @@ class Program
 
     private static void CloseHandler(object? sender, ConsoleCancelEventArgs e)
     {
+
+
         Console.WriteLine("");
         Utilities.DMX.Disconnect();
         Movement.Body b = new Movement.Body();
         b.Release();
+        //Movement.Carriage c = new Movement.Carriage();
         Movement.Carriage.Release();
         Light.Eyes.Off();
         Movement.Eyes.Closed();

@@ -6,9 +6,9 @@ using Iot.Device.Media;
 using LibVLCSharp.Shared;
 using ZombieBaby.Utilities;
 
-namespace ZombieBaby.Audio;
+namespace ZombieBaby.Animation;
 
-public static class AudioPlayer
+public static class AnimationPlayer
 {
 
     public enum AudioType
@@ -31,30 +31,19 @@ public static class AudioPlayer
 
 
     private static LibVLC _vlc = new LibVLC();
-    //private static Media _media;
-    //private static MediaPlayer _mediaPlayer;
-
-    //public static int CurrentTrackDuration { get; set; }
 
 
-
-    public static async void InitAudio()
+    //This should go in its own class
+    public static async void InitAnimation()
     {
         //Read the json tracks
-        string fileName = $"{AppDomain.CurrentDomain.BaseDirectory}/Audio/audioTracks.json";
+        string fileName = $"{AppDomain.CurrentDomain.BaseDirectory}/animationTracks.json";
         using FileStream openStream = File.OpenRead(fileName);
         Tracks = await JsonSerializer.DeserializeAsync<Root>(openStream);
-
-        //Console.WriteLine("InitAudio Test Read 1 " + Tracks.audioTracks.sleeping.sleepingIn.Count);
-        //Console.WriteLine("InitAudio Test Read 2 " + Tracks.audioTracks.dreaming.Count);
-        //Console.WriteLine("InitAudio Test Read 3 " + Tracks.audioTracks.dreaming[0].path);
-        Console.WriteLine("InitAudio Test Read 4 " + Tracks.audioTracks.dreaming[0].cueList.Count);
+        Console.WriteLine("InitAudio Test Read " + Tracks.animationTracks.dreaming[0].cueList.Count);
 
     }
 
-    /// <summary>
-    /// Do this well before you need to play. This gives the player some time to buffer the audio.
-    /// </summary>
     public static void Play(AudioType at)
     {
         TrackObject trk = new TrackObject();
@@ -63,51 +52,51 @@ public static class AudioPlayer
         {
             case "SleepingIn":
                 SleepingInCurrent++;
-                if (SleepingInCurrent >= Tracks.audioTracks.sleeping.sleepingIn.Count) SleepingInCurrent = 0;
-                trk = ModelMapper.Map<TrackObject>(Tracks.audioTracks.sleeping.sleepingIn[SleepingInCurrent]);
+                if (SleepingInCurrent >= Tracks.animationTracks.sleeping.sleepingIn.Count) SleepingInCurrent = 0;
+                trk = ModelMapper.Map<TrackObject>(Tracks.animationTracks.sleeping.sleepingIn[SleepingInCurrent]);
 
                 break;
             case "SleepingOut":
                 SleepingOutCurrent++;
-                if (SleepingOutCurrent >= Tracks.audioTracks.sleeping.sleepingOut.Count) SleepingOutCurrent = 0;
-                trk = ModelMapper.Map<TrackObject>(Tracks.audioTracks.sleeping.sleepingOut[SleepingOutCurrent]);
+                if (SleepingOutCurrent >= Tracks.animationTracks.sleeping.sleepingOut.Count) SleepingOutCurrent = 0;
+                trk = ModelMapper.Map<TrackObject>(Tracks.animationTracks.sleeping.sleepingOut[SleepingOutCurrent]);
                 break;
             case "Dreaming":
                 DreamingCurrent++;
-                if (DreamingCurrent >= Tracks.audioTracks.dreaming.Count) DreamingCurrent = 0;
-                trk = ModelMapper.Map<TrackObject>(Tracks.audioTracks.dreaming[DreamingCurrent]);
+                if (DreamingCurrent >= Tracks.animationTracks.dreaming.Count) DreamingCurrent = 0;
+                trk = ModelMapper.Map<TrackObject>(Tracks.animationTracks.dreaming[DreamingCurrent]);
                 break;
             case "Awake":
                 AwakeCurrent++;
-                if (AwakeCurrent >= Tracks.audioTracks.awake.Count) AwakeCurrent = 0;
-                trk = ModelMapper.Map<TrackObject>(Tracks.audioTracks.awake[AwakeCurrent]);
+                if (AwakeCurrent >= Tracks.animationTracks.awake.Count) AwakeCurrent = 0;
+                trk = ModelMapper.Map<TrackObject>(Tracks.animationTracks.awake[AwakeCurrent]);
                 break;
             case "SittingUp":
                 SittingUpCurrent++;
-                if (SittingUpCurrent >= Tracks.audioTracks.sittingUp.Count) SittingUpCurrent = 0;
-                trk = ModelMapper.Map<TrackObject>(Tracks.audioTracks.sittingUp[SittingUpCurrent]);
+                if (SittingUpCurrent >= Tracks.animationTracks.sittingUp.Count) SittingUpCurrent = 0;
+                trk = ModelMapper.Map<TrackObject>(Tracks.animationTracks.sittingUp[SittingUpCurrent]);
                 break;
             case "Screaming":
                 ScreamingCurrent++;
-                if (ScreamingCurrent >= Tracks.audioTracks.screaming.Count) ScreamingCurrent = 0;
-                trk = ModelMapper.Map<TrackObject>(Tracks.audioTracks.screaming[ScreamingCurrent]);
+                if (ScreamingCurrent >= Tracks.animationTracks.screaming.Count) ScreamingCurrent = 0;
+                trk = ModelMapper.Map<TrackObject>(Tracks.animationTracks.screaming[ScreamingCurrent]);
                 break;
         }
 
 
-        Console.WriteLine("Audio Play " + trk.path);
+        Console.WriteLine("Audio Play " + trk.audioPath);
 
         //VLC Player Init
         try
         {
-            Media _media = new Media(_vlc, trk.path, FromType.FromPath);
+            Media _media = new Media(_vlc, trk.audioPath, FromType.FromPath);
             MediaPlayer _mediaPlayer = new MediaPlayer(_media);
             _mediaPlayer.Volume = trk.volume;
 
             //Why doesn't this work? The Media Player doesn't get disposed cause the event is on another thread ... I think
             //_mediaPlayer.EndReached += new EventHandler<EventArgs>((sender, e) => OnPlaybackFinished(sender, e, _media, _mediaPlayer));
 
-            Thread cuePlayer = new Thread(() => AudioPlayer.CuePlayer(trk.cueList));
+            Thread cuePlayer = new Thread(() => AnimationPlayer.CuePlayer(trk.cueList));
             cuePlayer.Start();
 
             Thread.Sleep(trk.audioStartDelay);
@@ -119,7 +108,7 @@ public static class AudioPlayer
         }
         catch (Exception ex)
         {
-            Console.WriteLine("AudioPlayer   -- " + ex);
+            Console.WriteLine("AnimationPlayer -- " + ex);
         }
     }
 
@@ -138,7 +127,7 @@ public static class AudioPlayer
         {
             var time = cue.time;
             var type = cue.type;
-            var method = cue.method;          
+            var method = cue.method;
             Thread playCue = new Thread(() => PlayCue(time, type, method));
             playCue.Start();
         }
@@ -149,9 +138,9 @@ public static class AudioPlayer
         Console.WriteLine($"    PlayCue {method} in {time}");
         try
         {
-            Assembly executing = Assembly.GetExecutingAssembly();   
-            Type movementType = executing.GetType(type);     
-            object typeObject = Activator.CreateInstance(movementType);      
+            Assembly executing = Assembly.GetExecutingAssembly();
+            Type movementType = executing.GetType(type);
+            object typeObject = Activator.CreateInstance(movementType);
             MethodInfo getMethod = movementType.GetMethod(method);
 
             //parameters
@@ -159,10 +148,10 @@ public static class AudioPlayer
             //param[0] = "1";
             //param[1] = "Lisa";
 
-            Thread.Sleep(time);   
+            Thread.Sleep(time);
             Console.WriteLine($"    Play {method}");
             getMethod.Invoke(typeObject, null);
-      
+
         }
         catch (Exception ex)
         {

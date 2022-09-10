@@ -1,12 +1,12 @@
 {
-  "audioTracks": {
+  "animationTracks": {
     "sleeping": {
       "sleepingIn": [
         {
-          "path": "Audio/Sleeping/SleepingIn/SleepingIn0.wav",
+          "audioPath": "Audio/Sleeping/SleepingIn/SleepingIn0.wav    xxxxx",
           "duration": 1277,
           "audioStartDelay": 15,
-          "volume" :  50,
+          "volume": 50,
           "cueList": [
             {
               "time": 5,
@@ -16,7 +16,7 @@
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingIn/SleepingIn1.wav",
+          "audioPath": "Audio/Sleeping/SleepingIn/SleepingIn1.wav",
           "duration": 959,
           "audioStartDelay": 15,
           "volume": 50,
@@ -29,7 +29,7 @@
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingIn/SleepingIn2.wav",
+          "audioPath": "Audio/Sleeping/SleepingIn/SleepingIn2.wav",
           "duration": 919,
           "audioStartDelay": 15,
           "volume": 50,
@@ -42,7 +42,7 @@
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingIn/SleepingIn3.wav",
+          "audioPath": "Audio/Sleeping/SleepingIn/SleepingIn3.wav",
           "duration": 1012,
           "audioStartDelay": 15,
           "volume": 50,
@@ -55,7 +55,7 @@
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingIn/SleepingIn4.wav",
+          "audioPath": "Audio/Sleeping/SleepingIn/SleepingIn4.wav",
           "duration": 1211,
           "audioStartDelay": 15,
           "volume": 50,
@@ -68,7 +68,7 @@
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingIn/SleepingIn5.wav",
+          "audioPath": "Audio/Sleeping/SleepingIn/SleepingIn5.wav",
           "duration": 1061,
           "audioStartDelay": 15,
           "volume": 50,
@@ -81,7 +81,7 @@
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingIn/SleepingIn6.wav",
+          "audioPath": "Audio/Sleeping/SleepingIn/SleepingIn6.wav",
           "duration": 1032,
           "audioStartDelay": 15,
           "volume": 50,
@@ -94,7 +94,7 @@
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingIn/SleepingIn7.wav",
+          "audioPath": "Audio/Sleeping/SleepingIn/SleepingIn7.wav",
           "duration": 1162,
           "audioStartDelay": 15,
           "volume": 50,
@@ -107,7 +107,7 @@
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingIn/SleepingIn8.wav",
+          "audioPath": "Audio/Sleeping/SleepingIn/SleepingIn8.wav",
           "duration": 1154,
           "audioStartDelay": 15,
           "volume": 50,
@@ -120,7 +120,7 @@
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingIn/SleepingIn9.wav",
+          "audioPath": "Audio/Sleeping/SleepingIn/SleepingIn9.wav",
           "duration": 1176,
           "audioStartDelay": 15,
           "volume": 50,
@@ -135,130 +135,180 @@
       ],
       "sleepingOut": [
         {
-          "path": "Audio/Sleeping/SleepingOut/SleepingOut0.wav",
+          "audioPath": "Audio/Sleeping/SleepingOut/SleepingOut0.wav",
           "duration": 1169,
-          "audioStartDelay": 15,
+          "audioStartDelay": 2000,
           "volume": 50,
           "cueList": [
             {
               "time": 5,
+              "type": "ZombieBaby.Effects.Fan",
+              "method": "OnOffQuick"
+            },
+            {
+              "time": 2000,
               "type": "ZombieBaby.Movement.Body",
               "method": "Release"
             }
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingOut/SleepingOut1.wav",
+          "audioPath": "Audio/Sleeping/SleepingOut/SleepingOut1.wav",
           "duration": 930,
-          "audioStartDelay": 15,
+          "audioStartDelay": 2000,
           "volume": 50,
           "cueList": [
             {
               "time": 5,
+              "type": "ZombieBaby.Effects.Fan",
+              "method": "OnOffQuick"
+            },
+            {
+              "time": 2000,
               "type": "ZombieBaby.Movement.Body",
               "method": "Release"
             }
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingOut/SleepingOut2.wav",
+          "audioPath": "Audio/Sleeping/SleepingOut/SleepingOut2.wav",
           "duration": 782,
-          "audioStartDelay": 15,
+          "audioStartDelay": 2000,
           "volume": 50,
           "cueList": [
             {
               "time": 5,
+              "type": "ZombieBaby.Effects.Fan",
+              "method": "OnOffQuick"
+            },
+            {
+              "time": 2000,
               "type": "ZombieBaby.Movement.Body",
               "method": "Release"
             }
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingOut/SleepingOut3.wav",
+          "audioPath": "Audio/Sleeping/SleepingOut/SleepingOut3.wav",
           "duration": 1000,
-          "audioStartDelay": 15,
+          "audioStartDelay": 2000,
           "volume": 50,
           "cueList": [
             {
               "time": 5,
+              "type": "ZombieBaby.Effects.Fan",
+              "method": "OnOffQuick"
+            },
+            {
+              "time": 2000,
               "type": "ZombieBaby.Movement.Body",
               "method": "Release"
             }
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingOut/SleepingOut4.wav",
+          "audioPath": "Audio/Sleeping/SleepingOut/SleepingOut4.wav",
           "duration": 984,
-          "audioStartDelay": 15,
+          "audioStartDelay": 2000,
           "volume": 50,
           "cueList": [
             {
               "time": 5,
+              "type": "ZombieBaby.Effects.Fan",
+              "method": "OnOffQuick"
+            },
+            {
+              "time": 2000,
               "type": "ZombieBaby.Movement.Body",
               "method": "Release"
             }
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingOut/SleepingOut5.wav",
+          "audioPath": "Audio/Sleeping/SleepingOut/SleepingOut5.wav",
           "duration": 1000,
-          "audioStartDelay": 15,
+          "audioStartDelay": 2000,
           "volume": 50,
           "cueList": [
             {
               "time": 5,
+              "type": "ZombieBaby.Effects.Fan",
+              "method": "OnOffQuick"
+            },
+            {
+              "time": 2000,
               "type": "ZombieBaby.Movement.Body",
               "method": "Release"
             }
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingOut/SleepingOut6.wav",
+          "audioPath": "Audio/Sleeping/SleepingOut/SleepingOut6.wav",
           "duration": 1029,
-          "audioStartDelay": 15,
+          "audioStartDelay": 2000,
           "volume": 50,
           "cueList": [
             {
               "time": 5,
+              "type": "ZombieBaby.Effects.Fan",
+              "method": "OnOffQuick"
+            },
+            {
+              "time": 2000,
               "type": "ZombieBaby.Movement.Body",
               "method": "Release"
             }
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingOut/SleepingOut7.wav",
+          "audioPath": "Audio/Sleeping/SleepingOut/SleepingOut7.wav",
           "duration": 970,
-          "audioStartDelay": 15,
+          "audioStartDelay": 2000,
           "volume": 50,
           "cueList": [
             {
-              "time": 5,
+              "time": 2,
+              "type": "ZombieBaby.Effects.Fan",
+              "method": "OnOffQuick"
+            },
+            {
+              "time": 2000,
               "type": "ZombieBaby.Movement.Body",
               "method": "Release"
             }
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingOut/SleepingOut8.wav",
+          "audioPath": "Audio/Sleeping/SleepingOut/SleepingOut8.wav",
           "duration": 916,
-          "audioStartDelay": 15,
+          "audioStartDelay": 2000,
           "volume": 50,
           "cueList": [
             {
               "time": 5,
+              "type": "ZombieBaby.Effects.Fan",
+              "method": "OnOffQuick"
+            },
+            {
+              "time": 2000,
               "type": "ZombieBaby.Movement.Body",
               "method": "Release"
             }
           ]
         },
         {
-          "path": "Audio/Sleeping/SleepingOut/SleepingOut9.wav",
+          "audioPath": "Audio/Sleeping/SleepingOut/SleepingOut9.wav",
           "duration": 1062,
-          "audioStartDelay": 15,
+          "audioStartDelay": 2000,
           "volume": 50,
           "cueList": [
             {
               "time": 5,
+              "type": "ZombieBaby.Effects.Fan",
+              "method": "OnOffQuick"
+            },
+            {
+              "time": 2000,
               "type": "ZombieBaby.Movement.Body",
               "method": "Release"
             }
@@ -268,87 +318,87 @@
     },
     "dreaming": [
       {
-        "path": "Audio/Dreaming/Dreaming0.wav",
+        "audioPath": "Audio/Dreaming/Dreaming0.wav",
         "duration": 3859,
-        "audioStartDelay": 15,
+        "audioStartDelay": 800,
         "volume": 50,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "Release"
-          } 
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          }
         ]
       },
       {
-        "path": "Audio/Dreaming/Dreaming1.wav",
+        "audioPath": "Audio/Dreaming/Dreaming1.wav",
         "duration": 2639,
-        "audioStartDelay": 15,
+        "audioStartDelay": 800,
         "volume": 50,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
           }
         ]
       },
       {
-        "path": "Audio/Dreaming/Dreaming2.wav",
+        "audioPath": "Audio/Dreaming/Dreaming2.wav",
         "duration": 4608,
-        "audioStartDelay": 15,
+        "audioStartDelay": 800,
         "volume": 50,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
           }
         ]
       },
       {
-        "path": "Audio/Dreaming/Dreaming3.wav",
+        "audioPath": "Audio/Dreaming/Dreaming3.wav",
         "duration": 2561,
-        "audioStartDelay": 15,
+        "audioStartDelay": 800,
         "volume": 50,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
           }
         ]
       },
       {
-        "path": "Audio/Dreaming/Dreaming4.wav",
+        "audioPath": "Audio/Dreaming/Dreaming4.wav",
         "duration": 7227,
-        "audioStartDelay": 15,
+        "audioStartDelay": 800,
         "volume": 50,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
           }
         ]
       },
       {
-        "path": "Audio/Dreaming/Dreaming5wav",
+        "audioPath": "Audio/Dreaming/Dreaming5wav",
         "duration": 13888,
-        "audioStartDelay": 15,
+        "audioStartDelay": 800,
         "volume": 50,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
           }
         ]
       }
     ],
     "awake": [
       {
-        "path": "Audio/Awake/Awake0.wav",
+        "audioPath": "Audio/Awake/Awake0.wav",
         "duration": 5832,
         "audioStartDelay": 15,
         "volume": 50,
@@ -361,7 +411,7 @@
         ]
       },
       {
-        "path": "Audio/Awake/Awake1.wav",
+        "audioPath": "Audio/Awake/Awake1.wav",
         "duration": 3838,
         "audioStartDelay": 15,
         "volume": 50,
@@ -374,7 +424,7 @@
         ]
       },
       {
-        "path": "Audio/Awake/Awake2.wav",
+        "audioPath": "Audio/Awake/Awake2.wav",
         "duration": 3173,
         "audioStartDelay": 15,
         "volume": 50,
@@ -387,7 +437,7 @@
         ]
       },
       {
-        "path": "Audio/Awake/Awake3.wav",
+        "audioPath": "Audio/Awake/Awake3.wav",
         "duration": 3114,
         "audioStartDelay": 15,
         "volume": 50,
@@ -400,7 +450,7 @@
         ]
       },
       {
-        "path": "Audio/Awake/Awake4.wav",
+        "audioPath": "Audio/Awake/Awake4.wav",
         "duration": 3678,
         "audioStartDelay": 15,
         "volume": 50,
@@ -413,7 +463,7 @@
         ]
       },
       {
-        "path": "Audio/Awake/Awake5.wav",
+        "audioPath": "Audio/Awake/Awake5.wav",
         "duration": 2088,
         "audioStartDelay": 15,
         "volume": 50,
@@ -428,7 +478,7 @@
     ],
     "sittingUp": [
       {
-        "path": "Audio/SittingUp/SittingUp0.wav",
+        "audioPath": "Audio/SittingUp/SittingUp0.wav",
         "duration": 3449,
         "audioStartDelay": 15,
         "volume": 50,
@@ -441,7 +491,7 @@
         ]
       },
       {
-        "path": "Audio/SittingUp/SittingUp1.wav",
+        "audioPath": "Audio/SittingUp/SittingUp1.wav",
         "duration": 3793,
         "audioStartDelay": 15,
         "volume": 50,
@@ -454,7 +504,7 @@
         ]
       },
       {
-        "path": "Audio/SittingUp/SittingUp2.wav",
+        "audioPath": "Audio/SittingUp/SittingUp2.wav",
         "duration": 3046,
         "audioStartDelay": 15,
         "volume": 50,
@@ -467,7 +517,7 @@
         ]
       },
       {
-        "path": "Audio/SittingUp/SittingUp3.wav",
+        "audioPath": "Audio/SittingUp/SittingUp3.wav",
         "duration": 3854,
         "audioStartDelay": 15,
         "volume": 50,
@@ -480,7 +530,7 @@
         ]
       },
       {
-        "path": "Audio/SittingUp/SittingUp4.wav",
+        "audioPath": "Audio/SittingUp/SittingUp4.wav",
         "duration": 2717,
         "audioStartDelay": 15,
         "volume": 50,
@@ -493,7 +543,7 @@
         ]
       },
       {
-        "path": "Audio/SittingUp/SittingUp5.wav",
+        "audioPath": "Audio/SittingUp/SittingUp5.wav",
         "duration": 3282,
         "audioStartDelay": 15,
         "volume": 50,
@@ -506,7 +556,7 @@
         ]
       },
       {
-        "path": "Audio/SittingUp/SittingUp6.wav",
+        "audioPath": "Audio/SittingUp/SittingUp6.wav",
         "duration": 2778,
         "audioStartDelay": 15,
         "volume": 50,
@@ -519,7 +569,7 @@
         ]
       },
       {
-        "path": "Audio/SittingUp/SittingUp7.wav",
+        "audioPath": "Audio/SittingUp/SittingUp7.wav",
         "duration": 3709,
         "audioStartDelay": 15,
         "volume": 50,
@@ -532,7 +582,7 @@
         ]
       },
       {
-        "path": "Audio/SittingUp/SittingUp8.wav",
+        "audioPath": "Audio/SittingUp/SittingUp8.wav",
         "duration": 3228,
         "audioStartDelay": 15,
         "volume": 50,
@@ -545,7 +595,7 @@
         ]
       },
       {
-        "path": "Audio/SittingUp/SittingUp9.wav",
+        "audioPath": "Audio/SittingUp/SittingUp9.wav",
         "duration": 4176,
         "audioStartDelay": 15,
         "volume": 50,
@@ -558,7 +608,7 @@
         ]
       },
       {
-        "path": "Audio/SittingUp/SittingUp10.wav",
+        "audioPath": "Audio/SittingUp/SittingUp10.wav",
         "duration": 6465,
         "audioStartDelay": 15,
         "volume": 50,
@@ -573,7 +623,7 @@
     ],
     "screaming": [
       {
-        "path": "Audio/Screaming/Screaming0.wav",
+        "audioPath": "Audio/Screaming/Screaming0.wav",
         "duration": 8225,
         "audioStartDelay": 15,
         "volume": 50,
@@ -586,7 +636,7 @@
         ]
       },
       {
-        "path": "Audio/Screaming/Screaming1.wav",
+        "audioPath": "Audio/Screaming/Screaming1.wav",
         "duration": 8593,
         "audioStartDelay": 15,
         "volume": 50,
@@ -599,7 +649,7 @@
         ]
       },
       {
-        "path": "Audio/Screaming/Screaming2.wav",
+        "audioPath": "Audio/Screaming/Screaming2.wav",
         "duration": 8889,
         "audioStartDelay": 15,
         "volume": 50,
@@ -612,7 +662,7 @@
         ]
       },
       {
-        "path": "Audio/Screaming/Screaming3.wav",
+        "audioPath": "Audio/Screaming/Screaming3.wav",
         "duration": 8905,
         "audioStartDelay": 15,
         "volume": 50,
@@ -625,7 +675,7 @@
         ]
       },
       {
-        "path": "Audio/Screaming/Screaming4.wav",
+        "audioPath": "Audio/Screaming/Screaming4.wav",
         "duration": 8881,
         "audioStartDelay": 15,
         "volume": 50,

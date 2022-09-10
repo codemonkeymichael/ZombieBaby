@@ -8,7 +8,8 @@ public static class Defcon2
     {
         Console.WriteLine("Playlists Defcon2 Awake");
 
-        Thread rock = new Thread(() => Movement.Carriage.Rock(3));
+        Movement.Carriage c = new Movement.Carriage();
+        Thread rock = new Thread(() => c.Rock());
         rock.Start();
         Thread.Sleep(400);
 

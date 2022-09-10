@@ -1,4 +1,4 @@
-﻿using ZombieBaby.Audio;
+﻿using ZombieBaby.Animation;
 using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Playlists;
@@ -14,7 +14,7 @@ public static class Defcon1
         Thread.Sleep(1500);
         Playlists.Eyes.Open();
         Thread.Sleep(3000);
-        Thread scream = new Thread(() => AudioPlayer.Play(AudioPlayer.AudioType.Screaming));
+        Thread scream = new Thread(() => AnimationPlayer.Play(AnimationPlayer.AudioType.Screaming));
         scream.Start();
         //Movement.Body.UpFastEaseOut();
         Thread.Sleep(1000);
