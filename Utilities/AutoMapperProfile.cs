@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using System;
+using ZombieBaby.Animation;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
