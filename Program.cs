@@ -74,20 +74,24 @@ class Program
 
     private static void CloseHandler(object? sender, ConsoleCancelEventArgs e)
     {
-
+                  
 
         Console.WriteLine("");
         Utilities.DMX.Disconnect();
         Movement.Body b = new Movement.Body();
         b.Release();
-        //Movement.Carriage c = new Movement.Carriage();
-        Movement.Carriage.Release();
-        Light.Eyes.Off();
-        Movement.Eyes.Closed();
+        Movement.Carriage c = new Movement.Carriage();
+        c.Release();
+        Light.Eyes le = new Light.Eyes();
+        le.Off();
+        Movement.Eyes me = new Movement.Eyes(); 
+        me.Closed();
         Thread.Sleep(1000);
-        Movement.Eyes.Release();
-        Movement.Head.Release();
-        //Effects.Fan.Off();
+        me.Release();
+        Movement.Head mh = new Movement.Head();
+        mh.Release();
+        Effects.Fan ef = new Effects.Fan();
+        ef.Off();
         Console.WriteLine("Bye for now :)");
     }
 }

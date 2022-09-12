@@ -1,7 +1,5 @@
-﻿// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+﻿namespace ZombieBaby.Animation;
 
-namespace ZombieBaby.Animation;
-// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
 public class AnimationTracks
 {
     public Sleeping sleeping { get; set; }

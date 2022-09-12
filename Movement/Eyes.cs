@@ -1,12 +1,13 @@
 ﻿using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Movement;
-
 public class Eyes
 {
 
     private static double open { get; } = 0.05; //0.05222
     private static double closed { get; } = 0.0899; //0.08991
+
+
     public void Open()
     {
         Console.WriteLine("Eyes Open fast");

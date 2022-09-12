@@ -9,23 +9,13 @@ public static class Defcon2
     {
         Console.WriteLine("Playlists Defcon2 Awake");
 
-        //Movement.Carriage c = new Movement.Carriage();
-        //Thread rock = new Thread(() => c.Rock());
-        //rock.Start();
-        //Thread.Sleep(400);
-
-        ////Blink Open Eyes
-        //Playlists.Eyes.Open();
-
-        //Movement.Head.Center();
-
-        while (Status.CurrentStatus == 2)
+        if (Status.CurrentStatus == 2)
         {
             AnimationPlayer.Play(AnimationPlayer.AnimationType.Awake);
 
             //Blink
             //Speak
-            Thread.Sleep(400);
+            //Thread.Sleep(400);
         }
 
         //Blink Close Eyes

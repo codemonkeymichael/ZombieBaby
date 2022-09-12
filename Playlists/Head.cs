@@ -9,19 +9,21 @@ namespace ZombieBaby.Playlists;
 
 public class Head
 {
+    Movement.Head mh = new Movement.Head(); 
+
     public void LookAround(int count)
     {
         for (int i = 0; i < count; i++)
         {
-            Movement.Head.Left();
+            mh.Left();
             Thread.Sleep(1000);
-            Movement.Head.Center();
+            mh.Center();
             Thread.Sleep(1000);
-            Movement.Head.Right();
+            mh.Right();
             Thread.Sleep(1000);
-            Movement.Head.Center();
+            mh.Center();
             Thread.Sleep(1000);
-            Movement.Head.Release();
+            mh.Release();
             Thread.Sleep(1000);
         }
     }
@@ -30,15 +32,15 @@ public class Head
     {
         for (int i = 0; i < count; i++)
         {
-            Movement.Head.Left();
+            mh.Left();
             Thread.Sleep(1000);
-            Movement.Head.Center();
+            mh.Center();
             Thread.Sleep(1000);
-            Movement.Head.Right();
+            mh.Right();
             Thread.Sleep(50);
-            Movement.Head.Center();
+            mh.Center();
             Thread.Sleep(1000);
-            Movement.Head.Release();
+            mh.Release();
             Thread.Sleep(1000);
         }
     }
@@ -53,37 +55,37 @@ public class Head
         sw.Start();
         while (true)
         {
-            Movement.Head.Right();
+            mh.Right();
             Thread.Sleep(600);
             if (sw.ElapsedMilliseconds > duration) break;
-            Movement.Head.LeftHalf();
+            mh.LeftHalf();
             Thread.Sleep(250);
             if (sw.ElapsedMilliseconds > duration) break;
-            Movement.Head.Center();
+            mh.Center();
             Thread.Sleep(400);
             if (sw.ElapsedMilliseconds > duration) break;
-            Movement.Head.Right();
+            mh.Right();
             Thread.Sleep(800);
             if (sw.ElapsedMilliseconds > duration) break;
-            Movement.Head.Left();
+            mh.Left();
             Thread.Sleep(1400);
-            Movement.Head.Right();
+            mh.Right();
         }
         sw.Stop();
     }
 
     public void Nightmare()
     {
-        Movement.Head.Right();
+        mh.Right();
         Thread.Sleep(600);
-        Movement.Head.LeftHalf();
+        mh.LeftHalf();
         Thread.Sleep(250);
-        Movement.Head.Center();
+        mh.Center();
         Thread.Sleep(400);
-        Movement.Head.Right();
+        mh.Right();
         Thread.Sleep(800);
-        Movement.Head.Left();
+        mh.Left();
         Thread.Sleep(1400);
-        Movement.Head.Right();
+        mh.Right();
     }
 }

@@ -52,31 +52,37 @@ public static class AnimationPlayer
         {
             case "SleepingIn":
                 SleepingInCurrent++;
+                Console.WriteLine($"SleepingIn {SleepingInCurrent}");
                 if (SleepingInCurrent >= Tracks.animationTracks.sleeping.sleepingIn.Count) SleepingInCurrent = 0;
                 trk = ModelMapper.Map<TrackObject>(Tracks.animationTracks.sleeping.sleepingIn[SleepingInCurrent]);
                 break;
             case "SleepingOut":
                 SleepingOutCurrent++;
+                Console.WriteLine($"SleepingOut {SleepingOutCurrent}");
                 if (SleepingOutCurrent >= Tracks.animationTracks.sleeping.sleepingOut.Count) SleepingOutCurrent = 0;
                 trk = ModelMapper.Map<TrackObject>(Tracks.animationTracks.sleeping.sleepingOut[SleepingOutCurrent]);
                 break;
             case "Dreaming":
                 DreamingCurrent++;
+                Console.WriteLine($"DreamingCurrent {DreamingCurrent}");
                 if (DreamingCurrent >= Tracks.animationTracks.dreaming.Count) DreamingCurrent = 0;
                 trk = ModelMapper.Map<TrackObject>(Tracks.animationTracks.dreaming[DreamingCurrent]);
                 break;
             case "Awake":
                 AwakeCurrent++;
+                Console.WriteLine($"AwakeCurrent {AwakeCurrent}");
                 if (AwakeCurrent >= Tracks.animationTracks.awake.Count) AwakeCurrent = 0;
                 trk = ModelMapper.Map<TrackObject>(Tracks.animationTracks.awake[AwakeCurrent]);
                 break;
             case "SittingUp":
                 SittingUpCurrent++;
+                Console.WriteLine($"SittingUp {SittingUpCurrent}");
                 if (SittingUpCurrent >= Tracks.animationTracks.sittingUp.Count) SittingUpCurrent = 0;
                 trk = ModelMapper.Map<TrackObject>(Tracks.animationTracks.sittingUp[SittingUpCurrent]);
                 break;
             case "Screaming":
                 ScreamingCurrent++;
+                Console.WriteLine($"Screaming {ScreamingCurrent}");
                 if (ScreamingCurrent >= Tracks.animationTracks.screaming.Count) ScreamingCurrent = 0;
                 trk = ModelMapper.Map<TrackObject>(Tracks.animationTracks.screaming[ScreamingCurrent]);
                 break;
@@ -89,8 +95,7 @@ public static class AnimationPlayer
 
         //VLC Player Init
         try
-        {
-            Console.WriteLine(trk.audioPath);
+        {           
             Media _media = new Media(_vlc, trk.audioPath, FromType.FromPath);
             MediaPlayer _mediaPlayer = new MediaPlayer(_media);
             _mediaPlayer.Volume = trk.volume;
@@ -100,7 +105,7 @@ public static class AnimationPlayer
 
             Thread cuePlayer = new Thread(() => AnimationPlayer.CuePlayer(trk.cueList));
             cuePlayer.Start();
-
+ 
             Thread.Sleep(trk.audioStartDelay);
             _mediaPlayer.Play();
             Thread.Sleep(trk.duration);
@@ -137,7 +142,7 @@ public static class AnimationPlayer
 
     private static void PlayCue(int time, string type, string method)
     {
-        Console.WriteLine($"    PlayCue {method} in {time}");
+        Console.WriteLine($"    PlayCue Type {type}   Method {method}   Time {time}");
         try
         {
             Assembly executing = Assembly.GetExecutingAssembly();
