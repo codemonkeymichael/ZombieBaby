@@ -32,6 +32,5 @@ namespace ZombieBaby.Utilities
         {
             return Mapper.Map<T>(obj);
         }
-
     }
 }

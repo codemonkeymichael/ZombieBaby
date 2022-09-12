@@ -40,7 +40,7 @@ public static class AnimationPlayer
         string fileName = $"{AppDomain.CurrentDomain.BaseDirectory}/animationTracks.json";
         using FileStream openStream = File.OpenRead(fileName);
         Tracks = await JsonSerializer.DeserializeAsync<Root>(openStream);
-        Console.WriteLine("InitAudio Test Read " + Tracks.animationTracks.dreaming[0].cueList.Count);
+        Console.WriteLine("InitAnimation Test Read " + Tracks.animationTracks.dreaming.Count);
 
     }
 
@@ -54,7 +54,6 @@ public static class AnimationPlayer
                 SleepingInCurrent++;
                 if (SleepingInCurrent >= Tracks.animationTracks.sleeping.sleepingIn.Count) SleepingInCurrent = 0;
                 trk = ModelMapper.Map<TrackObject>(Tracks.animationTracks.sleeping.sleepingIn[SleepingInCurrent]);
-
                 break;
             case "SleepingOut":
                 SleepingOutCurrent++;
@@ -83,12 +82,15 @@ public static class AnimationPlayer
                 break;
         }
 
-
-        Console.WriteLine("Audio Play " + trk.audioPath);
+        Console.WriteLine("trk.audioPath " + trk.audioPath);
+        Console.WriteLine("trk.audioPath " + trk.duration);
+        Console.WriteLine("trk.audioStartDelay " + trk.audioStartDelay);
+        Console.WriteLine("trk.volume " + trk.volume);
 
         //VLC Player Init
         try
         {
+            Console.WriteLine(trk.audioPath);
             Media _media = new Media(_vlc, trk.audioPath, FromType.FromPath);
             MediaPlayer _mediaPlayer = new MediaPlayer(_media);
             _mediaPlayer.Volume = trk.volume;

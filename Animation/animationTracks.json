@@ -3,7 +3,7 @@
     "sleeping": {
       "sleepingIn": [
         {
-          "audioPath": "Audio/Sleeping/SleepingIn/SleepingIn0.wav    xxxxx",
+          "audioPath": "Audio/Sleeping/SleepingIn/SleepingIn0.wav",
           "duration": 1277,
           "audioStartDelay": 15,
           "volume": 50,
