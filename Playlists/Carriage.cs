@@ -10,6 +10,8 @@ namespace ZombieBaby.Playlists
     {
 
         private readonly Movement.Carriage movementCarriage = new Movement.Carriage();
+
+        //This won't work with reflection that I'm using in the Animation Player json.
         //private readonly Movement.Carriage movementCarriage;
 
         //public Carriage(Movement.Carriage _mc)
@@ -25,9 +27,9 @@ namespace ZombieBaby.Playlists
             for (var i = 0; i < count; i++)
             {
                 movementCarriage.Down();
-                Thread.Sleep(400);
+                Thread.Sleep(300);
                 movementCarriage.Up();
-                Thread.Sleep(400);
+                Thread.Sleep(300);
             }
             movementCarriage.Release();
         }

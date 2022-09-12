@@ -4,6 +4,8 @@ namespace ZombieBaby.Movement;
 public class Body
 {
     private double up { get; } = 0.043;
+
+    private double downish { get; } = 0.070;
     private double down { get; } = 0.078;
     private double stepSize { get; } = 0.001;
 
@@ -41,6 +43,15 @@ public class Body
         {
             Motor.motorController.SetDutyCycle(2, i);
             Thread.Sleep(7);
+        }
+    }
+    public void UpALitleSlow()
+    {
+        Console.WriteLine("Body Sit up a little bit slow");
+        for (double i = down; i > downish; i = i - stepSize)
+        {
+            Motor.motorController.SetDutyCycle(2, i);
+            Thread.Sleep(40);
         }
     }
 

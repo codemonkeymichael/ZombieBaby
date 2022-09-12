@@ -400,78 +400,138 @@
       {
         "audioPath": "Audio/Awake/Awake0.wav",
         "duration": 5832,
-        "audioStartDelay": 15,
+        "audioStartDelay": 5000,
         "volume": 50,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Carriage",
+            "method": "Rock"
+          },
+          {
+            "time": 3500,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkOpen"
+          },
+          {
+            "time": 4200,
+            "type": "ZombieBaby.Playlists.Body",
+            "method": "SitUpALittleBit"
           }
         ]
       },
       {
         "audioPath": "Audio/Awake/Awake1.wav",
         "duration": 3838,
-        "audioStartDelay": 15,
+        "audioStartDelay": 5000,
         "volume": 50,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Carriage",
+            "method": "Rock"
+          },
+          {
+            "time": 3500,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkOpen"
+          },
+          {
+            "time": 4200,
+            "type": "ZombieBaby.Playlists.Body",
+            "method": "SitUpALittleBit"
           }
         ]
       },
       {
         "audioPath": "Audio/Awake/Awake2.wav",
         "duration": 3173,
-        "audioStartDelay": 15,
+        "audioStartDelay": 5000,
         "volume": 50,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Carriage",
+            "method": "Rock"
+          },
+          {
+            "time": 3500,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkOpen"
+          },
+          {
+            "time": 4200,
+            "type": "ZombieBaby.Playlists.Body",
+            "method": "SitUpALittleBit"
           }
         ]
       },
       {
         "audioPath": "Audio/Awake/Awake3.wav",
         "duration": 3114,
-        "audioStartDelay": 15,
+        "audioStartDelay": 5000,
         "volume": 50,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Carriage",
+            "method": "Rock"
+          },
+          {
+            "time": 3500,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "Open"
+          },
+          {
+            "time": 4200,
+            "type": "ZombieBaby.Playlists.Body",
+            "method": "SitUpALittleBit"
           }
         ]
       },
       {
         "audioPath": "Audio/Awake/Awake4.wav",
         "duration": 3678,
-        "audioStartDelay": 15,
+        "audioStartDelay": 5000,
         "volume": 50,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Carriage",
+            "method": "Rock"
+          },
+          {
+            "time": 3500,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "Open"
+          },
+          {
+            "time": 4200,
+            "type": "ZombieBaby.Playlists.Body",
+            "method": "SitUpALittleBit"
           }
         ]
       },
       {
         "audioPath": "Audio/Awake/Awake5.wav",
         "duration": 2088,
-        "audioStartDelay": 15,
+        "audioStartDelay": 5000,
         "volume": 50,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Carriage",
+            "method": "Rock"
+          },
+          {
+            "time": 3500,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "Open"
+          },
+          {
+            "time": 4200,
+            "type": "ZombieBaby.Playlists.Body",
+            "method": "SitUpALittleBit"
           }
         ]
       }
@@ -485,8 +545,8 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Movement.Carriage",
+            "method": "Rock"
           }
         ]
       },
@@ -498,8 +558,8 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Movement.Carriage",
+            "method": "Rock"
           }
         ]
       },
@@ -511,8 +571,8 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Movement.Carriage",
+            "method": "Rock"
           }
         ]
       },
@@ -524,8 +584,8 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Movement.Carriage",
+            "method": "Rock"
           }
         ]
       },
@@ -537,8 +597,8 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Movement.Carriage",
+            "method": "Rock"
           }
         ]
       },
@@ -550,8 +610,8 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Movement.Carriage",
+            "method": "Rock"
           }
         ]
       },
@@ -563,8 +623,8 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Movement.Carriage",
+            "method": "Rock"
           }
         ]
       },

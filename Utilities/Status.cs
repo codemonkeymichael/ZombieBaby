@@ -12,6 +12,7 @@ namespace ZombieBaby.Utilities;
 public static class Status
 {
     public static int CurrentStatus = 4;
+    public static int PreviousStatus = 4;
 
     /// <summary>
     /// 
@@ -65,10 +66,14 @@ public static class Status
             On();
             Thread.Sleep(100); //3
             Off();
-            Thread.Sleep(500);           
+            Thread.Sleep(500);
             durationSeconds--;
         }
-        if (CurrentStatus == 3) CurrentStatus = 4;
+        if (CurrentStatus == 3)
+        {
+            PreviousStatus = 3;
+            CurrentStatus = 4;
+        }
         Console.WriteLine($"Status = Defcon {CurrentStatus}");
     }
 
@@ -95,7 +100,10 @@ public static class Status
             Thread.Sleep(700);
             durationSeconds--;
         }
-        if (CurrentStatus == 2) Defcon3(5); 
+        if (CurrentStatus == 2) { 
+            PreviousStatus = 2;
+            Defcon3(20); 
+        }
 
     }
 
@@ -118,7 +126,11 @@ public static class Status
             Thread.Sleep(900);
             durationSeconds--;
         }
-        if (CurrentStatus == 1) Defcon2(5); 
+        if (CurrentStatus == 1)
+        {
+            PreviousStatus = 1;
+            Defcon2(5);
+        };
     }
 
     private static void On()

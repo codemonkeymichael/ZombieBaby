@@ -5,12 +5,21 @@ namespace ZombieBaby.Playlists;
 
 public static class Defcon3
 {
+
+
     public static void Sleep()
     {
         Console.WriteLine("Playlists Defcon3 Sleep");
 
-        //Movement.Body.Release();
-        //Movement.Head.Right(); //Away from the crowd
+        var body = new Movement.Body();
+        body.Release();
+        var head = new Movement.Head();
+        head.Right(); //Away from the crowd
+        if (Status.PreviousStatus == 2)
+        {
+            var eyes = new Playlists.Eyes();
+            eyes.BlinkClosed();
+        }
 
         int iteration = 0;
         while (Status.CurrentStatus == 3)
@@ -31,7 +40,7 @@ public static class Defcon3
 
 
             Thread.Sleep(2050);
-           
+
 
 
 

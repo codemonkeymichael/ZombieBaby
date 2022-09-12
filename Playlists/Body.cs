@@ -1,8 +1,10 @@
 ﻿namespace ZombieBaby.Playlists;
 
-public static class Body
-{ 
-    public static void SitUp()
+public class Body
+{
+    private readonly Movement.Body movementBody = new Movement.Body();
+
+    public void SitUp()
     {
         Console.WriteLine("Playlists SitUp()");
         //Movement.Body.Release();
@@ -25,5 +27,16 @@ public static class Body
         //Movement.Head.Center();
         //Playlists.Eyes.Blink(3);
         //Movement.Body.DownEaseBoth();
+    }
+
+    public void SitUpALittleBit()
+    {
+        Console.WriteLine("Playlists SitUpALittleBit()");
+        movementBody.Release();
+        Thread.Sleep(150);
+        movementBody.UpALitleSlow();
+
+
+
     }
 }
