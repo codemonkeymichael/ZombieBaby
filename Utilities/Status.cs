@@ -31,7 +31,7 @@ public static class Status
                     Defcon2(30);
                     break;
                 case 1:
-                    Defcon1(120);
+                    Defcon1(240);
                     break;
                 default:
                     break;
