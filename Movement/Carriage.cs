@@ -26,6 +26,7 @@ public class Carriage
 
     public void Rock()
     {
+        Console.WriteLine("Carriage Rock");
         int count = 3;      
 
         for (var i = 0; i < count; i++)

@@ -2,24 +2,24 @@
 
 namespace ZombieBaby.Movement;
 
-public static class Eyes
+public class Eyes
 {
 
     private static double open { get; } = 0.05; //0.05222
     private static double closed { get; } = 0.0899; //0.08991
-    public static void Open()
+    public void Open()
     {
         Console.WriteLine("Eyes Open fast");
         Motor.motorController.SetDutyCycle(0, open);
     }
 
-    public static void Closed()
+    public void Closed()
     {
         Console.WriteLine("Eyes Closed fast");
         Motor.motorController.SetDutyCycle(0, closed);
     }
 
-    public static void Release()
+    public void Release()
     {
         Console.WriteLine("Eyes Release");
         Motor.motorController.SetDutyCycle(0, 0);

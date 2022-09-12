@@ -1,4 +1,5 @@
-﻿using ZombieBaby.Utilities;
+﻿using ZombieBaby.Animation;
+using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Playlists;
 
@@ -8,25 +9,27 @@ public static class Defcon2
     {
         Console.WriteLine("Playlists Defcon2 Awake");
 
-        Movement.Carriage c = new Movement.Carriage();
-        Thread rock = new Thread(() => c.Rock());
-        rock.Start();
-        Thread.Sleep(400);
+        //Movement.Carriage c = new Movement.Carriage();
+        //Thread rock = new Thread(() => c.Rock());
+        //rock.Start();
+        //Thread.Sleep(400);
 
-        //Blink Open Eyes
-        Playlists.Eyes.Open();
+        ////Blink Open Eyes
+        //Playlists.Eyes.Open();
 
-        Movement.Head.Center();
+        //Movement.Head.Center();
 
         while (Status.CurrentStatus == 2)
         {
+            AnimationPlayer.Play(AnimationPlayer.AnimationType.Awake);
+
             //Blink
             //Speak
             Thread.Sleep(400);
         }
 
         //Blink Close Eyes
-        Playlists.Eyes.Closed();
+        //Playlists.Eyes.Closed();
 
     }
 }

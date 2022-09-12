@@ -11,7 +11,7 @@ namespace ZombieBaby.Animation;
 public static class AnimationPlayer
 {
 
-    public enum AudioType
+    public enum AnimationType
     {
         SleepingIn,
         SleepingOut,
@@ -44,7 +44,7 @@ public static class AnimationPlayer
 
     }
 
-    public static void Play(AudioType at)
+    public static void Play(AnimationType at)
     {
         TrackObject trk = new TrackObject();
 
