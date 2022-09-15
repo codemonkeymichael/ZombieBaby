@@ -53,6 +53,9 @@ class Program
         AnimationPlayer.InitAnimation();
         Thread.Sleep(2000);
 
+        //Movement.Carriage mc = new Movement.Carriage();
+        //mc.Up();
+
         var inputLastState = PinValue.Low;
 
         while (true)

@@ -73,6 +73,7 @@ public class Body
             Motor.motorController.SetDutyCycle(2, i);
             Thread.Sleep(15);
         }
+        Release();
     }
     public void UpDownSlow()
     {

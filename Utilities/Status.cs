@@ -32,7 +32,7 @@ public static class Status
                     Defcon2(30);
                     break;
                 case 1:
-                    Defcon1(240);
+                    Defcon1(45);
                     break;
                 default:
                     break;
@@ -50,7 +50,7 @@ public static class Status
         CurrentStatus = 3;
         Thread dc3 = new Thread(() => Playlists.Defcon3.Sleep());
         dc3.Start();
-        Console.WriteLine($"Status = Defcon {CurrentStatus}");
+        Console.WriteLine($"          Status3 = Defcon {CurrentStatus}");
 
         while (CurrentStatus == 3 & durationSeconds > 0)
         {
@@ -74,7 +74,7 @@ public static class Status
             PreviousStatus = 3;
             CurrentStatus = 4;
         }
-        Console.WriteLine($"Status = Defcon {CurrentStatus}");
+        Console.WriteLine($"          Status3 = Defcon {CurrentStatus}");
     }
 
     /// <summary>
@@ -86,7 +86,7 @@ public static class Status
         CurrentStatus = 2;
         Thread dc2 = new Thread(() => Playlists.Defcon2.Awake());
         dc2.Start();
-        Console.WriteLine($"Status = Defcon {CurrentStatus}");
+        Console.WriteLine($"          Status2 = Defcon {CurrentStatus}");
         while (CurrentStatus == 2 & durationSeconds > 0)
         {
             //Blink Twice
@@ -104,6 +104,7 @@ public static class Status
             PreviousStatus = 2;
             Defcon3(20); 
         }
+        Console.WriteLine($"          Status2 = Defcon {CurrentStatus}");
 
     }
 
@@ -116,7 +117,7 @@ public static class Status
         CurrentStatus = 1;
         Thread dc1 = new Thread(() => Playlists.Defcon1.SitUp());
         dc1.Start();
-        Console.WriteLine($"Status Defcon 1");
+        Console.WriteLine($"          Status1 = Defcon {CurrentStatus}");
         while (CurrentStatus == 1 & durationSeconds > 0)
         {
             //Blink Once 
@@ -129,8 +130,9 @@ public static class Status
         if (CurrentStatus == 1)
         {
             PreviousStatus = 1;
-            Defcon2(5);
+            Defcon3(5);
         };
+        Console.WriteLine($"          Status1 = Defcon {CurrentStatus}");
     }
 
     private static void On()

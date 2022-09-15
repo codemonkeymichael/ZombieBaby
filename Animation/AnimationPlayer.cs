@@ -88,10 +88,10 @@ public static class AnimationPlayer
                 break;
         }
 
-        Console.WriteLine("trk.audioPath " + trk.audioPath);
-        Console.WriteLine("trk.audioPath " + trk.duration);
-        Console.WriteLine("trk.audioStartDelay " + trk.audioStartDelay);
-        Console.WriteLine("trk.volume " + trk.volume);
+        //Console.WriteLine("trk.audioPath " + trk.audioPath);
+        //Console.WriteLine("trk.audioPath " + trk.duration);
+        //Console.WriteLine("trk.audioStartDelay " + trk.audioStartDelay);
+        //Console.WriteLine("trk.volume " + trk.volume);
 
         //VLC Player Init
         try
@@ -128,7 +128,7 @@ public static class AnimationPlayer
 
     private static void CuePlayer(List<CueList> cues)
     {
-        Console.WriteLine($"  CuePlayer Cue Count {cues.Count}");
+        //Console.WriteLine($"  CuePlayer Cue Count {cues.Count}");
 
         foreach (var cue in cues)
         {
@@ -142,7 +142,7 @@ public static class AnimationPlayer
 
     private static void PlayCue(int time, string type, string method)
     {
-        Console.WriteLine($"    PlayCue Type {type}   Method {method}   Time {time}");
+        //Console.WriteLine($"    PlayCue Type {type}   Method {method}   Time {time}");
         try
         {
             Assembly executing = Assembly.GetExecutingAssembly();

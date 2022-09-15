@@ -13,13 +13,7 @@ public static class Defcon2
         {
             AnimationPlayer.Play(AnimationPlayer.AnimationType.Awake);
 
-            //Blink
-            //Speak
-            //Thread.Sleep(400);
         }
-
-        //Blink Close Eyes
-        //Playlists.Eyes.Closed();
 
     }
 }
