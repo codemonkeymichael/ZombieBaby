@@ -11,24 +11,23 @@ public class Body
     public void SitUpAndScream()
     {
         Console.WriteLine("Playlists SitUp()");
-        moveBody.Release();
 
         Thread blowSmoke = new Thread(() => playSmoke.BlowBlinders());
         blowSmoke.Start();
         playEyes.Open();
         Thread.Sleep(4250);
         moveBody.UpFastEaseOut();
-        Thread.Sleep(3000);
-        moveHead.Right();
-        Thread.Sleep(200);
-        playEyes.Blink(2);
-        Thread.Sleep(3000);
-        moveHead.Left();
-        Thread.Sleep(200);
-        playEyes.Blink(2);
-        Thread.Sleep(3000);
-        moveHead.Center();
-        playEyes.Blink(3);
+        //Thread.Sleep(3000);
+        //moveHead.Right();
+        //Thread.Sleep(200);
+        //playEyes.Blink(2);
+        //Thread.Sleep(3000);
+        //moveHead.Left();
+        //Thread.Sleep(200);
+        //playEyes.Blink(2);
+        //Thread.Sleep(3000);
+        //moveHead.Center();
+        //playEyes.Blink(3);
         //moveBody.DownEaseBoth();
     }
 

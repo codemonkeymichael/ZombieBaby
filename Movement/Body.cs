@@ -4,10 +4,10 @@ namespace ZombieBaby.Movement;
 public class Body
 {
     private double up { get; } = 0.043;
-
-    private double downish { get; } = 0.070;
+    private double downish { get; } = 0.074;
+    private double breath { get; } = 0.076;
     private double down { get; } = 0.078;
-    private double stepSize { get; } = 0.001;
+    private double stepSize { get; } = 0.0005;
 
     public void Release()
     {
@@ -20,11 +20,11 @@ public class Body
         Motor.motorController.SetDutyCycle(2, up);
     }
 
-    public void DownFast()
-    {
-        Console.WriteLine("Body Lay down fast");
-        Motor.motorController.SetDutyCycle(2, down);
-    }
+    //public void DownFast()
+    //{
+    //    Console.WriteLine("Body Lay down fast");
+    //    Motor.motorController.SetDutyCycle(2, down);
+    //}
 
     public void UpMed()
     {
@@ -32,7 +32,7 @@ public class Body
         for (double i = down; i > up; i = i - stepSize)
         {
             Motor.motorController.SetDutyCycle(2, i);
-            Thread.Sleep(7);
+            Thread.Sleep(4);
         }
     }
 
@@ -42,7 +42,7 @@ public class Body
         for (double i = up; i < down; i = i + stepSize)
         {
             Motor.motorController.SetDutyCycle(2, i);
-            Thread.Sleep(7);
+            Thread.Sleep(5);
         }
     }
     public void UpALitleSlow()
@@ -91,13 +91,14 @@ public class Body
         int easingSteps = numberOfSteps / 2;
         //Console.WriteLine("Easing Steps " + easingSteps);    
         int currentStepDuration = 4;
-
-        for (double i = down; i > up; i = i - stepSize)
+        var currentStepSize = 0.001;
+        for (double i = downish; i > up; i = i - currentStepSize)
         {
             //Ease Out
             if (numberOfSteps < easingSteps)
             {
                 currentStepDuration += 3;
+                currentStepSize = currentStepSize - 0.0001;
             }
             //Console.WriteLine(numberOfSteps + " Motor Position " + (double)i + "  This Step Duration " + currentStepDuration);
             Motor.motorController.SetDutyCycle(2, i);
@@ -137,10 +138,9 @@ public class Body
 
     public void SleepingBreath()
     {
-        Console.WriteLine("Sleeping Breath");
-        double downish = 0.077;
+        Console.WriteLine("Sleeping Breath");    
 
-        for (double i = down; i > downish; i = i - stepSize)
+        for (double i = down; i > breath; i = i - stepSize)
         {
             Motor.motorController.SetDutyCycle(2, (double)i);
             Thread.Sleep(60);

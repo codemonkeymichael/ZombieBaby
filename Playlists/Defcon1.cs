@@ -14,7 +14,7 @@ public static class Defcon1
         if (Status.CurrentStatus == 1)
         {
             AnimationPlayer.Play(AnimationPlayer.AnimationType.Screaming);
-            Thread.Sleep(8000);
+            Thread.Sleep(5000);
             AnimationPlayer.Play(AnimationPlayer.AnimationType.SittingUp);
      
         
