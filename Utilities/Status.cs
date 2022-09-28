@@ -13,33 +13,31 @@ public static class Status
 {
     public static int CurrentStatus = 4;
     public static int PreviousStatus = 4;
+    private static int Defcon1ThreadCounter = 0;
 
     /// <summary>
     /// 
     /// </summary>
     public static void ElevateDefcon()
     {
-        if (CurrentStatus > 1)
+        CurrentStatus--;
+        if (CurrentStatus == 0) CurrentStatus = 1;
+        Console.WriteLine($"ElevateDefcon() CurrentStatus = {CurrentStatus}");
+        switch (CurrentStatus)
         {
-            CurrentStatus--;
-            Console.WriteLine($"ElevateDefcon() CurrentStatus = {CurrentStatus}");
-            switch (CurrentStatus)
-            {
-                case 3:
-                    Defcon3(60);
-                    break;
-                case 2:
-                    Defcon2(30);
-                    break;
-                case 1:
-                    Defcon1(45);
-                    break;
-                default:
-                    break;
-            }
+            case 3:
+                Defcon3(60);
+                break;
+            case 2:
+                Defcon2(30);
+                break;
+            case 1:
+                Defcon1();
+                break;
+            default:
+                break;
         }
     }
-
 
     /// <summary>
     /// Sleeping
@@ -48,9 +46,9 @@ public static class Status
     private static void Defcon3(int durationSeconds)
     {
         CurrentStatus = 3;
-        Thread dc3 = new Thread(() => Playlists.Defcon3.Sleep());
-        dc3.Start();
-        Console.WriteLine($"          Status3 = Defcon {CurrentStatus}");
+        //Thread dc3 = new Thread(() => Playlists.Defcon3.Sleep());
+        //dc3.Start();
+        Console.WriteLine($"-- Defcon {CurrentStatus}");
 
         while (CurrentStatus == 3 & durationSeconds > 0)
         {
@@ -74,7 +72,7 @@ public static class Status
             PreviousStatus = 3;
             CurrentStatus = 4;
         }
-        Console.WriteLine($"          Status3 = Defcon {CurrentStatus}");
+
     }
 
     /// <summary>
@@ -84,9 +82,9 @@ public static class Status
     private static void Defcon2(int durationSeconds)
     {
         CurrentStatus = 2;
-        Thread dc2 = new Thread(() => Playlists.Defcon2.Awake());
-        dc2.Start();
-        Console.WriteLine($"          Status2 = Defcon {CurrentStatus}");
+        //Thread dc2 = new Thread(() => Playlists.Defcon2.Awake());
+        //dc2.Start();
+        Console.WriteLine($"-- Defcon {CurrentStatus}");
         while (CurrentStatus == 2 & durationSeconds > 0)
         {
             //Blink Twice
@@ -100,11 +98,11 @@ public static class Status
             Thread.Sleep(700);
             durationSeconds--;
         }
-        if (CurrentStatus == 2) { 
+        if (CurrentStatus == 2)
+        {
             PreviousStatus = 2;
-            Defcon3(20); 
+            Defcon3(20);
         }
-        Console.WriteLine($"          Status2 = Defcon {CurrentStatus}");
 
     }
 
@@ -112,27 +110,78 @@ public static class Status
     /// Sitting Up
     /// </summary>
     /// <param name="durationSeconds"></param>
-    private static void Defcon1(int durationSeconds)
+    private static void Defcon1()
     {
-        CurrentStatus = 1;
-        Thread dc1 = new Thread(() => Playlists.Defcon1.SitUp());
-        dc1.Start();
-        Console.WriteLine($"          Status1 = Defcon {CurrentStatus}");
-        while (CurrentStatus == 1 & durationSeconds > 0)
+        if (Defcon1ThreadCounter > 0)
         {
-            //Blink Once 
-            On();
-            Thread.Sleep(100);
-            Off();
-            Thread.Sleep(900);
-            durationSeconds--;
+            //Run again          
+            Thread dc1 = new Thread(() => Playlists.Defcon1.Talk());
+            dc1.Start();
+            Defcon1ThreadCounter++;
+            Console.WriteLine($"-- Defcon {CurrentStatus} Again Threads Running {Defcon1ThreadCounter}");
+            while (
+                CurrentStatus == 1
+                &&
+                (
+                    dc1.ThreadState == ThreadState.WaitSleepJoin ||
+                    dc1.ThreadState == ThreadState.Running
+                )
+            )
+            {
+                ////Blink Once 
+                //On();
+                //Thread.Sleep(100);
+                //Off();
+                Thread.Sleep(900);
+                //Console.WriteLine("   ThreadState = " + dc1.ThreadState);   
+            }
+            Defcon1ThreadCounter--;
         }
-        if (CurrentStatus == 1)
+        else
         {
-            PreviousStatus = 1;
-            Defcon3(5);
-        };
-        Console.WriteLine($"          Status1 = Defcon {CurrentStatus}");
+            //Run the first time
+            CurrentStatus = 1;
+            Defcon1ThreadCounter++;
+            Console.WriteLine($"-- Defcon {CurrentStatus} Again Threads Running {Defcon1ThreadCounter}");
+
+            Thread dc1 = new Thread(() => Playlists.Defcon1.SitUp());
+            dc1.Start();
+            while (
+                CurrentStatus == 1
+                &&
+                (
+                    dc1.ThreadState == ThreadState.WaitSleepJoin ||
+                    dc1.ThreadState == ThreadState.Running
+                )
+            )
+            {
+                ////Blink Once 
+                //On();
+                //Thread.Sleep(100);
+                //Off();
+                Thread.Sleep(900);
+                //Console.WriteLine("   ThreadState = " + dc1.ThreadState);
+            }
+            Defcon1ThreadCounter--;
+        }
+        Console.WriteLine($"++ Defcon {CurrentStatus} Again Threads Running {Defcon1ThreadCounter}");
+
+        if (Defcon1ThreadCounter <= 0) Defcon1End();
+
+
+        Console.WriteLine($"          Status = Defcon {CurrentStatus}");
+    }
+
+    private static void Defcon1End()
+    {
+        Console.WriteLine($"++++++++++++++++++++++++++  Defcon1End");
+        PreviousStatus = 1;
+        var ds = new Movement.Body();
+        ds.DownSlow();
+        Thread.Sleep(2000);
+        var bc = new Playlists.Eyes();
+        bc.BlinkClosed();
+        Defcon3(5);
     }
 
     private static void On()

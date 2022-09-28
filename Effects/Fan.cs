@@ -30,7 +30,7 @@ public class Fan
     public void OnOffLong()
     {
         On();
-        Thread.Sleep(15000);
+        Thread.Sleep(10000);
         Off();
     }
 }

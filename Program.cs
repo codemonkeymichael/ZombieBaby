@@ -63,14 +63,14 @@ class Program
             var click = Gpios.piGPIOController.Read(Gpios.InputTrigger);
             if (click != inputLastState)
             {
-                Console.WriteLine($"Click");
+                Console.WriteLine($"Click ");
                 inputLastState = click;
                 if (click == PinValue.High)
                 {
                     Thread status = new Thread(() => Status.ElevateDefcon());
-                    status.Start();
+                    status.Start();                 
                 }
-                Thread.Sleep(250);
+                Thread.Sleep(500);
             }
         }
     }

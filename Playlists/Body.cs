@@ -15,7 +15,7 @@ public class Body
         Thread blowSmoke = new Thread(() => playSmoke.BlowBlinders());
         blowSmoke.Start();
         playEyes.Open();
-        Thread.Sleep(4250);
+        Thread.Sleep(4250); //Waiting for smoke to blow
         moveBody.UpFastEaseOut();
         //Thread.Sleep(3000);
         //moveHead.Right();
