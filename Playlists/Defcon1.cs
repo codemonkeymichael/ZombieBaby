@@ -9,15 +9,10 @@ public static class Defcon1
     {
         Console.WriteLine("Playlists Defcon1 sit-up and scream");
 
-
-
         if (Status.CurrentStatus == 1)
         {
             AnimationPlayer.Play(AnimationPlayer.AnimationType.Screaming);
-            Thread.Sleep(5000);
-            AnimationPlayer.Play(AnimationPlayer.AnimationType.SittingUp);
-     
-        
+            AnimationPlayer.Play(AnimationPlayer.AnimationType.SittingUp); 
         }
 
 

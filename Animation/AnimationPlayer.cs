@@ -40,7 +40,7 @@ public static class AnimationPlayer
         string fileName = $"{AppDomain.CurrentDomain.BaseDirectory}/animationTracks.json";
         using FileStream openStream = File.OpenRead(fileName);
         Tracks = await JsonSerializer.DeserializeAsync<Root>(openStream);
-        Console.WriteLine("InitAnimation Test Read " + Tracks.animationTracks.dreaming.Count);
+        //Console.WriteLine("InitAnimation Test Read " + Tracks.animationTracks.dreaming.Count);
 
     }
 

@@ -545,8 +545,18 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Carriage",
-            "method": "Rock"
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          },
+          {
+            "time": 5000,
+            "type": "ZombieBaby.Movement.Body",
+            "method": "DownSlow"
+          },
+          {
+            "time": 6000,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkClosed"
           }
         ]
       },
@@ -558,8 +568,18 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Carriage",
-            "method": "Rock"
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          },
+          {
+            "time": 5000,
+            "type": "ZombieBaby.Movement.Body",
+            "method": "DownSlow"
+          },
+          {
+            "time": 6000,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkClosed"
           }
         ]
       },
@@ -571,8 +591,18 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Carriage",
-            "method": "Rock"
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          },
+          {
+            "time": 5000,
+            "type": "ZombieBaby.Movement.Body",
+            "method": "DownSlow"
+          },
+          {
+            "time": 6000,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkClosed"
           }
         ]
       },
@@ -584,8 +614,18 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Carriage",
-            "method": "Rock"
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          },
+          {
+            "time": 5000,
+            "type": "ZombieBaby.Movement.Body",
+            "method": "DownSlow"
+          },
+          {
+            "time": 6000,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkClosed"
           }
         ]
       },
@@ -597,8 +637,18 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Carriage",
-            "method": "Rock"
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          },
+          {
+            "time": 5000,
+            "type": "ZombieBaby.Movement.Body",
+            "method": "DownSlow"
+          },
+          {
+            "time": 6000,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkClosed"
           }
         ]
       },
@@ -610,8 +660,18 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Carriage",
-            "method": "Rock"
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          },
+          {
+            "time": 5000,
+            "type": "ZombieBaby.Movement.Body",
+            "method": "DownSlow"
+          },
+          {
+            "time": 6000,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkClosed"
           }
         ]
       },
@@ -623,8 +683,18 @@
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Carriage",
-            "method": "Rock"
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          },
+          {
+            "time": 5000,
+            "type": "ZombieBaby.Movement.Body",
+            "method": "DownSlow"
+          },
+          {
+            "time": 6000,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkClosed"
           }
         ]
       },
@@ -636,8 +706,18 @@
         "cueList": [
           {
             "time": 5,
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          },
+          {
+            "time": 5000,
             "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "method": "DownSlow"
+          },
+          {
+            "time": 6000,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkClosed"
           }
         ]
       },
@@ -649,8 +729,18 @@
         "cueList": [
           {
             "time": 5,
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          },
+          {
+            "time": 5000,
             "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "method": "DownSlow"
+          },
+          {
+            "time": 6000,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkClosed"
           }
         ]
       },
@@ -662,8 +752,18 @@
         "cueList": [
           {
             "time": 5,
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          },
+          {
+            "time": 5000,
             "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "method": "DownSlow"
+          },
+          {
+            "time": 6000,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkClosed"
           }
         ]
       },
@@ -675,8 +775,18 @@
         "cueList": [
           {
             "time": 5,
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          },
+          {
+            "time": 5000,
             "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "method": "DownSlow"
+          },
+          {
+            "time": 6000,
+            "type": "ZombieBaby.Playlists.Eyes",
+            "method": "BlinkClosed"
           }
         ]
       }
@@ -685,65 +795,65 @@
       {
         "audioPath": "Audio/Screaming/Screaming0.wav",
         "duration": 8225,
-        "audioStartDelay": 15,
-        "volume": 50,
+        "audioStartDelay": 4500,
+        "volume": 100,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Body",
+            "method": "SitUpAndScream"
           }
         ]
       },
       {
         "audioPath": "Audio/Screaming/Screaming1.wav",
         "duration": 8593,
-        "audioStartDelay": 15,
-        "volume": 50,
+        "audioStartDelay": 4500,
+        "volume": 100,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Body",
+            "method": "SitUpAndScream"
           }
         ]
       },
       {
         "audioPath": "Audio/Screaming/Screaming2.wav",
         "duration": 8889,
-        "audioStartDelay": 15,
-        "volume": 50,
+        "audioStartDelay": 4500,
+        "volume": 100,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Body",
+            "method": "SitUpAndScream"
           }
         ]
       },
       {
         "audioPath": "Audio/Screaming/Screaming3.wav",
         "duration": 8905,
-        "audioStartDelay": 15,
-        "volume": 50,
+        "audioStartDelay": 4500,
+        "volume": 100,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Body",
+            "method": "SitUpAndScream"
           }
         ]
       },
       {
         "audioPath": "Audio/Screaming/Screaming4.wav",
         "duration": 8881,
-        "audioStartDelay": 15,
-        "volume": 50,
+        "audioStartDelay": 4500,
+        "volume": 100,
         "cueList": [
           {
             "time": 5,
-            "type": "ZombieBaby.Movement.Body",
-            "method": "SleepingBreath"
+            "type": "ZombieBaby.Playlists.Body",
+            "method": "SitUpAndScream"
           }
         ]
       }
