@@ -3,8 +3,8 @@
 namespace ZombieBaby.Movement;
 public class Carriage
 {
-    private static decimal up { get; } = 0.04222m;
-    private static decimal down { get; } = 0.09555m;
+    private static decimal up { get; } = 0.04m;
+    private static decimal down { get; } = 0.09m;
 
     public void Up()
     {

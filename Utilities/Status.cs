@@ -26,10 +26,10 @@ public static class Status
         switch (CurrentStatus)
         {
             case 3:
-                Defcon3(60);
+                Defcon3();
                 break;
             case 2:
-                Defcon2(30);
+                Defcon2();
                 break;
             case 1:
                 Defcon1();
@@ -43,14 +43,20 @@ public static class Status
     /// Sleeping
     /// </summary>
     /// <param name="durationSeconds"></param>
-    private static void Defcon3(int durationSeconds)
+    private static void Defcon3()
     {
         CurrentStatus = 3;
-        //Thread dc3 = new Thread(() => Playlists.Defcon3.Sleep());
-        //dc3.Start();
+        Thread dc3 = new Thread(() => Playlists.Defcon3.Sleep());
+        dc3.Start();
         Console.WriteLine($"-- Defcon {CurrentStatus}");
-
-        while (CurrentStatus == 3 & durationSeconds > 0)
+        while (
+              CurrentStatus == 3
+              &&
+              (
+                  dc3.ThreadState == ThreadState.WaitSleepJoin ||
+                  dc3.ThreadState == ThreadState.Running
+              )
+          )
         {
             //Blink Three Times
             On();
@@ -65,27 +71,33 @@ public static class Status
             Thread.Sleep(100); //3
             Off();
             Thread.Sleep(500);
-            durationSeconds--;
+       
         }
         if (CurrentStatus == 3)
         {
             PreviousStatus = 3;
             CurrentStatus = 4;
         }
-
     }
 
     /// <summary>
     /// Awake
     /// </summary>
     /// <param name="durationSeconds"></param>
-    private static void Defcon2(int durationSeconds)
+    private static void Defcon2()
     {
         CurrentStatus = 2;
-        //Thread dc2 = new Thread(() => Playlists.Defcon2.Awake());
-        //dc2.Start();
+        Thread dc2 = new Thread(() => Playlists.Defcon2.Awake());
+        dc2.Start();
         Console.WriteLine($"-- Defcon {CurrentStatus}");
-        while (CurrentStatus == 2 & durationSeconds > 0)
+        while (
+               CurrentStatus == 2
+               &&
+               (
+                   dc2.ThreadState == ThreadState.WaitSleepJoin ||
+                   dc2.ThreadState == ThreadState.Running
+               )
+           )
         {
             //Blink Twice
             On();
@@ -96,12 +108,16 @@ public static class Status
             Thread.Sleep(100);
             Off();
             Thread.Sleep(700);
-            durationSeconds--;
         }
         if (CurrentStatus == 2)
         {
             PreviousStatus = 2;
-            Defcon3(20);
+            var rel = new Movement.Body();
+            rel.Release();
+            Thread.Sleep(2000);
+            var bc = new Playlists.Eyes();
+            bc.BlinkClosed();
+            Defcon3();
         }
 
     }
@@ -114,7 +130,7 @@ public static class Status
     {
         if (Defcon1ThreadCounter > 0)
         {
-            //Run again          
+            //Run again and talk          
             Thread dc1 = new Thread(() => Playlists.Defcon1.Talk());
             dc1.Start();
             Defcon1ThreadCounter++;
@@ -128,18 +144,20 @@ public static class Status
                 )
             )
             {
-                ////Blink Once 
-                //On();
-                //Thread.Sleep(100);
-                //Off();
+                if (Defcon1ThreadCounter == 1)
+                {
+                    //Blink Once 
+                    On();
+                    Thread.Sleep(100);
+                    Off();
+                }
                 Thread.Sleep(900);
-                //Console.WriteLine("   ThreadState = " + dc1.ThreadState);   
             }
             Defcon1ThreadCounter--;
         }
         else
         {
-            //Run the first time
+            //Run the first time sit up and scream
             CurrentStatus = 1;
             Defcon1ThreadCounter++;
             Console.WriteLine($"-- Defcon {CurrentStatus} Again Threads Running {Defcon1ThreadCounter}");
@@ -155,12 +173,14 @@ public static class Status
                 )
             )
             {
-                ////Blink Once 
-                //On();
-                //Thread.Sleep(100);
-                //Off();
+                if (Defcon1ThreadCounter == 1)
+                {
+                    //Blink Once 
+                    On();
+                    Thread.Sleep(100);
+                    Off();
+                }
                 Thread.Sleep(900);
-                //Console.WriteLine("   ThreadState = " + dc1.ThreadState);
             }
             Defcon1ThreadCounter--;
         }
@@ -181,7 +201,7 @@ public static class Status
         Thread.Sleep(2000);
         var bc = new Playlists.Eyes();
         bc.BlinkClosed();
-        Defcon3(5);
+        Defcon3();
     }
 
     private static void On()

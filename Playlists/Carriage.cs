@@ -27,9 +27,9 @@ namespace ZombieBaby.Playlists
             for (var i = 0; i < count; i++)
             {
                 movementCarriage.Down();
-                Thread.Sleep(1000);
+                Thread.Sleep(300);
                 movementCarriage.Up();
-                Thread.Sleep(1000);
+                Thread.Sleep(300);
             }
             movementCarriage.Release();
         }

@@ -16,7 +16,7 @@ class Program
         Console.CancelKeyPress += new ConsoleCancelEventHandler(CloseHandler);
 
         Console.Clear();
-        Console.WriteLine("Zombie Baby is Running Ver 0.7");
+        Console.WriteLine("Zombie Baby is Running Ver 0.9");
 
         //Get the IP address of this pi
         var proc = new Process
@@ -76,9 +76,7 @@ class Program
     }
 
     private static void CloseHandler(object? sender, ConsoleCancelEventArgs e)
-    {
-                  
-
+    {  
         Console.WriteLine("");
         Utilities.DMX.Disconnect();
         Movement.Body b = new Movement.Body();
