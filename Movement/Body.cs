@@ -3,7 +3,7 @@
 namespace ZombieBaby.Movement;
 public class Body
 {
-    private double up { get; } = 0.043;
+    private double up { get; } = 0.041;
     private double downish { get; } = 0.074;
     private double breath { get; } = 0.076;
     private double down { get; } = 0.078;
@@ -146,6 +146,19 @@ public class Body
             Thread.Sleep(60);
         }
     }
+
+    public void Up()
+    {
+        Motor.motorController.SetDutyCycle(2, up);
+    }
+
+    public void UpForward()
+    {
+        Motor.motorController.SetDutyCycle(2, up - 0.001);
+    }
+
+    public void UpBack()
+    {
+        Motor.motorController.SetDutyCycle(2, up + 0.001);
+    }
 }
-
-

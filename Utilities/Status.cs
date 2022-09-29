@@ -42,7 +42,6 @@ public static class Status
     /// <summary>
     /// Sleeping
     /// </summary>
-    /// <param name="durationSeconds"></param>
     private static void Defcon3()
     {
         CurrentStatus = 3;
@@ -83,7 +82,6 @@ public static class Status
     /// <summary>
     /// Awake
     /// </summary>
-    /// <param name="durationSeconds"></param>
     private static void Defcon2()
     {
         CurrentStatus = 2;

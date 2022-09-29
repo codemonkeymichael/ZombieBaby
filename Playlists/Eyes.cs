@@ -30,6 +30,12 @@ public class Eyes
         moveEyes.Release();
     }
 
+    public void BlinkOnce()
+    {
+        Blink(1);
+        moveEyes.Release();
+    }
+
     public void BlinkOpen()
     {
         Open();

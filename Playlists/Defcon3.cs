@@ -5,8 +5,6 @@ namespace ZombieBaby.Playlists;
 
 public static class Defcon3
 {
-
-
     public static void Sleep()
     {
         Console.WriteLine("Playlists Defcon3 Sleep");
@@ -41,8 +39,7 @@ public static class Defcon3
 
             Thread.Sleep(2050);
 
-
-
+            if (iteration > 17) break;
 
         }
     }
