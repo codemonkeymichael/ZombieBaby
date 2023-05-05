@@ -20,7 +20,11 @@ public class Gpios
 
         footLight.Start();
 
-        piGPIOController.OpenPin(InputTrigger, PinMode.Input);
+        foreach(var input in InputTriggers)
+        {
+            piGPIOController.OpenPin(input, PinMode.InputPullDown);
+        }
+
         piGPIOController.OpenPin(Blinders, PinMode.Output);
         piGPIOController.OpenPin(Fan, PinMode.Output);
         piGPIOController.OpenPin(Smoke, PinMode.Output);
@@ -29,9 +33,14 @@ public class Gpios
     }
 
     /// <summary>
-    /// Foot peddal Trigger (Red Wire)
+    /// Inputs from the remote
+    /// 4 = Red
+    /// 23 = Blue
+    /// 24 = Yellow
+    /// 25 = Green
     /// </summary>
-    public static int InputTrigger { get; } = 4;
+    public static int[] InputTriggers { get; } = {4,23,24,25};
+
 
     /// <summary>
     /// Bright red lights at the back of the carriage (Blue Wire)

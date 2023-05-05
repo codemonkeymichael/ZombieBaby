@@ -16,7 +16,7 @@ class Program
         Console.CancelKeyPress += new ConsoleCancelEventHandler(CloseHandler);
 
         Console.Clear();
-        Console.WriteLine("Zombie Baby is Running Ver 0.9");
+        Console.WriteLine("Zombie Baby is Running Ver 1.9");
 
         //Get the IP address of this pi
         var proc = new Process
@@ -44,7 +44,7 @@ class Program
         //VLC Audio Player Init
         Core.Initialize();
 
-        Gpios io = new Gpios(); 
+        Gpios io = new Gpios();
         Motor mo = new Motor();
 
         Thread flicker = new Thread(() => Ambient.Flicker());
@@ -57,26 +57,35 @@ class Program
         //mc.Up();
 
         var inputLastState = PinValue.Low;
+        var activeInput = 0;
 
         while (true)
         {
-            var click = Gpios.piGPIOController.Read(Gpios.InputTrigger);
-            if (click != inputLastState)
+            foreach (var input in Gpios.InputTriggers)
             {
-                Console.WriteLine($"Click ");
-                inputLastState = click;
-                if (click == PinValue.High)
+                if (Gpios.piGPIOController.Read(input) != inputLastState && (activeInput == 0 || activeInput == input))
                 {
-                    Thread status = new Thread(() => Status.ElevateDefcon());
-                    status.Start();                 
+                    Console.WriteLine($"Click {input} {Gpios.piGPIOController.Read(input)}");
+                    if (PinValue.Low == inputLastState)
+                    {
+                        inputLastState = PinValue.High;
+                        activeInput = input;
+                    }
+                    else
+                    {
+                        inputLastState = PinValue.Low;
+                        activeInput = 0;
+                    }
+                    Thread.Sleep(500);
+                    break;
                 }
-                Thread.Sleep(500);
-            }
-        }
-    }
+            } //foreach
+        }//while
+    }//Main
+
 
     private static void CloseHandler(object? sender, ConsoleCancelEventArgs e)
-    {  
+    {
         Console.WriteLine("");
         Utilities.DMX.Disconnect();
         Movement.Body b = new Movement.Body();
@@ -85,7 +94,7 @@ class Program
         c.Release();
         Light.Eyes le = new Light.Eyes();
         le.Off();
-        Movement.Eyes me = new Movement.Eyes(); 
+        Movement.Eyes me = new Movement.Eyes();
         me.Closed();
         Thread.Sleep(1000);
         me.Release();
