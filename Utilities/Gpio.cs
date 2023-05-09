@@ -34,10 +34,12 @@ public class Gpios
 
     /// <summary>
     /// Inputs from the remote
-    /// 4 = Red
-    /// 23 = Blue
-    /// 24 = Yellow
-    /// 25 = Green
+    /// 4 = Remote A - Red wire 
+    /// 23 = Remote B - Blue wire
+    /// 24 = Remote C - Yellow wire
+    /// 25 = Remote D - Green wire
+    /// +12 volts - Black wire
+    /// Com - White wire
     /// </summary>
     public static int[] InputTriggers { get; } = {4,23,24,25};
 
