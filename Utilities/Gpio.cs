@@ -10,7 +10,7 @@ namespace ZombieBaby.Utilities;
 public class Gpios
 {
     /// <summary>
-    /// Pi GPIO Controller
+    /// Pi GPIO Controller For the Zombie
     /// </summary>
     public static GpioController piGPIOController { get; set; }
 
