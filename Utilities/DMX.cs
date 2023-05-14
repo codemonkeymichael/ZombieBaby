@@ -67,15 +67,15 @@ public static class DMX
             Console.WriteLine("DMX port open " + port.PortName);
             Console.WriteLine("DMX port open ");
       
-            if (!port.IsOpen)
-            {
-                port.ErrorReceived += Port_ErrorReceived;
-                port.Open();
-                GC.SuppressFinalize(port);
+            //if (!port.IsOpen)
+            //{
+            //    port.ErrorReceived += Port_ErrorReceived;
+            //    port.Open();
+            //    GC.SuppressFinalize(port);
 
 
-                Console.WriteLine("DMX connected");
-            }
+            //    Console.WriteLine("DMX connected");
+            //}
             //SendDMX();
             return true;
         }

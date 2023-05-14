@@ -12,6 +12,7 @@ public class Gpios
     /// <summary>
     /// Pi GPIO Controller For the Zombie
     /// </summary>
+    /// 
     public static GpioController piGPIOController { get; set; }
 
     public Gpios()
