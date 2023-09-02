@@ -9,29 +9,38 @@ namespace ZombieBaby.Light;
 
 public static class Blinders
 {
-
+    
     public static void On()
     {
         Console.WriteLine("Blinders On");
-        Gpios.piGPIOController.Write(Gpios.Blinders, PinValue.High);
+        PwmController.controller.SetDutyCycle(7, 1.0);
     }
 
     public static void Off()
     {
         Console.WriteLine("Blinders Off");
-        Gpios.piGPIOController.Write(Gpios.Blinders, PinValue.Low);
+        PwmController.controller.SetDutyCycle(7, 0.0);
+    }
+
+    public static void OffSoft()
+    {
+        Console.WriteLine("Blinders Off Soft");
+
+        for (double i = 0.95; i > 0.05; i -= 0.05)
+        {
+            PwmController.controller.SetDutyCycle(7, i);
+            Thread.Sleep(2);
+        }
+        Off();
+
     }
 
     public static void OnOff()
     {
         On();
-        Thread.Sleep(1000);
-        //Flicker off          
-        Off();
-        Thread.Sleep(45);
-        On();
-        Thread.Sleep(20);
-        Off();
+        Thread.Sleep(250);           
+        OffSoft();
+       
  
     }
 }

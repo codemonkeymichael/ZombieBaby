@@ -7,7 +7,7 @@ using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Light;
 
-public class Room
+public static class Room
 {
     public static void All(int val = 0, int duration = 0)
     {

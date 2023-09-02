@@ -7,31 +7,8 @@ using System.Threading.Tasks;
 
 namespace ZombieBaby.Utilities;
 
-public class Gpios
+public static class Gpios
 {
-    /// <summary>
-    /// Pi GPIO Controller For the Zombie
-    /// </summary>
-    /// 
-    public static GpioController piGPIOController { get; set; }
-
-    public Gpios()
-    {
-        piGPIOController = new GpioController();
-
-        footLight.Start();
-
-        foreach(var input in InputTriggers)
-        {
-            piGPIOController.OpenPin(input, PinMode.InputPullDown);
-        }
-
-        piGPIOController.OpenPin(Blinders, PinMode.Output);
-        piGPIOController.OpenPin(Fan, PinMode.Output);
-        piGPIOController.OpenPin(Smoke, PinMode.Output);
-        piGPIOController.OpenPin(Status, PinMode.Output);
-        piGPIOController.OpenPin(Eyes, PinMode.Output);
-    }
 
     /// <summary>
     /// Inputs from the remote
@@ -41,8 +18,9 @@ public class Gpios
     /// 25 = Remote D - Green wire
     /// +12 volts - Black wire
     /// Com - White wire
+    /// +3.3 volts - The Other Black wire
     /// </summary>
-    public static int[] InputTriggers { get; } = {4,23,24,25};
+    public static int[] InputTriggers { get; } = { 4, 23, 24, 25 };
 
 
     /// <summary>
@@ -79,5 +57,31 @@ public class Gpios
     /// PI-GPIO-19 Foot Lights(PWM Dimmable Channel 1) (Yellow Wire)
     /// </summary>
     public static PwmChannel footLight = PwmChannel.Create(0, 1, 400, 0.001);
+
+    /// <summary>
+    /// Pi GPIO Controller For the Zombie
+    /// </summary>
+    /// 
+    public static GpioController piGPIOController { get; set; }
+
+    public static void SetUpGpios()
+    {
+        piGPIOController = new GpioController();
+
+        footLight.Start();
+
+        foreach(var input in InputTriggers)
+        {
+            piGPIOController.OpenPin(input, PinMode.InputPullDown);
+        }
+
+        piGPIOController.OpenPin(Blinders, PinMode.Output);
+        piGPIOController.OpenPin(Fan, PinMode.Output);
+        piGPIOController.OpenPin(Smoke, PinMode.Output);
+        piGPIOController.OpenPin(Status, PinMode.Output);
+        piGPIOController.OpenPin(Eyes, PinMode.Output);
+    }
+
+   
 
 }

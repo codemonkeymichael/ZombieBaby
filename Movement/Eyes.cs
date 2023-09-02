@@ -1,29 +1,29 @@
-﻿using ZombieBaby.Utilities;
+﻿using Microsoft.AspNetCore.Components;
+using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Movement;
-public class Eyes
+public static class Eyes
 {
-
     private static double open { get; } = 0.05; //0.05222
     private static double closed { get; } = 0.0899; //0.08991
 
 
-    public void Open()
+    public static void Open()
     {
         Console.WriteLine("Eyes Open fast");
-        Motor.motorController.SetDutyCycle(0, open);
+        //_pwmController.controller.SetDutyCycle(0, open);
     }
 
-    public void Closed()
+    public static void Closed()
     {
         Console.WriteLine("Eyes Closed fast");
-        Motor.motorController.SetDutyCycle(0, closed);
-    }
+        //_pwmController.controller.SetDutyCycle(0, closed);
+    }   
 
-    public void Release()
+    public static void Release()
     {
         Console.WriteLine("Eyes Release");
-        Motor.motorController.SetDutyCycle(0, 0);
+        //_pwmController.controller.SetDutyCycle(0, 0);
     }
 
 }

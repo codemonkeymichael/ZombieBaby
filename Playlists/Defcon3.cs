@@ -9,8 +9,8 @@ public static class Defcon3
     {
         Console.WriteLine("Playlists Defcon3 Sleep");
 
-        var body = new Movement.Body();
-        body.Release();
+        //var body = new Movement.Body();
+        //body.Release();
         var head = new Movement.Head();
         head.Right(); //Away from the crowd
         if (Status.PreviousStatus == 2)

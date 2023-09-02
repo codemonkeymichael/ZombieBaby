@@ -1,17 +1,32 @@
 ﻿using AutoMapper;
+using Iot.Device.Pwm;
 using LibVLCSharp.Shared;
+using Microsoft.Extensions.DependencyInjection;
+using System.Device.Pwm;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Timers;
 using ZombieBaby.Animation;
+using ZombieBaby.Effects;
 using ZombieBaby.Light;
+using ZombieBaby.Movement;
 using ZombieBaby.Utilities;
+
+
+
 
 namespace ZombieBaby;
 class Program
 {
+
     static void Main(string[] args)
     {
+        //var serviceProvider = new ServiceCollection()
+        //  .AddLogging()
+        //  .AddSingleton<PwmController>()
+        //  .BuildServiceProvider();
+
+
         //If the user stops the program
         Console.CancelKeyPress += new ConsoleCancelEventHandler(CloseHandler);
 
@@ -38,20 +53,20 @@ class Program
 
         //DMX Light Init
         DMX.Connect();
-        Light.Ambient.GroundEffect(10, 5000);
+        //Light.Ambient.GroundEffect(10, 5000);
         Light.Ambient.Room();
 
         //VLC Audio Player Init
         Core.Initialize();
 
-        Gpios io = new Gpios();
-        Motor mo = new Motor();
+        //This instantiates the pi gpio pins
+        Gpios.SetUpGpios();
 
         Thread flicker = new Thread(() => Ambient.Flicker());
         flicker.Start();
 
-        AnimationPlayer.InitAnimation();
-        Thread.Sleep(2000);
+        //AnimationPlayer.InitAnimation();
+        //Thread.Sleep(2000);
 
         //Movement.Carriage mc = new Movement.Carriage();
         //mc.Up();
@@ -70,6 +85,29 @@ class Program
                     {
                         inputLastState = PinValue.High;
                         activeInput = input;
+                        //Thread status = new Thread(() => Status.ElevateDefcon());
+                        //status.Start();
+
+                        if (activeInput == 4) //A
+                        {
+                            Blinders.OnOff();
+                        }
+                        if (activeInput == 23)//B
+                        {
+                            Fan.OnOffQuick();
+                        }
+                        if (activeInput == 24)//C
+                        {
+                            Body.UpDownSlow();
+                        }
+                        if (activeInput == 24) //D
+                        {
+                            Body.UpDownSlow();
+                        }
+
+
+
+
                     }
                     else
                     {
@@ -86,22 +124,23 @@ class Program
 
     private static void CloseHandler(object? sender, ConsoleCancelEventArgs e)
     {
-        Console.WriteLine("");
-        Utilities.DMX.Disconnect();
-        Movement.Body b = new Movement.Body();
-        b.Release();
-        Movement.Carriage c = new Movement.Carriage();
-        c.Release();
-        Light.Eyes le = new Light.Eyes();
-        le.Off();
-        Movement.Eyes me = new Movement.Eyes();
-        me.Closed();
-        Thread.Sleep(1000);
-        me.Release();
-        Movement.Head mh = new Movement.Head();
-        mh.Release();
-        Effects.Fan ef = new Effects.Fan();
-        ef.Off();
-        Console.WriteLine("Bye for now :)");
+        //Console.WriteLine("");
+        //Utilities.DMX.Disconnect();
+        //Movement.Body b = new Movement.Body();
+        //b.Release();
+        //Movement.Carriage c = new Movement.Carriage();
+        //c.Release();
+        //Light.Eyes le = new Light.Eyes();
+        //le.Off();
+        //Movement.Eyes me = new Movement.Eyes();
+        //me.Closed();
+        //Thread.Sleep(1000);
+        //me.Release();
+        //Movement.Head mh = new Movement.Head();
+        //mh.Release();
+        //Effects.Fan ef = new Effects.Fan();
+        //ef.Off();
+        //Blinders.Off();
+        //Console.WriteLine("Bye for now :)");
     }
 }

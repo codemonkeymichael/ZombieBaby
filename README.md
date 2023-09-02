@@ -1,6 +1,10 @@
 # ZombieBaby
 
 This is the project for the Heartstoppers Zombie Baby Animatronic.  
+
+Connect to the pi via command line
+ssh pi@192.168.1.15 or what ever ip its on
+The password is the regular one
   
 https://heartstoppershaunt.com/  
 

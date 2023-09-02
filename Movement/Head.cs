@@ -1,10 +1,11 @@
-﻿using ZombieBaby.Utilities;
+﻿using Iot.Device.GrovePiDevice.Sensors;
+using Microsoft.AspNetCore.Components;
+using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Movement;
 
 public class Head
 {
-
     private static double center { get; } = 0.1;
     private static double right { get; } = 0.113;
     private static double rightHalf { get; } = 0.105;
@@ -13,38 +14,38 @@ public class Head
     public void Center()
     {
         Console.WriteLine("Center head fast " + center);
-        Motor.motorController.SetDutyCycle(1, center);
+        //_pwmController.controller.SetDutyCycle(1, center);
     }
 
     public void Right()
     {
         Console.WriteLine("Head Right fast " + right);
-        Motor.motorController.SetDutyCycle(1, right); 
+        //_pwmController.controller.SetDutyCycle(1, right); 
     }
 
     public void RightHalf()
     {
         Console.WriteLine("Head Right Half fast " + rightHalf);
-        Motor.motorController.SetDutyCycle(1, rightHalf);
+        //_pwmController.controller.SetDutyCycle(1, rightHalf);
     }
 
     public void Left()
     {
         Console.WriteLine("Head Left fast " + left);
-        Motor.motorController.SetDutyCycle(1, left); 
+        //_pwmController.controller.SetDutyCycle(1, left); 
     }
 
     public void LeftHalf()
     {
         Console.WriteLine("Head Left Half fast " + leftHalf);
-        Motor.motorController.SetDutyCycle(1, leftHalf);
+        //_pwmController.controller.SetDutyCycle(1, leftHalf);
     }
 
     public void Release()
     {
         Console.WriteLine("Head Release");
-        Motor.motorController.SetDutyCycle(1, 0);
-    }
+        //_pwmController.controller.SetDutyCycle(1, 0);
+    }   
 
 
 

@@ -110,8 +110,8 @@ public static class Status
         if (CurrentStatus == 2)
         {
             PreviousStatus = 2;
-            var rel = new Movement.Body();
-            rel.Release();
+            //var rel = new Movement.Body();
+            //rel.Release();
             Thread.Sleep(2000);
             var bc = new Playlists.Eyes();
             bc.BlinkClosed();
@@ -123,7 +123,7 @@ public static class Status
     /// <summary>
     /// Sitting Up
     /// </summary>
-    /// <param name="durationSeconds"></param>
+
     private static void Defcon1()
     {
         if (Defcon1ThreadCounter > 0)
@@ -194,8 +194,8 @@ public static class Status
     {
         Console.WriteLine($"++++++++++++++++++++++++++  Defcon1End");
         PreviousStatus = 1;
-        var ds = new Movement.Body();
-        ds.DownSlow();
+        //var ds = new Movement.Body();
+        //ds.DownSlow();
         Thread.Sleep(2000);
         var bc = new Playlists.Eyes();
         bc.BlinkClosed();

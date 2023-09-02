@@ -1,23 +1,27 @@
-﻿using ZombieBaby.Utilities;
+﻿using Microsoft.AspNetCore.Components;
+using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Movement;
-public class Body
+public static class Body
 {
-    private double up { get; } = 0.041;
-    private double downish { get; } = 0.074;
-    private double breath { get; } = 0.076;
-    private double down { get; } = 0.078;
-    private double stepSize { get; } = 0.0005;
+    private static double up { get; } = 0.041;
+    private static double downish { get; } = 0.074;
+    private static double breath { get; } = 0.076;
+    private static double down { get; } = 0.078;
+    private static double stepSize { get; } = 0.0005;
+    private static double full { get; } = 0.9005;
 
-    public void Release()
+
+
+    public static void Release()
     {
         Console.WriteLine("Body Release");
-        Motor.motorController.SetDutyCycle(2, 0);
+        PwmController.controller.SetDutyCycle(2, 0);
     }
-    public void UpFast()
+    public static void UpFast()
     {
         Console.WriteLine("Body Sit up fast");
-        Motor.motorController.SetDutyCycle(2, up);
+        PwmController.controller.SetDutyCycle(2, up);
     }
 
     //public void DownFast()
@@ -26,56 +30,56 @@ public class Body
     //    Motor.motorController.SetDutyCycle(2, down);
     //}
 
-    public void UpMed()
+    public static void UpMed()
     {
         Console.WriteLine("Body Sit up medium");
         for (double i = down; i > up; i = i - stepSize)
         {
-            Motor.motorController.SetDutyCycle(2, i);
+            PwmController.controller.SetDutyCycle(2, i);
             Thread.Sleep(4);
         }
     }
 
-    public void DownMed()
+    public static void DownMed()
     {
         Console.WriteLine("Body Lay down slow");
         for (double i = up; i < down; i = i + stepSize)
         {
-            Motor.motorController.SetDutyCycle(2, i);
+            PwmController.controller.SetDutyCycle(2, i);
             Thread.Sleep(5);
         }
     }
-    public void UpALitleSlow()
+    public static void UpALittleSlow()
     {
         Console.WriteLine("Body Sit up a little bit slow");
         for (double i = down; i > downish; i = i - stepSize)
         {
-            Motor.motorController.SetDutyCycle(2, i);
+            PwmController.controller.SetDutyCycle(2, i);
             Thread.Sleep(40);
         }
     }
 
-    public void UpSlow()
+    public static void UpSlow()
     {
         Console.WriteLine("Body Sit up slow");
         for (double i = down; i > up; i = i - stepSize)
         {
-            Motor.motorController.SetDutyCycle(2, i);
+            PwmController.controller.SetDutyCycle(2, i);
             Thread.Sleep(40);
         }
     }
 
-    public void DownSlow()
+    public static void DownSlow()
     {
         Console.WriteLine("Body Lay down slow");
         for (double i = up; i < down; i = i + stepSize)
         {
-            Motor.motorController.SetDutyCycle(2, i);
+            PwmController.controller.SetDutyCycle(2, i);
             Thread.Sleep(15);
         }
         Release();
     }
-    public void UpDownSlow()
+    public static void UpDownSlow()
     {
         Console.WriteLine("Body Up Down Slow");
         UpSlow();
@@ -83,7 +87,7 @@ public class Body
         DownSlow();
     }
 
-    public void UpFastEaseOut()
+    public static void UpFastEaseOut()
     {
         Console.WriteLine("Body Up Fast Ease Out");
         int numberOfSteps = (int)Math.Round((down - up) / stepSize, MidpointRounding.AwayFromZero);
@@ -101,13 +105,13 @@ public class Body
                 currentStepSize = currentStepSize - 0.0001;
             }
             //Console.WriteLine(numberOfSteps + " Motor Position " + (double)i + "  This Step Duration " + currentStepDuration);
-            Motor.motorController.SetDutyCycle(2, i);
+            PwmController.controller.SetDutyCycle(2, i);
             Thread.Sleep(currentStepDuration);
             numberOfSteps--;
         }
     }
 
-    public void DownEaseBoth()
+    public static void DownEaseBoth()
     {
         Console.WriteLine("Body Down Ease Both");
         int steps = (int)Math.Round((down - up) / stepSize, MidpointRounding.AwayFromZero);
@@ -129,36 +133,36 @@ public class Body
                 currentStepDuration -= 2;
             }
             //Console.WriteLine(steps + " Motor Position " + (double)i + "  This Step Duration " + currentStepDuration);
-            Motor.motorController.SetDutyCycle(2, i);
+            PwmController.controller.SetDutyCycle(2, i);
             Thread.Sleep(currentStepDuration);
             steps--;
         }
         Release();
     }
 
-    public void SleepingBreath()
+    public static void SleepingBreath()
     {
         Console.WriteLine("Sleeping Breath");    
 
         for (double i = down; i > breath; i = i - stepSize)
         {
-            Motor.motorController.SetDutyCycle(2, (double)i);
+            PwmController.controller.SetDutyCycle(2, (double)i);
             Thread.Sleep(60);
         }
     }
 
-    public void Up()
+    public static void Up()
     {
-        Motor.motorController.SetDutyCycle(2, up);
+        PwmController.controller.SetDutyCycle(2, up);
     }
 
-    public void UpForward()
+    public static void UpForward()
     {
-        Motor.motorController.SetDutyCycle(2, up - 0.001);
+        PwmController.controller.SetDutyCycle(2, up - 0.001);
     }
 
-    public void UpBack()
+    public static void UpBack()
     {
-        Motor.motorController.SetDutyCycle(2, up + 0.001);
+        PwmController.controller.SetDutyCycle(2, up + 0.001);
     }
 }

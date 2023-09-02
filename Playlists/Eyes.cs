@@ -8,8 +8,8 @@ namespace ZombieBaby.Playlists;
 
 public class Eyes
 {
-    Movement.Eyes moveEyes = new Movement.Eyes();
-    Light.Eyes lightEyes = new Light.Eyes();
+    //Movement.Eyes moveEyes = new Movement.Eyes();
+    //Light.Eyes lightEyes = new Light.Eyes();
 
     public Eyes()
     {
@@ -27,13 +27,13 @@ public class Eyes
             Closed();
             Open();
         }
-        moveEyes.Release();
+        Movement.Eyes.Release();
     }
 
     public void BlinkOnce()
     {
         Blink(1);
-        moveEyes.Release();
+        Movement.Eyes.Release();
     }
 
     public void BlinkOpen()
@@ -43,7 +43,7 @@ public class Eyes
         Open();
         Closed();
         Open();
-        moveEyes.Release();
+        Movement.Eyes.Release();
     }
 
     public void BlinkClosed()
@@ -53,22 +53,22 @@ public class Eyes
         Closed();
         Open();
         Closed();
-        moveEyes.Release();
+        Movement.Eyes.Release();
     }
 
     public void Open()
     {
-        moveEyes.Open();
+        Movement.Eyes.Open();
         Thread.Sleep(150);
-        lightEyes.On();
+        Movement.Eyes.On();
         Thread.Sleep(100);
     }
 
     public void Closed()
     {
-        moveEyes.Closed();
+        Movement.Eyes.Closed();
         Thread.Sleep(150);
-        lightEyes.Off();
-        moveEyes.Release();
+        Movement.Eyes.Off();
+        Movement.Eyes.Release();
     }
 }
