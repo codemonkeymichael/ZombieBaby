@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Iot.Device.ExplorerHat;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,15 +61,16 @@ public class Eyes
     {
         Movement.Eyes.Open();
         Thread.Sleep(150);
-        Movement.Eyes.On();
+        Light.Eyes.On();
         Thread.Sleep(100);
+        Movement.Eyes.Release();
     }
 
     public void Closed()
     {
         Movement.Eyes.Closed();
         Thread.Sleep(150);
-        Movement.Eyes.Off();
+        Light.Eyes.Off();
         Movement.Eyes.Release();
     }
 }
