@@ -106,7 +106,7 @@ class Program
 						if (activeInput == 25) //D button Outside Show gun shots
 						{
 							//Test
-							Head.Left();
+							Playlists.Head.LookAround(1);
 						}
 					}
 					else
@@ -124,23 +124,15 @@ class Program
 
 	private static void CloseHandler(object? sender, ConsoleCancelEventArgs e)
 	{
-		//Console.WriteLine("");
-		//Utilities.DMX.Disconnect();
-		//Movement.Body b = new Movement.Body();
-		//b.Release();
-		//Movement.Carriage c = new Movement.Carriage();
-		//c.Release();
-		//Light.Eyes le = new Light.Eyes();
-		//le.Off();
-		//Movement.Eyes me = new Movement.Eyes();
-		//me.Closed();
-		//Thread.Sleep(1000);
-		//me.Release();
-		//Movement.Head mh = new Movement.Head();
-		//mh.Release();
-		//Effects.Fan ef = new Effects.Fan();
-		//ef.Off();
-		//Blinders.Off();
-		//Console.WriteLine("Bye for now :)");
+		Console.WriteLine("");
+		Utilities.DMX.Disconnect();	  
+        Movement.Body.Release();         
+        Movement.Carriage.Release();     
+        Light.Eyes.Off();
+		Movement.Eyes.Release();
+        Movement.Head.Release();
+        Effects.Fan.Off();
+		Light.Blinders.Off();
+		Console.WriteLine("Bye for now :)");
 	}
 }

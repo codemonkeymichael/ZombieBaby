@@ -15,7 +15,7 @@ public static class Body
 
     public static void Release()
     {
-        Console.WriteLine("Body Release");
+        Console.WriteLine($"Body Release  pwmFrequency: {PwmController.controller.PwmFrequency}");
         PwmController.controller.SetDutyCycle(2, 0);
     }
     public static void UpFast()
@@ -64,8 +64,11 @@ public static class Body
         Console.WriteLine("Body Sit up slow");
         for (double i = down; i > up; i = i - stepSize)
         {
-            PwmController.controller.SetDutyCycle(2, i);
-            Thread.Sleep(40);
+            {
+                PwmController.controller.SetDutyCycle(2, i);
+                Console.WriteLine($"  - GetDutyCycle(2) {i}");
+                Thread.Sleep(40);
+            }
         }
     }
 
@@ -75,15 +78,16 @@ public static class Body
         for (double i = up; i < down; i = i + stepSize)
         {
             PwmController.controller.SetDutyCycle(2, i);
+            Console.WriteLine($"  - GetDutyCycle(2) {i}");
             Thread.Sleep(15);
         }
         Release();
     }
     public static void UpDownSlow()
     {
-        Console.WriteLine("Body Up Down Slow");
+        Console.WriteLine($"Body Up Down Slow  pwmFrequency: {PwmController.controller.PwmFrequency} ");
         UpSlow();
-        Thread.Sleep(5000);
+        Thread.Sleep(4000);
         DownSlow();
     }
 
@@ -142,7 +146,7 @@ public static class Body
 
     public static void SleepingBreath()
     {
-        Console.WriteLine("Sleeping Breath");    
+        Console.WriteLine("Sleeping Breath");
 
         for (double i = down; i > breath; i = i - stepSize)
         {
