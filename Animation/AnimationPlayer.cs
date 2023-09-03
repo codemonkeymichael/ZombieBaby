@@ -89,7 +89,7 @@ public static class AnimationPlayer
         }
 
 
-        trk.audioPath = AppDomain.CurrentDomain.BaseDirectory +  trk.audioPath;
+        trk.audioPath = AppDomain.CurrentDomain.BaseDirectory + trk.audioPath;
         Console.WriteLine("trk.audioPath " + trk.audioPath);
         //Console.WriteLine("trk.audioPath " + trk.duration);
         //Console.WriteLine("trk.audioStartDelay " + trk.audioStartDelay);

@@ -2,9 +2,9 @@
 
 namespace ZombieBaby.Playlists;
 
-public class Smoke
+public static class Smoke
 {
-    public void Blow()
+    public static void Blow()
     {
         Thread smoke = new Thread(() => Effects.Smoke.OnOff());
         smoke.Start();
@@ -12,7 +12,7 @@ public class Smoke
         //Effects.Fan.OnOff(15000);
     }
 
-    public void BlowBlinders()
+    public static void BlowBlinders()
     {
         Thread smoke = new Thread(() => Effects.Smoke.OnOff());
         smoke.Start();

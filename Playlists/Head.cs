@@ -7,85 +7,79 @@ using System.Threading.Tasks;
 
 namespace ZombieBaby.Playlists;
 
-public class Head
+public static class Head
 {
-    Movement.Head mh = new Movement.Head(); 
-
-    public void LookAround(int count)
+    public static void LookAround(int count)
     {
         for (int i = 0; i < count; i++)
         {
-            mh.Left();
+            Movement.Head.Left();
             Thread.Sleep(1000);
-            mh.Center();
+            Movement.Head.Center();
             Thread.Sleep(1000);
-            mh.Right();
+            Movement.Head.Right();
             Thread.Sleep(1000);
-            mh.Center();
+            Movement.Head.Center();
             Thread.Sleep(1000);
-            mh.Release();
+            Movement.Head.Release();
             Thread.Sleep(1000);
         }
     }
 
-    public void Awake1(int count)
+    public static void Awake1(int count)
     {
         for (int i = 0; i < count; i++)
         {
-            mh.Left();
+            Movement.Head.Left();
             Thread.Sleep(1000);
-            mh.Center();
+            Movement.Head.Center();
             Thread.Sleep(1000);
-            mh.Right();
+            Movement.Head.Right();
             Thread.Sleep(50);
-            mh.Center();
+            Movement.Head.Center();
             Thread.Sleep(1000);
-            mh.Release();
+            Movement.Head.Release();
             Thread.Sleep(1000);
         }
     }
 
-    /// <summary>
-    /// This won't work with the json until you and a parameter to pass in
-    /// </summary>
-    /// <param name="duration"></param>
-    public void NightmareLoop(int duration)
+    public static void NightmareLoop(int duration)
     {
         var sw = new Stopwatch();
         sw.Start();
         while (true)
         {
-            mh.Right();
+            Movement.Head.Right();
             Thread.Sleep(600);
             if (sw.ElapsedMilliseconds > duration) break;
-            mh.LeftHalf();
+            Movement.Head.LeftHalf();
             Thread.Sleep(250);
             if (sw.ElapsedMilliseconds > duration) break;
-            mh.Center();
+            Movement.Head.Center();
             Thread.Sleep(400);
             if (sw.ElapsedMilliseconds > duration) break;
-            mh.Right();
+            Movement.Head.Right();
             Thread.Sleep(800);
             if (sw.ElapsedMilliseconds > duration) break;
-            mh.Left();
+            Movement.Head.Left();
             Thread.Sleep(1400);
-            mh.Right();
+            Movement.Head.Right();
         }
         sw.Stop();
     }
 
-    public void Nightmare()
+    public static void Nightmare()
     {
-        mh.Right();
+        Movement.Head.Right();
         Thread.Sleep(600);
-        mh.LeftHalf();
+        Movement.Head.LeftHalf();
         Thread.Sleep(250);
-        mh.Center();
+        Movement.Head.Center();
         Thread.Sleep(400);
-        mh.Right();
+        Movement.Head.Right();
         Thread.Sleep(800);
-        mh.Left();
+        Movement.Head.Left();
         Thread.Sleep(1400);
-        mh.Right();
+        Movement.Head.Right();
     }
 }

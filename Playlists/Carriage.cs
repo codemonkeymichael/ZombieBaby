@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZombieBaby.Playlists
 {
-    public class Carriage
+    public static class Carriage
     {
 
         //private readonly Movement.Carriage movementCarriage = new Movement.Carriage();
@@ -19,7 +19,7 @@ namespace ZombieBaby.Playlists
         //    movementCarriage = _mc;
         //}
 
-        public void Rock()
+        public static void Rock()
         {
             Console.WriteLine("Carriage Rock");
             int count = 3;

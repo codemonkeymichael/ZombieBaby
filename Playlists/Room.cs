@@ -38,7 +38,5 @@ public static class Room
     public static void Stage1(int count = 2, int duration = 5000)
     {
         Console.WriteLine("Playlists Stage1");
-     
-     
     }
 }

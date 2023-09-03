@@ -7,22 +7,14 @@ using System.Threading.Tasks;
 
 namespace ZombieBaby.Playlists;
 
-public class Eyes
+public static class Eyes
 {
-    //Movement.Eyes moveEyes = new Movement.Eyes();
-    //Light.Eyes lightEyes = new Light.Eyes();
-
-    public Eyes()
-    {
-
-    }
-
     /// <summary>
     /// Blink the eyes
     /// </summary>
     /// <param name="count"></param>
-    public void Blink(int count)
-    {
+    public static void Blink(int count)
+    {      
         for (int i = 0; i < count; i++)
         {
             Closed();
@@ -31,13 +23,13 @@ public class Eyes
         Movement.Eyes.Release();
     }
 
-    public void BlinkOnce()
+    public static void BlinkOnce()
     {
         Blink(1);
         Movement.Eyes.Release();
     }
 
-    public void BlinkOpen()
+    public static void BlinkOpen()
     {
         Open();
         Closed();
@@ -47,7 +39,7 @@ public class Eyes
         Movement.Eyes.Release();
     }
 
-    public void BlinkClosed()
+    public static void BlinkClosed()
     {        
         Closed();
         Open();
@@ -57,7 +49,7 @@ public class Eyes
         Movement.Eyes.Release();
     }
 
-    public void Open()
+    public static void Open()
     {
         Movement.Eyes.Open();
         Thread.Sleep(150);
@@ -66,7 +58,7 @@ public class Eyes
         Movement.Eyes.Release();
     }
 
-    public void Closed()
+    public static void Closed()
     {
         Movement.Eyes.Closed();
         Thread.Sleep(150);

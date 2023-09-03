@@ -68,8 +68,10 @@ public static class Gpios
     {
         piGPIOController = new GpioController();
 
+        //Start the pi PWM channel
         footLight.Start();
 
+        //Open the input GPIOs
         foreach(var input in InputTriggers)
         {
             piGPIOController.OpenPin(input, PinMode.InputPullDown);

@@ -4,52 +4,48 @@ using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Movement;
 
-public class Head
+public static class Head
 {
     private static double center { get; } = 0.1;
     private static double right { get; } = 0.113;
     private static double rightHalf { get; } = 0.105;
     private static double left { get; } = 0.08; //0.01
     private static double leftHalf { get; } = 0.09; //0.05
-    public void Center()
+    public static void Center()
     {
         Console.WriteLine("Center head fast " + center);
-        //_pwmController.controller.SetDutyCycle(1, center);
+        PwmController.controller.SetDutyCycle(1, center);
     }
 
-    public void Right()
+    public static void Right()
     {
         Console.WriteLine("Head Right fast " + right);
-        //_pwmController.controller.SetDutyCycle(1, right); 
+        PwmController.controller.SetDutyCycle(1, right);
     }
 
-    public void RightHalf()
+    public static void RightHalf()
     {
         Console.WriteLine("Head Right Half fast " + rightHalf);
-        //_pwmController.controller.SetDutyCycle(1, rightHalf);
+        PwmController.controller.SetDutyCycle(1, rightHalf);
     }
 
-    public void Left()
+    public static void Left()
     {
         Console.WriteLine("Head Left fast " + left);
-        //_pwmController.controller.SetDutyCycle(1, left); 
+        PwmController.controller.SetDutyCycle(1, left);
     }
 
-    public void LeftHalf()
+    public static void LeftHalf()
     {
         Console.WriteLine("Head Left Half fast " + leftHalf);
-        //_pwmController.controller.SetDutyCycle(1, leftHalf);
+        PwmController.controller.SetDutyCycle(1, left);
     }
 
-    public void Release()
+    public static void Release()
     {
         Console.WriteLine("Head Release");
-        //_pwmController.controller.SetDutyCycle(1, 0);
-    }   
-
-
-
-
+        PwmController.controller.SetDutyCycle(1, 0);
+    }
 }
 
 ////Head Turn Demo
