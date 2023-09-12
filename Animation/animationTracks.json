@@ -383,7 +383,7 @@
         ]
       },
       {
-        "audioPath": "Audio/Dreaming/Dreaming5wav",
+        "audioPath": "Audio/Dreaming/Dreaming5.wav",
         "duration": 13888,
         "audioStartDelay": 800,
         "volume": 50,
@@ -857,6 +857,67 @@
           }
         ]
       }
+    ]
+  },
+  "showTracks": {
+    "gunShots": [
+      {
+        "audioPath": "Audio/Dreaming/Dreaming1.wav",
+        "duration": 1169,
+        "audioStartDelay": 2000,
+        "volume": 50,
+        "cueList": [
+          {
+            "time": 5,
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          }
+        ]
+      },
+      {
+        "audioPath": "Audio/Dreaming/Dreaming1.wav",
+        "duration": 1169,
+        "audioStartDelay": 2000,
+        "volume": 50,
+        "cueList": [
+          {
+            "time": 5,
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          }
+        ]
+      },
+      {
+        "audioPath": "Audio/Dreaming/Dreaming1.wav",
+        "duration": 1169,
+        "audioStartDelay": 2000,
+        "volume": 50,
+        "cueList": [
+          {
+            "time": 5,
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          }
+        ]
+      },
+      {
+        "audioPath": "Audio/Dreaming/Dreaming1.wav",
+        "duration": 1169,
+        "audioStartDelay": 2000,
+        "volume": 50,
+        "cueList": [
+          {
+            "time": 5,
+            "type": "ZombieBaby.Playlists.Head",
+            "method": "Nightmare"
+          }
+        ]
+      }
+
+
+
+
+
     ]
   }
 }

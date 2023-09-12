@@ -1,51 +1,54 @@
-﻿using Iot.Device.GrovePiDevice.Sensors;
-using Microsoft.AspNetCore.Components;
-using ZombieBaby.Utilities;
+﻿using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Movement;
 
-public static class Head
+public class Head
 {
+
     private static double center { get; } = 0.1;
     private static double right { get; } = 0.113;
     private static double rightHalf { get; } = 0.105;
     private static double left { get; } = 0.08; //0.01
     private static double leftHalf { get; } = 0.09; //0.05
-    public static void Center()
+    public void Center()
     {
         Console.WriteLine("Center head fast " + center);
         PwmController.controller.SetDutyCycle(1, center);
     }
 
-    public static void Right()
+    public void Right()
     {
         Console.WriteLine("Head Right fast " + right);
         PwmController.controller.SetDutyCycle(1, right);
     }
 
-    public static void RightHalf()
+    public void RightHalf()
     {
         Console.WriteLine("Head Right Half fast " + rightHalf);
         PwmController.controller.SetDutyCycle(1, rightHalf);
     }
 
-    public static void Left()
+    public void Left()
     {
         Console.WriteLine("Head Left fast " + left);
         PwmController.controller.SetDutyCycle(1, left);
     }
 
-    public static void LeftHalf()
+    public void LeftHalf()
     {
         Console.WriteLine("Head Left Half fast " + leftHalf);
-        PwmController.controller.SetDutyCycle(1, left);
+        PwmController.controller.SetDutyCycle(1, leftHalf);
     }
 
-    public static void Release()
+    public void Release()
     {
         Console.WriteLine("Head Release");
         PwmController.controller.SetDutyCycle(1, 0);
     }
+
+
+
+
 }
 
 ////Head Turn Demo

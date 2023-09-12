@@ -1,5 +1,4 @@
-﻿using Iot.Device.ExplorerHat;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,62 +6,69 @@ using System.Threading.Tasks;
 
 namespace ZombieBaby.Playlists;
 
-public static class Eyes
+public class Eyes
 {
+    Movement.Eyes moveEyes = new Movement.Eyes();
+    Light.Eyes lightEyes = new Light.Eyes();
+
+    public Eyes()
+    {
+
+    }
+
     /// <summary>
     /// Blink the eyes
     /// </summary>
     /// <param name="count"></param>
-    public static void Blink(int count)
-    {      
+    public void Blink(int count)
+    {
         for (int i = 0; i < count; i++)
         {
             Closed();
             Open();
         }
-        Movement.Eyes.Release();
+        moveEyes.Release();
     }
 
-    public static void BlinkOnce()
+    public void BlinkOnce()
     {
         Blink(1);
-        Movement.Eyes.Release();
+        moveEyes.Release();
     }
 
-    public static void BlinkOpen()
+    public void BlinkOpen()
     {
         Open();
         Closed();
         Open();
         Closed();
         Open();
-        Movement.Eyes.Release();
+        moveEyes.Release();
     }
 
-    public static void BlinkClosed()
-    {        
-        Closed();
-        Open();
-        Closed();
-        Open();
-        Closed();
-        Movement.Eyes.Release();
-    }
-
-    public static void Open()
+    public void BlinkClosed()
     {
-        Movement.Eyes.Open();
+        Closed();
+        Open();
+        Closed();
+        Open();
+        Closed();
+        moveEyes.Release();
+    }
+
+    public void Open()
+    {
+        moveEyes.Open();
         Thread.Sleep(150);
-        Light.Eyes.On();
+        lightEyes.On();
         Thread.Sleep(100);
-        Movement.Eyes.Release();
     }
 
-    public static void Closed()
+    public void Closed()
     {
-        Movement.Eyes.Closed();
+        moveEyes.Closed();
         Thread.Sleep(150);
-        Light.Eyes.Off();
-        Movement.Eyes.Release();
+        lightEyes.Off();
+        moveEyes.Release();
     }
 }

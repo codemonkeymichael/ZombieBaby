@@ -1,24 +1,20 @@
-﻿using Microsoft.AspNetCore.Components;
-using ZombieBaby.Utilities;
+﻿using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Movement;
-public static class Body
+public class Body
 {
-    private static double up { get; } = 0.041;
-    private static double downish { get; } = 0.074;
-    private static double breath { get; } = 0.076;
-    private static double down { get; } = 0.078;
-    private static double stepSize { get; } = 0.0005;
-    private static double full { get; } = 0.9005;
+    private double up { get; } = 0.041;
+    private double downish { get; } = 0.074;
+    private double breath { get; } = 0.076;
+    private double down { get; } = 0.078;
+    private double stepSize { get; } = 0.0005;
 
-
-
-    public static void Release()
+    public void Release()
     {
-        Console.WriteLine($"Body Release  pwmFrequency: {PwmController.controller.PwmFrequency}");
+        Console.WriteLine("Body Release");
         PwmController.controller.SetDutyCycle(2, 0);
     }
-    public static void UpFast()
+    public void UpFast()
     {
         Console.WriteLine("Body Sit up fast");
         PwmController.controller.SetDutyCycle(2, up);
@@ -30,7 +26,7 @@ public static class Body
     //    Motor.motorController.SetDutyCycle(2, down);
     //}
 
-    public static void UpMed()
+    public void UpMed()
     {
         Console.WriteLine("Body Sit up medium");
         for (double i = down; i > up; i = i - stepSize)
@@ -40,7 +36,7 @@ public static class Body
         }
     }
 
-    public static void DownMed()
+    public void DownMed()
     {
         Console.WriteLine("Body Lay down slow");
         for (double i = up; i < down; i = i + stepSize)
@@ -49,7 +45,7 @@ public static class Body
             Thread.Sleep(5);
         }
     }
-    public static void UpALittleSlow()
+    public void UpALitleSlow()
     {
         Console.WriteLine("Body Sit up a little bit slow");
         for (double i = down; i > downish; i = i - stepSize)
@@ -59,39 +55,35 @@ public static class Body
         }
     }
 
-    public static void UpSlow()
+    public void UpSlow()
     {
         Console.WriteLine("Body Sit up slow");
         for (double i = down; i > up; i = i - stepSize)
         {
-            {
-                PwmController.controller.SetDutyCycle(2, i);
-                Console.WriteLine($"  - GetDutyCycle(2) {i}");
-                Thread.Sleep(40);
-            }
+            PwmController.controller.SetDutyCycle(2, i);
+            Thread.Sleep(40);
         }
     }
 
-    public static void DownSlow()
+    public void DownSlow()
     {
         Console.WriteLine("Body Lay down slow");
         for (double i = up; i < down; i = i + stepSize)
         {
             PwmController.controller.SetDutyCycle(2, i);
-            Console.WriteLine($"  - GetDutyCycle(2) {i}");
             Thread.Sleep(15);
         }
         Release();
     }
-    public static void UpDownSlow()
+    public void UpDownSlow()
     {
-        Console.WriteLine($"Body Up Down Slow  pwmFrequency: {PwmController.controller.PwmFrequency} ");
+        Console.WriteLine("Body Up Down Slow");
         UpSlow();
-        Thread.Sleep(4000);
+        Thread.Sleep(5000);
         DownSlow();
     }
 
-    public static void UpFastEaseOut()
+    public void UpFastEaseOut()
     {
         Console.WriteLine("Body Up Fast Ease Out");
         int numberOfSteps = (int)Math.Round((down - up) / stepSize, MidpointRounding.AwayFromZero);
@@ -115,7 +107,7 @@ public static class Body
         }
     }
 
-    public static void DownEaseBoth()
+    public void DownEaseBoth()
     {
         Console.WriteLine("Body Down Ease Both");
         int steps = (int)Math.Round((down - up) / stepSize, MidpointRounding.AwayFromZero);
@@ -144,7 +136,7 @@ public static class Body
         Release();
     }
 
-    public static void SleepingBreath()
+    public void SleepingBreath()
     {
         Console.WriteLine("Sleeping Breath");
 
@@ -155,17 +147,17 @@ public static class Body
         }
     }
 
-    public static void Up()
+    public void Up()
     {
         PwmController.controller.SetDutyCycle(2, up);
     }
 
-    public static void UpForward()
+    public void UpForward()
     {
         PwmController.controller.SetDutyCycle(2, up - 0.001);
     }
 
-    public static void UpBack()
+    public void UpBack()
     {
         PwmController.controller.SetDutyCycle(2, up + 0.001);
     }

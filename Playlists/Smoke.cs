@@ -1,10 +1,10 @@
-﻿using ZombieBaby.Effects;
+﻿namespace ZombieBaby.Playlists;
 
-namespace ZombieBaby.Playlists;
-
-public static class Smoke
+public class Smoke
 {
-    public static void Blow()
+    Effects.Fan effFan = new Effects.Fan();
+
+    public void Blow()
     {
         Thread smoke = new Thread(() => Effects.Smoke.OnOff());
         smoke.Start();
@@ -12,20 +12,20 @@ public static class Smoke
         //Effects.Fan.OnOff(15000);
     }
 
-    public static void BlowBlinders()
+    public void BlowBlinders()
     {
         Thread smoke = new Thread(() => Effects.Smoke.OnOff());
         smoke.Start();
         Thread.Sleep(3000); //How long to smoke before turning on the fan
-        Thread fan = new Thread(() => Fan.OnOffLong());
+        Thread fan = new Thread(() => effFan.OnOffLong());
         fan.Start();
         Thread.Sleep(2000);
-        //Thread blinders = new Thread(() => Light.Blinders.OnOff());
-        //blinders.Start();
+        Thread blinders = new Thread(() => Light.Blinders.OnOff());
+        blinders.Start();
         Thread.Sleep(800);
         Playlists.Room.Strobe();
         Thread.Sleep(500);
-        //Light.Blinders.OnOff();
+        Light.Blinders.OnOff();
         Playlists.Room.Strobe();
     }
 }

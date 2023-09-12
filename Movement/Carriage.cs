@@ -1,29 +1,27 @@
-﻿using Microsoft.AspNetCore.Components;
-using ZombieBaby.Utilities;
+﻿using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Movement;
-public static class Carriage
+public class Carriage
 {
-  
     private static double up { get; } = 0.03;
     private static double down { get; } = 0.1;
 
-    public static void Up()
+    public void Up()
     {
-        Console.WriteLine("Carriage up " + up);        
-        //_pwmController.controller.SetDutyCycle(3, up);
-    }   
-
-    public static void Down()
-    {
-        Console.WriteLine("Carriage down " + down);
-        //_pwmController.controller.SetDutyCycle(3, down);
+        Console.WriteLine("Carriage up " + up);
+        PwmController.controller.SetDutyCycle(3, up);
     }
 
-    public static void Release()
+    public void Down()
+    {
+        Console.WriteLine("Carriage down " + down);
+        PwmController.controller.SetDutyCycle(3, down);
+    }
+
+    public void Release()
     {
         Console.WriteLine("Carriage Release");
-        //_pwmController.controller.SetDutyCycle(3, 0);
+        PwmController.controller.SetDutyCycle(3, 0);
     }
 
 }

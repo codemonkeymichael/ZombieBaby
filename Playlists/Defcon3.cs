@@ -8,11 +8,15 @@ public static class Defcon3
     public static void Sleep()
     {
         Console.WriteLine("Playlists Defcon3 Sleep");
-        Movement.Body.Release();       
-        Movement.Head.Right(); //Away from the crowd
+
+        var body = new Movement.Body();
+        body.Release();
+        var head = new Movement.Head();
+        head.Right(); //Away from the crowd
         if (Status.PreviousStatus == 2)
-        {                 
-            Playlists.Eyes.BlinkClosed();
+        {
+            var eyes = new Playlists.Eyes();
+            eyes.BlinkClosed();
         }
 
         int iteration = 0;

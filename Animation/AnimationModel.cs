@@ -1,5 +1,20 @@
 ﻿namespace ZombieBaby.Animation;
 
+public class ShowTracks
+{
+    public List<GunShots> gunShots { get; set; }
+}
+
+public class GunShots
+{
+    public string audioPath { get; set; }
+    public int duration { get; set; }
+    public int audioStartDelay { get; set; }
+    public int volume { get; set; }
+    public List<CueList> cueList { get; set; }
+}
+
+
 public class AnimationTracks
 {
     public Sleeping sleeping { get; set; }
@@ -8,6 +23,8 @@ public class AnimationTracks
     public List<SittingUp> sittingUp { get; set; }
     public List<Screaming> screaming { get; set; }
 }
+
+
 
 public class Awake
 {
@@ -37,6 +54,7 @@ public class Dreaming
 public class Root
 {
     public AnimationTracks animationTracks { get; set; }
+    public ShowTracks showTracks { get; set; }
 }
 
 public class Screaming
@@ -80,9 +98,6 @@ public class SleepingOut
     public int volume { get; set; }
     public List<CueList> cueList { get; set; }
 }
-
-
-
 
 public class TrackObject
 {

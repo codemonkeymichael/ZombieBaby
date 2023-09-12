@@ -1,35 +1,41 @@
 ﻿namespace ZombieBaby.Playlists;
 
-public static class Body
+public class Body
 {
-    public static void SitUpAndScream()
+    private readonly Movement.Body moveBody = new Movement.Body();
+    private readonly Movement.Head moveHead = new Movement.Head();
+    private readonly Playlists.Smoke playSmoke = new Playlists.Smoke();
+    private readonly Playlists.Eyes playEyes = new Playlists.Eyes();
+
+
+    public void SitUpAndScream()
     {
         Console.WriteLine("Playlists SitUp()");
 
-        Thread blowSmoke = new Thread(() => Playlists.Smoke.BlowBlinders());
+        Thread blowSmoke = new Thread(() => playSmoke.BlowBlinders());
         blowSmoke.Start();
-        Playlists.Eyes.Open();
+        playEyes.Open();
         Thread.Sleep(4250); //Waiting for smoke to blow
-        Movement.Body.UpFastEaseOut();
-        Thread.Sleep(3000);
-        Movement.Head.Right();
-        Thread.Sleep(200);
-        Playlists.Eyes.Blink(2);
-        Thread.Sleep(3000);
-        Movement.Head.Left();
-        Thread.Sleep(200);
-        Playlists.Eyes.Blink(2);
-        Thread.Sleep(3000);
-        Movement.Head.Center();
-        Playlists.Eyes.Blink(3);
-        Movement.Body.DownEaseBoth();
+        moveBody.UpFastEaseOut();
+        //Thread.Sleep(3000);
+        //moveHead.Right();
+        //Thread.Sleep(200);
+        //playEyes.Blink(2);
+        //Thread.Sleep(3000);
+        //moveHead.Left();
+        //Thread.Sleep(200);
+        //playEyes.Blink(2);
+        //Thread.Sleep(3000);
+        //moveHead.Center();
+        //playEyes.Blink(3);
+        //moveBody.DownEaseBoth();
     }
 
-    public static void SitUpALittleBit()
+    public void SitUpALittleBit()
     {
         Console.WriteLine("Playlists SitUpALittleBit()");
-        Movement.Body.Release();
+        moveBody.Release();
         Thread.Sleep(150);
-        Movement.Body.UpALittleSlow();
+        moveBody.UpALitleSlow();
     }
 }

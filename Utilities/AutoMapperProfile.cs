@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZombieBaby.Playlists;
 
 namespace ZombieBaby.Utilities
 {
@@ -15,6 +16,7 @@ namespace ZombieBaby.Utilities
         {
             Configuration = new MapperConfiguration(cfg =>
             {
+                cfg.CreateMap<GunShots, TrackObject>();
                 cfg.CreateMap<Awake, TrackObject>();
                 cfg.CreateMap<Dreaming, TrackObject>();
                 cfg.CreateMap<SittingUp, TrackObject>();
