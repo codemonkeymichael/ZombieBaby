@@ -22,7 +22,7 @@ public static class PwmController
             int busId = 1;
             I2cConnectionSettings settings = new(busId, deviceAddress);
             I2cDevice i2c = I2cDevice.Create(settings);
-            return new Pca9685(i2c, pwmFrequency: 50.0);  //50  4095.0};
+            return new Pca9685(i2c, pwmFrequency: 1000);  //50  4095.0};
             //return null;
         }           
     }

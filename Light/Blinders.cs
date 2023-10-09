@@ -13,13 +13,13 @@ public static class Blinders
     public static void On()
     {
         Console.WriteLine("Blinders On");
-        PwmController.controller.SetDutyCycle(7, 1.0);
+        PwmController.controller.SetDutyCycle(7, 0.9);
     }
 
     public static void Off()
     {
         Console.WriteLine("Blinders Off");
-        PwmController.controller.SetDutyCycle(7, 0.0);
+        PwmController.controller.SetDutyCycle(7, 0.1);
     }
 
     public static void OffSoft()

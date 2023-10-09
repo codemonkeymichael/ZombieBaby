@@ -103,10 +103,26 @@ class Program
                         }
 						if (activeInput == 24)//C button Outside Show sequencer
 						{
-                            //Test 
-                            Console.WriteLine("C");
-                            Blinders.OnOff();
-						}
+                            
+                            Console.WriteLine("C Button Push");
+						
+
+                            PwmController.controller.SetDutyCycle(0, 0.9);
+                            PwmController.controller.SetDutyCycle(1, 0.9);
+                            PwmController.controller.SetDutyCycle(2, 0.9);
+                            PwmController.controller.SetDutyCycle(3, 0.9);
+                            PwmController.controller.SetDutyCycle(4, 0.9);
+                            PwmController.controller.SetDutyCycle(5, 0.9);
+                            PwmController.controller.SetDutyCycle(6, 0.9);
+                            PwmController.controller.SetDutyCycle(7, 0.9);
+
+                            var thing = PwmController.controller.GetDutyCycle(1);
+                            Console.WriteLine(thing);
+
+
+                            //Playlists.Show1.SitUp();
+
+                        }
 						if (activeInput == 25) //D button Outside Show gun shots
 						{
                             //Test
