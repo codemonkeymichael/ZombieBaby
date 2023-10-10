@@ -62,8 +62,12 @@ class Program
 		//This instantiates the pi gpio pins
 		Gpios.SetUpGpios();
 
-		Thread flicker = new Thread(() => Ambient.Flicker());
-		flicker.Start();
+        //Thread flicker = new Thread(() => Ambient.Flicker());
+        //flicker.Start();
+
+        CancellationTokenSource source = new CancellationTokenSource();
+        //source.CancelAfter(TimeSpan.FromSeconds(5));
+        Task task = Task.Run(() => Ambient.Flicker(source.Token), source.Token);
 
 		AnimationPlayer.InitAnimation();
 		Thread.Sleep(2000);
@@ -97,37 +101,31 @@ class Program
 						}
 						if (activeInput == 23)//B button Inside Defcon Context Cycler
 						{
-                            //Test 
-                            Console.WriteLine("B");
-                            //Fan.OnOffQuick();
-                        }
+							//Test 
+							Console.WriteLine("B");
+							//Fan.OnOffQuick();
+						}
 						if (activeInput == 24)//C button Outside Show sequencer
 						{
-                            
-                            Console.WriteLine("C Button Push");
+							
+							Console.WriteLine("C Button Push");
 						
-
-                            PwmController.controller.SetDutyCycle(0, 0.9);
-                            PwmController.controller.SetDutyCycle(1, 0.9);
-                            PwmController.controller.SetDutyCycle(2, 0.9);
-                            PwmController.controller.SetDutyCycle(3, 0.9);
-                            PwmController.controller.SetDutyCycle(4, 0.9);
-                            PwmController.controller.SetDutyCycle(5, 0.9);
-                            PwmController.controller.SetDutyCycle(6, 0.9);
-                            PwmController.controller.SetDutyCycle(7, 0.9);
-
-                            var thing = PwmController.controller.GetDutyCycle(1);
-                            Console.WriteLine(thing);
+							//Playlists.Blinders.Flash();
+							//Playlists.Show1.SitUp();
+							  Playlists.Head h = new Playlists.Head();
+							h.LookAround(10);
+							// Movement.Head b = new Head();
+							//b.Right();
+							//Thread.Sleep(2000);
+							//b.Left();
 
 
-                            //Playlists.Show1.SitUp();
-
-                        }
+						}
 						if (activeInput == 25) //D button Outside Show gun shots
 						{
-                            //Test
-                            Console.WriteLine("D");
-                            Playlists.Show.GunShot();
+							//Test
+							Console.WriteLine("D");
+							Playlists.Show.GunShot();
 						}
 					}
 					else
@@ -161,6 +159,8 @@ class Program
 		mh.Release();
 		Effects.Fan ef = new Effects.Fan();
 		ef.Off();
+		Light.Blinders.Off();
+
 		Console.WriteLine("Bye for now :)");
 	}
 }

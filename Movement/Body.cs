@@ -45,7 +45,7 @@ public class Body
             Thread.Sleep(5);
         }
     }
-    public void UpALitleSlow()
+    public void UpALittleSlow()
     {
         Console.WriteLine("Body Sit up a little bit slow");
         for (double i = down; i > downish; i = i - stepSize)

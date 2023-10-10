@@ -36,6 +36,6 @@ public class Body
         Console.WriteLine("Playlists SitUpALittleBit()");
         moveBody.Release();
         Thread.Sleep(150);
-        moveBody.UpALitleSlow();
+        moveBody.UpALittleSlow();
     }
 }
