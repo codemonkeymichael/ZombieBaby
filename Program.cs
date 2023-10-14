@@ -80,11 +80,11 @@ class Program
 		//Body Down
 		var pwmBody = PwmChannel.Create(0, 0, 50, 0.078);
 		pwmBody.Start();
-		//Eyes Closed
-		var pwmEyes = PwmChannel.Create(0, 1, 50, 0.02);
-		pwmEyes.Start();
-		Thread.Sleep(555);
-		pwmEyes.Stop();
+		////Eyes Closed
+		//var pwmEyes = PwmChannel.Create(0, 1, 50, 0.02);
+		//pwmEyes.Start();
+		//Thread.Sleep(555);
+		//pwmEyes.Stop();
 
 		while (true)
 		{
@@ -105,6 +105,7 @@ class Program
 							Console.WriteLine("A Button Push Smoke");
 							Effects.Smoke.On();
 						}
+
 						if (activeInput == 23)//B button Inside Defcon Context Cycler
 						{
 						   
@@ -117,12 +118,12 @@ class Program
 							Light.Eyes.On();
 							Light.Blinders.On();
 						   
-							Thread.Sleep(700);
+							Thread.Sleep(1550);
 							Blinders.Off();
 
                             Thread.Sleep(3000);
                             Effects.Smoke.Off();
-                            Thread.Sleep(3000);
+                            Thread.Sleep(4000);
                             Effects.Fan.Off();
 
 
@@ -166,23 +167,10 @@ class Program
 	private static void CloseHandler(object? sender, ConsoleCancelEventArgs e)
 	{
 		Console.WriteLine("");
-		//Utilities.DMX.Disconnect();
-		//Movement.Body b = new Movement.Body();
-		//b.Release();
-		//Movement.Carriage c = new Movement.Carriage();
-		//c.Release();
-	   // Light.Eyes le = new Light.Eyes();
-		//le.Off();
-		//Movement.Eyes me = new Movement.Eyes();
-		//me.Closed();
-		//Thread.Sleep(1000);
-		//me.Release();
-		//Movement.Head mh = new Movement.Head();
-		//mh.Release();
-		Effects.Fan ef = new Effects.Fan();
-		ef.Off();
-		Light.Blinders.Off();
+        Light.Eyes.Off();
+        Effects.Smoke.Off();
+        Light.Blinders.Off();
 
-		Console.WriteLine("Bye for now :)");
+        Console.WriteLine("Bye for now :)");
 	}
 }
