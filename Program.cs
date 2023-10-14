@@ -6,7 +6,6 @@ using System.Device.Pwm;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Timers;
-using ZombieBaby.Animation;
 using ZombieBaby.Effects;
 using ZombieBaby.Light;
 using ZombieBaby.Movement;
@@ -56,27 +55,36 @@ class Program
 		//Light.Ambient.GroundEffect(10, 5000);
 		//Light.Ambient.Room();
 
-		//VLC Audio Player Init
-		Core.Initialize();
+		////VLC Audio Player Init
+		//Core.Initialize();
 
 		//This instantiates the pi gpio pins
 		Gpios.SetUpGpios();
 
-        //Thread flicker = new Thread(() => Ambient.Flicker());
-        //flicker.Start();
+		////Thread flicker = new Thread(() => Ambient.Flicker());
+		////flicker.Start();
 
-        CancellationTokenSource source = new CancellationTokenSource();
-        //source.CancelAfter(TimeSpan.FromSeconds(5));
-        Task task = Task.Run(() => Ambient.Flicker(source.Token), source.Token);
+		//CancellationTokenSource source = new CancellationTokenSource();
+		//////source.CancelAfter(TimeSpan.FromSeconds(5));
+		//Task task = Task.Run(() => Ambient.Flicker(source.Token), source.Token);
 
-		AnimationPlayer.InitAnimation();
-		Thread.Sleep(2000);
 
-		//Movement.Carriage mc = new Movement.Carriage();
-		//mc.Up();
+	
+
+		////Movement.Carriage mc = new Movement.Carriage();
+		////mc.Up();
 
 		var inputLastState = PinValue.Low;
 		var activeInput = 0;
+
+		//Body Down
+		var pwmBody = PwmChannel.Create(0, 0, 50, 0.078);
+		pwmBody.Start();
+		//Eyes Closed
+		var pwmEyes = PwmChannel.Create(0, 1, 50, 0.02);
+		pwmEyes.Start();
+		Thread.Sleep(555);
+		pwmEyes.Stop();
 
 		while (true)
 		{
@@ -94,40 +102,54 @@ class Program
 
 						if (activeInput == 4) //A button remote Inside Defcon Stepper Upper
 						{
-							//Test 
-							Console.WriteLine("A");
-							Playlists.Defcon3.Sleep();
-							
+							Console.WriteLine("A Button Push Smoke");
+							Effects.Smoke.On();
 						}
 						if (activeInput == 23)//B button Inside Defcon Context Cycler
 						{
-							//Test 
-							Console.WriteLine("B");
-							//Fan.OnOffQuick();
-						}
+						   
+							Console.WriteLine("B Button Push Sit Up");
+
+							pwmBody.Start();
+							pwmBody.DutyCycle = 0.041; //Sit Up
+
+							Effects.Fan.On();
+							Light.Eyes.On();
+							Light.Blinders.On();
+						   
+							Thread.Sleep(700);
+							Blinders.Off();
+
+                            Thread.Sleep(3000);
+                            Effects.Smoke.Off();
+                            Thread.Sleep(3000);
+                            Effects.Fan.Off();
+
+
+                        }
 						if (activeInput == 24)//C button Outside Show sequencer
 						{
-							
-							Console.WriteLine("C Button Push");
-						
-							//Playlists.Blinders.Flash();
-							//Playlists.Show1.SitUp();
-							  Playlists.Head h = new Playlists.Head();
-							h.LookAround(10);
-							// Movement.Head b = new Head();
-							//b.Right();
-							//Thread.Sleep(2000);
-							//b.Left();
 
+							Console.WriteLine($"C Button Push");
 
-						}
+						   //Body Down                             
+							pwmBody.DutyCycle = 0.078;
+							Thread.Sleep(1000);                  
+							pwmBody.Stop();
+
+                            Light.Eyes.Off();
+                            Effects.Smoke.Off();
+                            Light.Blinders.Off();
+
+                        }
 						if (activeInput == 25) //D button Outside Show gun shots
 						{
 							//Test
-							Console.WriteLine("D");
-							Playlists.Show.GunShot();
+							Console.WriteLine("D Button Push Gun Shots");
+
 						}
 					}
+
 					else
 					{
 						inputLastState = PinValue.Low;
@@ -145,18 +167,18 @@ class Program
 	{
 		Console.WriteLine("");
 		//Utilities.DMX.Disconnect();
-		Movement.Body b = new Movement.Body();
-		b.Release();
-		Movement.Carriage c = new Movement.Carriage();
-		c.Release();
-		Light.Eyes le = new Light.Eyes();
-		le.Off();
-		Movement.Eyes me = new Movement.Eyes();
-		me.Closed();
-		Thread.Sleep(1000);
-		me.Release();
-		Movement.Head mh = new Movement.Head();
-		mh.Release();
+		//Movement.Body b = new Movement.Body();
+		//b.Release();
+		//Movement.Carriage c = new Movement.Carriage();
+		//c.Release();
+	   // Light.Eyes le = new Light.Eyes();
+		//le.Off();
+		//Movement.Eyes me = new Movement.Eyes();
+		//me.Closed();
+		//Thread.Sleep(1000);
+		//me.Release();
+		//Movement.Head mh = new Movement.Head();
+		//mh.Release();
 		Effects.Fan ef = new Effects.Fan();
 		ef.Off();
 		Light.Blinders.Off();

@@ -8,15 +8,15 @@ using ZombieBaby.Utilities;
 
 namespace ZombieBaby.Light;
 
-public class Eyes
+public static class Eyes
 {
-    public void On()
+    public static void On()
     {
         Console.WriteLine("Eyes Light On");
         Gpios.piGPIOController.Write(Gpios.Eyes, PinValue.High);
     }
 
-    public void Off()
+    public static void Off()
     {
         Console.WriteLine("Eyes Light Off");
         Gpios.piGPIOController.Write(Gpios.Eyes, PinValue.Low);     
