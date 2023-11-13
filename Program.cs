@@ -8,8 +8,15 @@ using System.Text.Json;
 using System.Timers;
 using ZombieBaby.Effects;
 using ZombieBaby.Light;
-using ZombieBaby.Movement;
+
 using ZombieBaby.Utilities;
+
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
 
 
 
@@ -86,81 +93,33 @@ class Program
 		//Thread.Sleep(555);
 		//pwmEyes.Stop();
 
+		string[] lines = { "How long will this battery last?", "Lets find out." };
+
+		// Set a variable to the Documents path.
+		string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+		Console.WriteLine(docPath);
+
+		// Write the string array to a new file named "WriteLines.txt".
+		using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "BatteryDuration.txt")))
+		{
+			foreach (string line in lines)
+			{
+				outputFile.WriteLine(line);
+			}
+		}
+
+		int minutesCounter = 0;
+
 		while (true)
 		{
-			foreach (var input in Gpios.InputTriggers)
-			{
-				if (Gpios.piGPIOController.Read(input) != inputLastState && (activeInput == 0 || activeInput == input))
-				{
-					Console.WriteLine($"Click {input} {Gpios.piGPIOController.Read(input)}");
-					if (PinValue.Low == inputLastState)
-					{
-						inputLastState = PinValue.High;
-						activeInput = input;
-						//Thread status = new Thread(() => Status.ElevateDefcon());
-						//status.Start();
+			Thread.Sleep(1000 * 60);
+			minutesCounter++;
+			string[] txtLines = { $"{minutesCounter} minutes" };
 
-						if (activeInput == 4) //A button remote Inside Defcon Stepper Upper
-						{
-							Console.WriteLine("A Button Push Smoke");
-							Effects.Smoke.On();
-						}
-
-						if (activeInput == 23)//B button Inside Defcon Context Cycler
-						{
-						   
-							Console.WriteLine("B Button Push Sit Up");
-
-							pwmBody.Start();
-							pwmBody.DutyCycle = 0.041; //Sit Up
-
-							Effects.Fan.On();
-							Light.Eyes.On();
-							Light.Blinders.On();
-						   
-							Thread.Sleep(1550);
-							Blinders.Off();
-
-                            Thread.Sleep(3000);
-                            Effects.Smoke.Off();
-                            Thread.Sleep(4000);
-                            Effects.Fan.Off();
-
-
-                        }
-						if (activeInput == 24)//C button Outside Show sequencer
-						{
-
-							Console.WriteLine($"C Button Push");
-
-						   //Body Down                             
-							pwmBody.DutyCycle = 0.078;
-							Thread.Sleep(1000);                  
-							pwmBody.Stop();
-
-                            Light.Eyes.Off();
-                            Effects.Smoke.Off();
-                            Light.Blinders.Off();
-
-                        }
-						if (activeInput == 25) //D button Outside Show gun shots
-						{
-							//Test
-							Console.WriteLine("D Button Push Gun Shots");
-
-						}
-					}
-
-					else
-					{
-						inputLastState = PinValue.Low;
-						activeInput = 0;
-					}
-					Thread.Sleep(500);
-					break;
-				}
-			} //foreach
-		}//while
+			// Append new lines of text to the file
+			File.AppendAllLines(Path.Combine(docPath, "BatteryDuration.txt"), txtLines);
+			Console.WriteLine($"{minutesCounter} minutes");
+		}
 	}//Main
 
 
